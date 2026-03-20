@@ -1,0 +1,156 @@
+export default {
+    "layout": {
+        "viewAll": "View all",
+        "notFound": {
+            "title": "Page not found",
+            "description": "It looks like you’re lost! The page you are looking for does not exist or has been moved.",
+            "subtitle": "What can you do now?",
+            "item1": "Check the URL - There might be a typographical error.",
+            "item2": "Go back to the homepage",
+            "item3": "to return to the start.",
+            "item4": "Browse our content - You might find something interesting here.",
+            "here": "here"
+        },
+        "menu": {
+            "home": "Home",
+            "about": "About",
+            "facilities": "Facilities",
+            "utilities": "Utilities",
+            "testimonials": "Testimonials",
+            "gallery": "Gallery",
+            "virtualTour": "Virtual Tour",
+            "pricing": "Pricelist",
+            "map": "Map"
+        },
+        "footer": {
+            "description": "A luxurious vacation in a tranquil natural setting is a matter of prestige - a matter of Hill House. This renowned gem of hospitality is located just 30 minutes from the wider center of Belgrade, in the Mali Požarevac neighborhood.",
+            "stayConnected": "Stay connected",
+            "reachOut": "Reach out",
+            "copyright": "All rights reserved"
+        }
+    },
+    "home": {
+        "slider": {
+            "reserve": "Reserve",
+            "welcome": "WELCOME TO HILL HOUSE, A LUXURY VILLA CLOSE TO BELGRADE",
+            "title": "Embrace Luxury,<br/> Craft Cherished Moments"
+        },
+        "about": {
+            "title": "About Hill House",
+            "paragraph1": "A luxurious vacation in a quiet natural environment is a matter of prestige - a matter of Hill House. This renowned decoration of the hospitality offer is located only 30 minutes from the wider center of Belgrade, in the Mali Požarevac settlement.",
+            "paragraph2": "The property is raised on a hill from which there is an unassuming view of the surroundings, while the lights of the city and the crowds in the evening hours are just glimpsed in the distance. Such a location as well as access to the facility with private parking, offers intimate relaxation in the magic described by Hill House.",
+            "capacity": "Capacity",
+            "nightAccommodation": "Night stay",
+            "beds": "Beds",
+            "toilets": "Toilets",
+            "paragraph3": "The estate is perched on a hilltop offering a modest view of the surroundings, while city lights and crowds are only faintly visible in the distance during evening hours. Such a position, along with access to the property via private parking, provides intimate relaxation amidst the enchantment described by Hill House. The estate's amenities, including the spacious orchard surrounding it, as well as the guest facilities, incorporate modern and meticulous exterior details 'adopted' into intense greenery and forest rules for undisturbed relaxation in the heart of nature. The property 'opens up' before you with a concrete path leading to the pool lounge area, passing by a luxurious villa. Guests of Hill House have access to a modern pool with crystal-clear water, a sunbathing terrace, and a summerhouse under a covered terrace. For recreation and more active stays, there is a basketball court and a mini-football field available.",
+            "paragraph4": "There is also a guest dining table outdoors for dining whenever weather permits. Continuing with the property, its lower part features a beach corner with a marble foundation area for entertainment and play, along with a summer kitchen fully equipped with kitchen elements (cooling chamber, ice maker), as well as a barbecue area resembling a grill pit. And when play and gourmet endeavors 'provoke' fatigue, guests can refresh themselves in the section with an outdoor shower and an outdoor bathroom. A distinctive segment of the courtyard is certainly the area with a fire pit, or fire pit booths with several seating areas under the shimmering night stars.",
+            "paragraph5": "Due to its affluent offerings and maximum photogenicity of the entire estate, Hill House is an ideal choice for creating memories through family vacations, celebrations and gatherings with a larger number of people, bachelorette parties, wedding occasions, team building events, informal getaways with colleagues from the company, and more. Hill House can accommodate up to 120 guests during the daytime in the summer and 30 guests in the winter.",
+            "paragraph6": "The villa is entirely designed with a designer touch, providing enough space and light for the maximum comfort of guests. The house comprises two levels, with its attic designed as a large outdoor terrace, offering the most prestigious view of the surrounding panorama. There is also a terrace at the entrance of the house, ideal for morning activities. The lower level of the house consists of a spacious living room, a fully equipped kitchen with a bar element, and a bathroom. The interior is 'separated' from the courtyard by glass portals that do not obstruct the view of the rest of the estate. There are two bedrooms, one with a double bed, while the other has two double beds and two bunk beds. Additionally, the living room features a large sofa bed suitable for two people. The total sleeping capacity of the villa is 10. The property is covered by a Wi-Fi signal, and the temperature is regulated by an air conditioning system.",
+            "paragraph7": "The spa center is located in the basement and features a sauna, jacuzzi, mini cinema, toilet, and shower. During the winter season, the spa is included in the price, while during the summer season, there is an additional charge of 200€ per night.",
+            "paragraph8": "The perfect vacation is a matter of Hill House! <br/> Welcome..."
+        },
+        "utilities": {
+            "title": "Facilities and amenities of our Hill House",
+            "description": "Discover what our cottage has to offer for you to fully enjoy your stay. Learn more about the comforts, rooms, and additional amenities you can utilize during your visit.",
+            "parking": "Parking",
+            "pool": "Swimming Pool",
+            "barbecue": "Barbecue",
+            "garden": "Garden",
+            "spa": "Spa",
+            "livingRoom": "Spacious <br/> Living Room",
+            "cinema": "Home Theater",
+            "telescope": "Telescope",
+            "airConditioner": "Air Conditioner",
+            "contentForChildren": "Content for Children",
+            "sportsCourts": "Sports Courts",
+            "largeYard": "Large Yard"
+        },
+        "testimonials": {
+            "title": "VOICE FROM OUR GUESTS",
+            "text": "The best weekend getaway ever! The cottage was the perfect place to relax and escape the hustle and bustle of the city. We enjoyed the beautiful surroundings, comfortable accommodations, and stunning views of nature. Everything was clean, well-maintained, and well-equipped. We're definitely coming back again!"
+        },
+        "gallery": {
+            "title": "Hill House Through the Lens: Photo Gallery",
+            "description": "Immerse yourself in the charm of our cottage through a stunning collection of photographs. Discover the allure of every detail and the ambiance that inhabits every corner of this serene nature retreat. Browse through our photos and let them ignite your desire for an unforgettable weekend yet to experience."
+        },
+        "facilities": {
+            "title": "Luxury Villa for Unforgettable Moments",
+            "paragraph1": "Our luxury villa provides the perfect setting for creating unforgettable moments. With elegant interior, spacious yard, and numerous amenities, every moment spent in our villa becomes unique and unforgettable. Whether you're planning birthdays, team-building events, or other special occasions, our villa is the perfect choice.",
+            "pool": "Swimming Pool",
+            "jacuzzi": "Jacuzzi",
+            "spa": "Spa and Home Cinema"
+        }
+    },
+    "pricing": {
+        "novemberToApril": "The price list from November 1st to April 1st",
+        "aprilToNovember": "The price list from April 1st to November 1st",
+        "priceWeekdays": "The price per night - weekdays",
+        "price50Weekdays": "The price for up to 50 people - weekdays",
+        "price50FridaySunday": "The price for up to 50 people - Friday/Sunday",
+        "price50Saturday": "The price for up to 50 people - Saturday",
+        "price100Weekdays": "The price for up to 100 people - weekdays",
+        "price100FridaySunday": "The price for up to 100 people - Friday/Sunday",
+        "price100Saturday": "The price for up to 100 people - Saturday",
+        "price120Weekdays": "The price for up to 120 people - weekdays",
+        "price120FridaySunday": "The price for up to 120 people - Friday/Sunday",
+        "price120Saturday": "The price for up to 120 people - Saturday",
+        "priceWeekends": "The price per night - weekend days.",
+        "dailyRental": "Daily rental",
+        "priceReduced": "The price is reduced by 50€.",
+        "surcharge": "The surcharge applies to the period from May 1st to November 1st",
+        "surchargeSpa": "The surcharge for the use of the spa center per night",
+        "surchargeMayToNovember": "The surcharge applies to the period from May 1st to November 1st",
+    },
+    "pricingPage": {
+        "mainTitle": "PRICELIST AND CONDITIONS FOR THE 2025 SEASON",
+        "validFrom": "Pricelist is valid for dates from May 1, 2025.",
+        "priceSaturday": "Price per night on Saturdays:",
+        "priceFridaySunday": "Price per night on Fridays and Sundays:",
+        "priceOtherDays": "Price per night on other days:",
+        "guestsUpTo50": "up to 50 guests",
+        "guests50to100": "from 50-100 guests",
+        "guests100to150": "from 100-150 guests",
+        "reservationTermsTitle": "The reservation is considered confirmed",
+        "reservationTermsText": "after an advance payment of 40% of the total rental price. The payment deadline is 48 hours from the agreement.",
+        "cancellationPolicyTitle": "Cancellation of reservation",
+        "cancellationPolicyText": "with a deposit refund is a minimum of fifteen days before the reserved date.",
+        "reschedulePolicyTitle": "Rescheduling of reservation",
+        "reschedulePolicyText": "is possible a minimum of fifteen days before the reserved date.",
+        "spaSurcharge": "Surcharge for SPA per night",
+        "spaJacuzziNotice": "Please announce SPA rental 72 hours in advance for the jacuzzi to be operational.",
+        "checkIn": "Check-in:",
+        "checkOut": "Check-out:",
+        "yardCleaning": "Yard cleaning at 08:00.",
+        "houseCleaning": "House cleaning at 10:00.",
+        "musicPolicyTitle": "Music is restricted:",
+        "musicFridaySaturday": "Fridays and Saturdays until 00:00",
+        "musicOtherDays": "other days until 22:00",
+        "equipmentPolicy": "For up to 50 guests, our dishes, tables, chairs, and tablecloths are provided. For more than 50 guests, guests must rent equipment independently.",
+        "rulesAndConditionsTitle": "Rules and Conditions of Use:",
+        "ruleFireworks": "Fireworks are allowed with police notification and are positioned in the lower part of the estate, which the host will show you.",
+        "ruleNoConfetti": "The use of confetti is prohibited.",
+        "ruleNoPoolJumping": "Jumping into the pool is prohibited.",
+        "ruleNoPoolEdgeWalking": "Walking on the pool overflow edge is prohibited.",
+        "ruleNoPoolFoodDrinkObjects": "Throwing food, drinks, and objects into the pool is prohibited.",
+        "ruleNoBreakingItems": "Breaking items such as glasses, bottles, and other objects is prohibited.",
+        "ruleNoUnderageAlcohol": "Consumption of alcohol by minors is prohibited.",
+        "ruleMinorsSupervision": "Minors must be supervised by adults.",
+        "ruleNoFurnitureWalking": "Walking on furniture is prohibited.",
+        "ruleTenantResponsibility": "The tenant is responsible for everything that happens on the estate during their stay.",
+        "ruleDamageCompensation": "The tenant compensates for all damages caused.",
+        "ruleNoPartiesUnder28": "Organizing parties for individuals younger than 28 is not allowed. We reserve the right to cancel the reservation if it is determined on-site that guests are younger than 28.",
+        "ruleTrashDisposal": "After the celebration, all trash must be collected in garbage bags and stored in an enclosed space.",
+        "ruleDishesIndoors": "After the celebration, all dishes must be brought into the house.",
+        "entryPolicyTitle": "Entry to the estate without prior notice is not allowed.",
+        "entryPolicyText": "Mandatory notice one day in advance. The gate is always locked and is unlocked only at the agreed time.",
+        "inventoryPolicy": "All inventory on the estate is arranged at our discretion. Moving inventory is allowed, but our staff is not responsible for this; you must do it exclusively yourself.",
+        "videoSurveillancePolicy": "The estate is under video surveillance, and if the stated rules are not respected, we reserve the right to stop the celebration or vacation at any moment, and you are obliged to leave the estate as soon as possible.",
+        "ruleNoCameraTampering": "Turning off or covering cameras is prohibited.",
+        "damageLiability": "The tenant is obliged to compensate for any damage caused during the rented period, and this is regulated by the contract.",
+        "contractSigning": "Signing the contract is mandatory."
+    },
+    "global": {
+        "moreDetails": "More details"
+    }
+}
