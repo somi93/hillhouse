@@ -4,6 +4,7 @@
 .nuxt
 .nitro
 .cache
+public
 dist
 
 # Node dependencies
@@ -12,6 +13,9 @@ node_modules
 # Logs
 logs
 *.log
+
+# Media assets
+assets/media
 
 # Misc
 .DS_Store
