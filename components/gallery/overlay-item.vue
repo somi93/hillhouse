@@ -37,7 +37,6 @@ const elWidth = ref(0);
 const elHeight = ref(0);
 
 onMounted(() => {
-  console.log(item.value)
   const bounding = item.value.getBoundingClientRect();
   elWidth.value = bounding.width;
   elHeight.value = bounding.height;

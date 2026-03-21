@@ -23,10 +23,21 @@ export default {
             "here": "ovde"
         },
         "footer": {
-            "description": "Luksuzan odmor u ambijentu mirne prirode je stvar prestiža - stvar Hill House-a. Ovaj renomirani ukras gostinske ponude se nalazi na svega 30 minuta od šireg centra Beograda, u blizini Malog Požarevca.",
+            "brandEyebrow": "Hill House Luxury",
+            "description": "Privatan prostor za proslave, okupljanja i boravke koji traže mirniji ambijent, dobar ritam prostora i utisak koji ostaje.",
             "stayConnected": "Budimo u kontaktu",
-            "reachOut": "Informacije",
-            "copyright": "Sva prava zadržana"
+            "socialNote": "Zapratite aktuelne kadrove, termine i novosti Hill House prostora.",
+            "reachOut": "Kontakt",
+            "quickLinks": "Navigacija",
+            "emailLabel": "Email",
+            "phoneLabel": "Telefon",
+            "addressLabel": "Lokacija",
+            "instagram": "Instagram",
+            "facebook": "Facebook",
+            "whatsapp": "WhatsApp",
+            "navigationLabel": "Footer navigacija",
+            "creditLabel": "Izrada sajta Enigma IT",
+            "copyright": "© 2022 Hill House. Sva prava zadržana."
         }
     },
     "home": {
@@ -34,6 +45,118 @@ export default {
             "reserve": "Rezerviši",
             "welcome": "DOBRODOŠLI U HILL HOUSE, LUKSUZNU VILU U BLIZINI BEOGRADA",
             "title": "Zagrli Luksuz,<br/> Stvori Dragocene Trenutke"
+        },
+        "redesign": {
+            "hero": {
+                "eyebrow": "Premium vila za proslave i događaje",
+                "title": "Privatna vila za proslave koje se pamte.",
+                "subtitle": "Za slavlja, okupljanja i posebne trenutke, uz bazen, spa zonu i atmosferu koja ostavlja utisak, na samo 30 minuta od Beograda.",
+                "primaryCta": "Rezerviši termin",
+                "secondaryCta": "Pogledaj galeriju",
+                "trust1": "Ambijent za događaje sa stilom",
+                "trust2": "Privatni spa i bazen",
+                "trust3": "30 min od Beograda",
+                "trust4": "Za proslave, okupljanja i događaje"
+            },
+            "why": {
+                "eyebrow": "Privatna destinacija za posebne prilike",
+                "title": "Mesto sa posebnim zalaskom sunca",
+                "text": "Pored izuzetne lokacije i bogatog sadržaja, ovo mesto pruža jedinstven osećaj mira, spokoja i istinskog luksuza.",
+                "cta": "Saznaj više o vili",
+                "proofIntro": "Zašto ovaj prostor ostavlja utisak",
+                "proofNote": "Sve je postavljeno da i događaj i boravak deluju promišljeno i na svom mestu.",
+                "proof1Value": "150",
+                "proof1Label": "gostiju za proslave i događaje",
+                "proof2Value": "10",
+                "proof2Label": "mesta za noćenje",
+                "proof3Value": "Spa",
+                "proof3Label": "jacuzzi, sauna i wellness zona",
+                "proof4Value": "30 minuta",
+                "proof4Label": "lagane vožnje od Beograda"
+            },
+            "experiences": {
+                "eyebrow": "Doživljaj prostora",
+                "title": "Više od vile! Mesto za vaše posebne trenutke!",
+                "description": "Od otvorene scene oko bazena do wellness predaha i enterijera koji zadržava atmosferu i kada se događaj preseli unutra, Hill House je osmišljen da svaki deo prostora radi u istom ritmu.",
+                "item1Kicker": "Otvorena scena",
+                "item1Title": "Veliki plato za proslave",
+                "item1Text": "Prostran plato idealan za proslave na otvorenom, stvoren za nezaboravne trenutke pod vedrim nebom.",
+                "item2Kicker": "Wellness zona",
+                "item2Title": "Spa zona za predah",
+                "item2Text": "Kutak mira gde vreme usporava, a svaki trenutak postaje uživanje.",
+                "item3Kicker": "Enterijer",
+                "item3Title": "Enterijer koji odiše luksuzom",
+                "item3Text": "Luksuz u svakom detalju"
+            },
+            "occasions": {
+                "eyebrow": "Za koje prilike",
+                "title": "Za trenutke koji traže poseban prostor i uspomene koje traju",
+                "description": "Od privatnih proslava i team building-a do snimanja i okupljanja sa užim krugom gostiju, Hill House prirodno podržava različite scenarije bez gubitka atmosfere.",
+                "item1Title": "Privatne proslave",
+                "item1Text": "Spoj luksuza, komfora i nezaboravne atmosfere.",
+                "item2Title": "Team building i retreat",
+                "item2Text": "Povezivanje. Fokus. Reset.",
+                "item3Title": "Snimanja i kreativne produkcije",
+                "item3Text": "Ambijent koji inspiriše",
+                "item4Title": "Intimna okupljanja sa stilom",
+                "item4Text": "Za posebne trenutke koji zaslužuju veliku pažnju i stil."
+            },
+            "social": {
+                "eyebrow": "Utisci gostiju",
+                "title": "Utisak koji potvrđuju i gosti.",
+                "mainQuote": "Prisustvovala sam proslavi rođendana u Hill House i utisak je bio sjajan. Prostrana terasa, bazen, osvetljenje i pogled zajedno stvaraju ambijent koji je zaista poseban za okupljanja i proslave.",
+                "mainAuthor": "Katarina Rakić",
+                "mainSource": "Google Reviews",
+                "mainLinkLabel": "Pogledaj original",
+                "linkLabel": "Pogledaj original",
+                "quote1": "Divno mesto za proslave i važne događaje. Sve je lepo osmišljeno i ima sve što je potrebno za prijatno i elegantno okupljanje.",
+                "author1": "Predrag Popović",
+                "source1": "Google Reviews",
+                "quote2": "Predivno, luksuzno, raj za dušu i oči. Prelep pogled na Avalu. Ljubazni domaćini. Sve pohvale!",
+                "author2": "Danijela Ilić",
+                "source2": "Google Reviews"
+            },
+            "gallery": {
+                "eyebrow": "Kroz objektiv",
+                "title": "Prostor koji ostavlja utisak i na fotografijama i uživo.",
+                "description": "Od dnevnih scena punih svetla do večernjeg ambijenta koji deluje filmski, Hill House je prostor čija atmosfera ostaje dosledna u svakom detalju.",
+                "cta": "Otvori kompletnu galeriju",
+                "openCategory": "Otvori pregled",
+                "videoBadge": "Video",
+                "category1Kicker": "Događaji",
+                "category1Title": "Proslave i događaji",
+                "category1Text": "Kadrovi koji pokazuju kako prostor izgleda kada je u punom ritmu i pod svetlima.",
+                "category2Kicker": "Produkcije",
+                "category2Title": "Snimanja i produkcije",
+                "category2Text": "Fotogenični uglovi, otvoreni kadrovi i večernje svetlo koje prostoru daju jači vizuelni karakter.",
+                "category3Kicker": "Enterijer",
+                "category3Title": "Enterijer i večernji ambijent",
+                "category3Text": "Unutrašnji prostori koji nastavljaju atmosferu i kada se veče preseli unutra.",
+                "category4Kicker": "Eksterijer",
+                "category4Title": "Eksterijer i bazen",
+                "category4Text": "Otvoreni kadrovi, terasa i bazen kao glavna scena dnevnog i večernjeg ritma prostora.",
+                "category5Kicker": "U pokretu",
+                "category5Title": "Video utisak",
+                "category5Text": "Kratki video kadrovi koji bolje prenose ritam, svetlo i atmosferu prostora."
+            },
+            "cta": {
+                "eyebrow": "Rezervacija i upit",
+                "title": "Ako tražite prostor koji će slavlje ili boravak podići na viši nivo, Hill House je spreman.",
+                "text": "Rezervišite termin, proverite cene ili nas kontaktirajte direktno za detalje i raspoloživost.",
+                "primary": "Pozovi odmah",
+                "secondary": "Pogledaj cenovnik",
+                "tertiary": "Pošalji upit mailom",
+                "note": "Odgovaramo brzo i direktno."
+            },
+            "location": {
+                "eyebrow": "Lokacija",
+                "title": "Lako dostupno, dovoljno izdvojeno.",
+                "text": "Hill House se nalazi u Šepšinu, na kratkoj vožnji od Beograda, što gostima i organizatorima olakšava dolazak, a samom događaju daje osećaj izdvojenosti i mira.",
+                "city": "Šepšin, Mladenovac",
+                "time": "30 minuta od Beograda",
+                "cta": "Otvori lokaciju na mapi",
+                "mapNote": "Jednostavan dolazak iz Beograda, sa dovoljno izdvojenosti da prostor zadrži privatniji ton i mirniji ritam okupljanja."
+            }
         },
         "about": {
             "title": "O Hill House",
@@ -105,6 +228,7 @@ export default {
     "pricingPage": {
         "mainTitle": "CENOVNIK I USLOVI ZA SEZONU 2025.",
         "validFrom": "Cenovnik važi za termine od 01.05.2025.",
+        "mostPopular": "Najpopularnije",
         "priceSaturday": "Cena noćenja subotom:",
         "priceFridaySunday": "Cena noćenja petkom i nedeljom:",
         "priceOtherDays": "Cene noćenja za ostale dane:",

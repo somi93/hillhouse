@@ -63,12 +63,12 @@
                   <v-col cols="12" sm="6" lg="3">
                     <div class="about-card px-8 py-6">
                       <v-row class="fill-height" align="center" no-gutters>
-                        <v-icon :icon="item.icon" size="60px" color="grey-darken-2"></v-icon>
+                        <v-icon :icon="item.icon" size="60px" color="primary"></v-icon>
                         <div class="ml-8">
                       <span class="text-primary text-h4 font-weight-bold" v-html="item.value">
 
                       </span><br/>
-                          <span class="font-weight-bold text-h6" v-html="item.title"></span>
+                          <span class="font-weight-bold text-h6 text-white" v-html="item.title"></span>
                         </div>
                       </v-row>
                     </div>
@@ -127,9 +127,9 @@ const items = computed(() => {
   position: relative;
   overflow: hidden;
   width: 100%;
-  background-color: #fff;
+  background-color: #151515;
   aspect-ratio: 2.4;
-  box-shadow: 0 15px 46px rgba(0, 0, 0, .1);
+  box-shadow: 0 15px 46px rgba(0, 0, 0, .25);
 }
 
 .about-card:after {

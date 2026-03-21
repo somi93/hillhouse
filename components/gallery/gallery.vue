@@ -5,7 +5,7 @@
         width="100%"
         content-class="bg-white"
         class="bg-white"
-        style="z-index: 55555555555555555"
+        style="z-index: 9999"
         opacity="1">
       <v-btn
           position="absolute"

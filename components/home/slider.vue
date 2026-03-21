@@ -6,34 +6,45 @@
           justify="center"
           align="center">
         <h1
-            class="text-primary text-body-2 font-weight-medium text-center text-md-left slider-welcome"
+            class="text-primary text-body-2 font-weight-light text-center slider-welcome"
             v-html="$t('home.slider.welcome')">
         </h1>
         <span
             v-html="$t('home.slider.title')"
             :class="$vuetify.display.smAndDown ? 'text-h3' : 'text-h2'"
-            class="text-white font-weight-medium text-center my-6"
+            class="text-white text-center my-6 slider-title"
             :style="[
                 {
-                  'line-height': $vuetify.display.smAndDown ? '1.3' : '1.4'
+                  'line-height': $vuetify.display.smAndDown ? '1.2' : '1.3'
                 }
             ]">
         </span>
-        <v-btn
-            color="primary"
-            class="btn-reserve"
-            flat
-            width="300px"
-            height="50px"
-            href="tel:+38169635632"
-            rel="noopener"
-            target="_blank">
-          {{ $t('home.slider.reserve') }}
-        </v-btn>
+        <v-row no-gutters justify="center" class="ga-4 flex-wrap">
+          <v-btn
+              color="primary"
+              class="btn-reserve"
+              flat
+              width="220px"
+              height="50px"
+              href="tel:+38169635632"
+              rel="noopener"
+              target="_blank">
+            {{ $t('home.slider.reserve') }}
+          </v-btn>
+          <v-btn
+              :to="{name: 'gallery'}"
+              variant="outlined"
+              color="white"
+              width="220px"
+              height="50px"
+              style="border-color: rgba(255,255,255,0.6); text-transform: initial">
+            {{ $t('layout.menu.gallery') }}
+          </v-btn>
+        </v-row>
       </v-row>
     </div>
-    <mobile-video v-if="!$vuetify.display.smAndDown"></mobile-video>
-    <desktop-video v-else></desktop-video>
+    <desktop-video v-if="!$vuetify.display.smAndDown"></desktop-video>
+    <mobile-video v-else></mobile-video>
   </div>
 </template>
 
@@ -70,5 +81,11 @@ import MobileVideo from './videos/mobile'
 
 .slider-welcome {
   display: flex;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.slider-title {
+  font-weight: 400;
 }
 </style>

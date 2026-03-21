@@ -1,66 +1,26 @@
 <template>
-  <v-app v-scroll="onScroll" style="max-width: 100vw; overflow: hidden">
+  <v-app v-scroll="onScroll" class="layout-shell">
     <hill-header v-if="!$vuetify.display.smAndDown"></hill-header>
     <hill-mobile-header v-else></hill-mobile-header>
-    <v-main style="padding-top: 64px !important">
-      <v-row
-        v-if="!$vuetify.display.smAndDown"
-        class="social-sharing"
-        align="center"
-        no-gutters
-      >
-        <div class="bg-primary">
-          <v-row align="start" justify="center" class="flex-column" no-gutters>
-            <SocialShare
-              v-for="network in [
-                'facebook',
-                'whatsapp',
-                'pinterest',
-                'reddit',
-                'twitter',
-                'email',
-                'linkedin',
-              ]"
-              :key="network"
-              :network="network"
-              :styled="true"
-              :label="false"
-              url="https://www.hillhouse.rs"
-              class="rounded-0"
-            />
-          </v-row>
-        </div>
-      </v-row>
+    <v-main class="layout-main">
       <!--      <router-view></router-view>-->
       <nuxt-page></nuxt-page>
     </v-main>
-    <v-progress-circular
-      v-if="$route.name !== 'interactive-map'"
-      :model-value="currentScroll"
-      :size="72"
-      :width="4"
-      color="#FF8A00"
+    <v-btn
+      v-if="currentScroll > 20"
+      color="primary"
+      class="btn-reserve"
       style="bottom: 16px; right: 16px; z-index: 5; position: fixed"
+      aria-label="Scroll to top"
+      @click="scrollToTop"
+      rounded="circle"
+      height="64px"
+      width="64px"
     >
-      <v-btn
-        color="primary"
-        class="btn-reserve"
-        aria-label="Name"
-        @click="scrollToTop"
-        flat
-        variant="flat"
-        rounded="circle"
-        height="64px"
-        width="64px"
-      >
-        <v-icon size="28px" :icon="mdiChevronUp"></v-icon>
-      </v-btn>
-    </v-progress-circular>
+      <v-icon size="28px" :icon="mdiChevronUp"></v-icon>
+    </v-btn>
     <hill-footer></hill-footer>
-    <v-bottom-sheet
-      :model-value="cookieNotAccepted"
-      style="z-index: 1000000000000000000000"
-    >
+    <v-bottom-sheet :model-value="cookieNotAccepted" style="z-index: 10000">
       <v-row
         class="bg-white pa-4"
         :class="$vuetify.display.smAndDown ? 'text-center' : ''"
@@ -74,15 +34,17 @@
           @click="setCookies"
           :class="$vuetify.display.smAndDown ? 'mt-4 mr-2' : 'ml-4'"
           color="success"
-          >Prihvati</v-btn
         >
+          Prihvati
+        </v-btn>
         <v-btn
           variant="flat"
           @click="cookieNotAccepted = false"
           :class="$vuetify.display.smAndDown ? 'mt-4 ml-2' : 'ml-4'"
           color="error"
-          >Odbij</v-btn
         >
+          Odbij
+        </v-btn>
       </v-row>
     </v-bottom-sheet>
   </v-app>
@@ -172,17 +134,18 @@ const onScroll = () => {
 </script>
 
 <style>
-.social-sharing {
-  position: fixed;
-  left: 0;
-  top: 0;
-  height: 100%;
-  z-index: 1331131313;
+.layout-shell {
+  max-width: 100vw;
+  overflow: hidden;
 }
-.social-sharing path {
-  fill: #151515;
+
+.layout-main {
+  padding-top: var(--header-height-desktop) !important;
 }
-.social-sharing a:hover path {
-  fill: #fff;
+
+@media (max-width: 600px) {
+  .layout-main {
+    padding-top: var(--header-height-mobile) !important;
+  }
 }
 </style>

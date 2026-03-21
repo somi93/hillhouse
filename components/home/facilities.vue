@@ -10,8 +10,9 @@
       <div class="grid-wrapper" ref="gallery">
         <template v-for="(element, i) in elements">
           <div
-              data-aos="flip-left"
+              data-aos="fade-up"
               data-aos-once="true"
+              :data-aos-delay="(i % 3) * 120"
               class="facility-image"
               :style="[
                   {

@@ -23,10 +23,21 @@ export default {
             "map": "Map"
         },
         "footer": {
-            "description": "A luxurious vacation in a tranquil natural setting is a matter of prestige - a matter of Hill House. This renowned gem of hospitality is located just 30 minutes from the wider center of Belgrade, in the Mali Požarevac neighborhood.",
+            "brandEyebrow": "Hill House Luxury",
+            "description": "A private setting for celebrations, gatherings, and stays that call for a calmer atmosphere, a better rhythm of space, and an impression that lasts.",
             "stayConnected": "Stay connected",
-            "reachOut": "Reach out",
-            "copyright": "All rights reserved"
+            "socialNote": "Follow current scenes, available dates, and updates from Hill House.",
+            "reachOut": "Contact",
+            "quickLinks": "Navigation",
+            "emailLabel": "Email",
+            "phoneLabel": "Phone",
+            "addressLabel": "Location",
+            "instagram": "Instagram",
+            "facebook": "Facebook",
+            "whatsapp": "WhatsApp",
+            "navigationLabel": "Footer navigation",
+            "creditLabel": "Site by Enigma IT",
+            "copyright": "© 2022 Hill House. All rights reserved."
         }
     },
     "home": {
@@ -34,6 +45,118 @@ export default {
             "reserve": "Reserve",
             "welcome": "WELCOME TO HILL HOUSE, A LUXURY VILLA CLOSE TO BELGRADE",
             "title": "Embrace Luxury,<br/> Craft Cherished Moments"
+        },
+        "redesign": {
+            "hero": {
+                "eyebrow": "Premium villa for celebrations and events",
+                "title": "A private villa for celebrations worth remembering.",
+                "subtitle": "For celebrations, gatherings, and special moments, with a pool, spa zone, and an atmosphere that leaves an impression, only 30 minutes from Belgrade.",
+                "primaryCta": "Reserve your date",
+                "secondaryCta": "View gallery",
+                "trust1": "An atmosphere made for stylish events",
+                "trust2": "Private spa and pool",
+                "trust3": "30 min from Belgrade",
+                "trust4": "For celebrations, gatherings, and events"
+            },
+            "why": {
+                "eyebrow": "A private destination for special occasions",
+                "title": "Mesto sa posebnim zalaskom sunca",
+                "text": "Hill House is chosen for more than location or amenities. It stands out for the impression it leaves from the very first arrival. It is a villa where atmosphere, layout, and amenities work together to give both stays and events a calmer, more elegant tone.",
+                "cta": "Learn more about the villa",
+                "proofIntro": "Why this place leaves an impression",
+                "proofNote": "Everything is arranged so that both the occasion and the stay feel considered and naturally in place.",
+                "proof1Value": "150",
+                "proof1Label": "guests for celebrations and events",
+                "proof2Value": "10",
+                "proof2Label": "sleeping places",
+                "proof3Value": "Spa",
+                "proof3Label": "jacuzzi, sauna, and wellness zone",
+                "proof4Value": "30 minutes",
+                "proof4Label": "an easy drive from Belgrade"
+            },
+            "experiences": {
+                "eyebrow": "Signature experiences",
+                "title": "More than a villa! A place for your special moments!",
+                "description": "From the open-air scene around the pool to wellness downtime and an interior that keeps the atmosphere even when the occasion moves inside, Hill House is designed so each part of the space works in the same rhythm.",
+                "item1Kicker": "Open-air scene",
+                "item1Title": "Large terrace for celebrations",
+                "item1Text": "A spacious terrace ideal for outdoor celebrations, created for unforgettable moments under the open sky.",
+                "item2Kicker": "Wellness zone",
+                "item2Title": "A spa zone for pauses",
+                "item2Text": "A peaceful corner where time slows down, and every moment becomes a delight.",
+                "item3Kicker": "Interior",
+                "item3Title": "An interior that exudes luxury",
+                "item3Text": "Luxury in every detail"
+            },
+            "occasions": {
+                "eyebrow": "Scenarios",
+                "title": "For moments that require a special space and memories that last",
+                "description": "From private celebrations and team retreats to filming and smaller gatherings, Hill House naturally supports different scenarios without losing its atmosphere.",
+                "item1Title": "Private celebrations",
+                "item1Text": "A blend of luxury, comfort, and unforgettable atmosphere.",
+                "item2Title": "Team building and retreat",
+                "item2Text": "Connection. Focus. Reset.",
+                "item3Title": "Filming and creative productions",
+                "item3Text": "An inspiring environment",
+                "item4Title": "Intimate gatherings with style",
+                "item4Text": "For special moments that deserve great attention and style."
+            },
+            "social": {
+                "eyebrow": "Social proof",
+                "title": "An impression guests confirm as well.",
+                "mainQuote": "I attended a birthday celebration at Hill House and the impression was excellent. The spacious terrace, pool, lighting, and view come together to create an atmosphere that feels truly special for gatherings and celebrations.",
+                "mainAuthor": "Katarina Rakic",
+                "mainSource": "Google Reviews",
+                "mainLinkLabel": "View original",
+                "linkLabel": "View original",
+                "quote1": "A wonderful place for celebrations and important occasions. Everything is thoughtfully designed and there is everything needed for a comfortable and elegant gathering.",
+                "author1": "Predrag Popovic",
+                "source1": "Google Reviews",
+                "quote2": "A luxurious setting, a beautiful view of Avala, and a sense of place that truly stays with you. High praise for a place that feels like a genuine retreat for the soul and the eyes.",
+                "author2": "Danijela Ilic",
+                "source2": "Google Reviews"
+            },
+            "gallery": {
+                "eyebrow": "Curated gallery",
+                "title": "A place that leaves an impression both in photos and in person.",
+                "description": "From daylight scenes filled with softness to an evening atmosphere that feels cinematic, Hill House keeps its mood consistent in every detail.",
+                "cta": "Open full gallery",
+                "openCategory": "Open category",
+                "videoBadge": "Video",
+                "category1Kicker": "Events",
+                "category1Title": "Celebrations and events",
+                "category1Text": "Frames that show how the place feels when it is in full rhythm and under the lights.",
+                "category2Kicker": "Productions",
+                "category2Title": "Filming and productions",
+                "category2Text": "Photogenic angles, open views, and evening light that give the property a stronger visual character.",
+                "category3Kicker": "Interior",
+                "category3Title": "Interior and evening mood",
+                "category3Text": "Indoor scenes that keep the atmosphere going when the evening moves inside.",
+                "category4Kicker": "Exterior",
+                "category4Title": "Exterior and pool",
+                "category4Text": "Open views, terrace, and pool as the main stage of the space through day and evening.",
+                "category5Kicker": "In motion",
+                "category5Title": "Motion preview",
+                "category5Text": "Short video frames that carry the rhythm, light, and atmosphere more directly."
+            },
+            "cta": {
+                "eyebrow": "Final reservation",
+                "title": "If you are looking for a place that lifts a celebration or a stay to a higher level, Hill House is ready.",
+                "text": "Reserve your date, review the pricing, or contact us directly for availability and details.",
+                "primary": "Call now",
+                "secondary": "View pricing",
+                "tertiary": "Send an email inquiry",
+                "note": "We respond quickly and directly."
+            },
+            "location": {
+                "eyebrow": "Location preview",
+                "title": "Easy to reach, pleasantly secluded.",
+                "text": "Hill House is located in Sepsin, a short drive from Belgrade, making arrival easy for guests and organizers while still giving the event a sense of privacy and calm.",
+                "city": "Sepsin, Mladenovac",
+                "time": "30 minutes from Belgrade",
+                "cta": "Open location in maps",
+                "mapNote": "An easy arrival from Belgrade, with enough distance for the property to keep a more private tone and a calmer rhythm for gatherings."
+            }
         },
         "about": {
             "title": "About Hill House",
@@ -105,6 +228,7 @@ export default {
     "pricingPage": {
         "mainTitle": "PRICELIST AND CONDITIONS FOR THE 2025 SEASON",
         "validFrom": "Pricelist is valid for dates from May 1, 2025.",
+        "mostPopular": "Most Popular",
         "priceSaturday": "Price per night on Saturdays:",
         "priceFridaySunday": "Price per night on Fridays and Sundays:",
         "priceOtherDays": "Price per night on other days:",

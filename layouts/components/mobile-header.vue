@@ -1,77 +1,152 @@
 <template>
   <drawer v-model="navDrawer"></drawer>
   <v-app-bar
-      v-scroll="onScroll"
-      :color="color"
-      flat
-      theme="dark"
-      height="132px"
-      style="height: 132px"
-      density="prominent">
-    <v-row justify="center" no-gutters>
-      <v-col cols="12">
-        <v-row no-gutters justify="space-between" align="center">
-          <v-app-bar-nav-icon @click="navDrawer = !navDrawer"></v-app-bar-nav-icon>
-          <div>
-            <v-row no-gutters>
-              <v-btn
-                  size="small"
-                  variant="text"
-                  :color="locale === 'en' ? 'white' : 'primary'"
-                  @click="changeLocale('sr')">
-                Srpski
-              </v-btn>
-              <v-btn
-                  size="small"
-                  variant="text"
-                  :color="locale === 'sr' ? 'white' : 'primary'"
-                  @click="changeLocale('en')">
-                English
-              </v-btn>
-            </v-row>
-          </div>
-        </v-row>
-      </v-col>
-      <router-link :to="{name: 'index'}">
-        <img src="/hillhouse/media/images/logo5.png" alt="Hill house logo" style="height: 70px"/>
+    v-scroll="onScroll"
+    flat
+    theme="dark"
+    :height="HEADER_HEIGHT"
+    class="mobile-site-header"
+    :class="isHeroState ? 'mobile-site-header--hero' : 'mobile-site-header--solid'"
+  >
+    <div class="content-shell mobile-site-header__shell">
+      <v-btn
+        icon
+        variant="text"
+        class="mobile-site-header__nav-btn"
+        aria-label="Open navigation"
+        @click="navDrawer = !navDrawer"
+      >
+        <v-icon :icon="mdiMenu" size="22"></v-icon>
+      </v-btn>
+
+      <router-link :to="{ name: 'index' }" class="mobile-site-header__logo-link" aria-label="Hill House home">
+        <img src="/hillhouse/media/images/logo5.png" alt="Hill House logo" class="mobile-site-header__logo" />
       </router-link>
-    </v-row>
+
+      <div class="mobile-site-header__locale">
+        <v-btn
+          size="x-small"
+          variant="text"
+          class="mobile-site-header__locale-btn"
+          :class="locale === 'sr' ? 'mobile-site-header__locale-btn--active' : ''"
+          @click="changeLocale('sr')"
+        >
+          SR
+        </v-btn>
+        <v-btn
+          size="x-small"
+          variant="text"
+          class="mobile-site-header__locale-btn"
+          :class="locale === 'en' ? 'mobile-site-header__locale-btn--active' : ''"
+          @click="changeLocale('en')"
+        >
+          EN
+        </v-btn>
+      </div>
+    </div>
   </v-app-bar>
 </template>
 
 <script setup>
-import {ref, reactive, computed, watch} from 'vue';
-import {useRoute, useRouter} from 'vue-router'
+import { mdiMenu } from "@mdi/js";
+import { ref, watch } from "vue";
+import { useRoute } from "vue-router";
+import { useI18n } from "vue-i18n";
 import Drawer from "./drawer";
-import {useI18n} from "vue-i18n";
-const {locale} = useI18n({useScope: 'global'})
 
+const HEADER_HEIGHT = 84;
+
+const { locale } = useI18n({ useScope: "global" });
 const route = useRoute();
-const color = ref(route.name === 'index' ? 'rgba(0, 0, 0, .1)' : '#151515');
+const isHeroState = ref(route.name === "index");
 const navDrawer = ref(false);
 
 const onScroll = () => {
-  if (route.name === 'index') {
-    var doc = document.documentElement;
-    var top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
-    const height = document.getElementById('videoBox').getBoundingClientRect().height;
-    color.value = top >= (height - 132) ? '#151515' : 'rgba(0, 0, 0, .1)';
-  } else {
-    color.value = '#151515';
+  if (route.name === "index") {
+    const doc = document.documentElement;
+    const top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
+    const hero = document.getElementById("videoBox");
+    const height = hero ? hero.getBoundingClientRect().height : 0;
+    isHeroState.value = top < height - HEADER_HEIGHT;
+    return;
   }
-}
 
-const changeLocale = item => {
-  locale.value = item;
-}
+  isHeroState.value = false;
+};
+
+const changeLocale = (value) => {
+  locale.value = value;
+};
 
 watch(
-    () => route.name,
-    (name) => {
-      color.value = name === 'index' ? 'rgba(0, 0, 0, .1)' : '#151515'
-    },
-    {
-      immediate: true
-    }
-)
+  () => route.name,
+  (name) => {
+    isHeroState.value = name === "index";
+  },
+  {
+    immediate: true,
+  }
+);
 </script>
+
+<style scoped>
+.mobile-site-header {
+  backdrop-filter: blur(18px);
+  transition: background 0.28s ease, border-color 0.28s ease;
+}
+
+.mobile-site-header--hero {
+  background: linear-gradient(180deg, rgba(8, 8, 8, 0.52) 0%, rgba(8, 8, 8, 0.28) 100%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mobile-site-header--solid {
+  background: rgba(19, 19, 19, 0.86) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mobile-site-header__shell {
+  height: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.mobile-site-header__nav-btn {
+  color: #fff;
+}
+
+.mobile-site-header__logo-link {
+  display: flex;
+  justify-content: center;
+}
+
+.mobile-site-header__logo {
+  height: 50px;
+  display: block;
+}
+
+.mobile-site-header__locale {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: rgba(9, 9, 9, 0.18);
+  border-radius: 999px;
+}
+
+.mobile-site-header__locale-btn {
+  min-width: 34px;
+  color: rgba(255, 255, 255, 0.52);
+  letter-spacing: 0.14em;
+  font-size: 0.58rem;
+  border-radius: 999px;
+}
+
+.mobile-site-header__locale-btn--active {
+  background: rgba(207, 169, 117, 0.18);
+  color: #fff;
+}
+</style>

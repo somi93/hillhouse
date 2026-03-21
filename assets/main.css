@@ -1,10 +1,126 @@
 @import './base.css';
 
-.btn-reserve {
-    background: rgb(207, 169, 117);
-    background: radial-gradient(circle, rgba(197, 159, 106, 1) 0%, rgba(255, 182, 124, 1) 100%);
+/* ── Typography ──────────────────────────────────────────── */
+.v-application {
+    font-family: 'Inter', sans-serif;
 }
 
-html{
+/* ── Font options (uncomment one) ──────────────────────────── */
+:root {
+    /* --font-heading: 'Cormorant Garamond', serif; */
+    /* --font-heading: 'DM Serif Display', serif;   */
+    /* --font-heading: 'Lora', serif;                */
+    --font-heading: 'Fraunces', serif;
+    /* --font-heading: 'Cinzel', serif;              */
+    /* --font-heading: 'Cormorant Garamond', serif; */
+    --brand-dark: #151515;
+    --brand-gold: #b28c59;
+    --surface-ivory: #f4efe8;
+    --surface-stone: #d9d1c6;
+    --text-warm: #5f5a52;
+    --content-max: 1400px;
+    --header-height-desktop: 104px;
+    --header-height-mobile: 84px;
+}
+/* ─────────────────────────────────────────────────────────── */
+
+h1, h2, h3, h4, h5, h6,
+.text-h1, .text-h2, .text-h3, .text-h4, .text-h5, .text-h6 {
+    font-family: var(--font-heading) !important;
+    letter-spacing: 0 !important;
+}
+/* ─────────────────────────────────────────────────────────── */
+
+.btn-reserve {
+    background: linear-gradient(135deg, #c19a66 0%, #b28c59 52%, #9e7848 100%);
+    color: #181511 !important;
+}
+
+.btn-reserve :deep(.v-btn__content) {
+    color: #181511 !important;
+}
+
+html {
     scroll-behavior: smooth;
+}
+
+.v-app-bar {
+    transition: background-color 0.3s ease !important;
+}
+
+.content-shell {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    width: 100%;
+}
+
+.section-copy {
+    margin-bottom: 48px;
+}
+
+.section-copy--centered {
+    text-align: center;
+    max-width: 980px;
+    margin: 0 auto 68px;
+}
+
+.section-copy--narrow {
+    max-width: 520px;
+}
+
+.section-eyebrow {
+    color: var(--brand-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 0.78rem;
+    margin-bottom: 18px;
+}
+
+.section-eyebrow--light {
+    color: rgba(255, 255, 255, 0.72);
+}
+
+.section-title {
+    font-size: clamp(2.2rem, 3.7vw, 4.1rem);
+    line-height: 1.06;
+    margin-bottom: 22px;
+}
+
+.section-copy--centered .section-title {
+    max-width: 20ch;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-title--dark {
+    color: var(--brand-dark);
+}
+
+.section-title--light {
+    color: #fff;
+}
+
+.section-text {
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+.section-text--warm {
+    color: var(--text-warm);
+}
+
+.section-text--light {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.section-text--wide {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 640px) {
+    .section-title {
+        font-size: 2.2rem;
+    }
 }
