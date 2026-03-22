@@ -156,6 +156,54 @@ export default {
                 "time": "30 minutes from Belgrade",
                 "cta": "Open location in maps",
                 "mapNote": "An easy arrival from Belgrade, with enough distance for the property to keep a more private tone and a calmer rhythm for gatherings."
+            },
+            "selector": {
+                "ariaLabel": "Choose a villa",
+                "eyebrow": "Our portfolio",
+                "cta": "Explore villa",
+                "hh1": {
+                    "capacity": "up to 150 guests",
+                    "price": "from €600 / night"
+                },
+                "hh2": {
+                    "capacity": "up to 150 guests",
+                    "price": "from €600 / night"
+                }
+            },
+            "villaHero": {
+                "primaryCta": "Reserve a date",
+                "secondaryCta": "View pricing",
+                "hh1": {
+                    "eyebrow": "The original — Hill House",
+                    "title": "Hill House",
+                    "subtitle": "A private villa for celebrations, weddings and special moments. Pool, spa zone, terrace with a view — 30 minutes from Belgrade.",
+                    "trust1": "up to 150 guests",
+                    "trust2": "10 sleeping places",
+                    "trust3": "Spa, sauna & jacuzzi",
+                    "trust4": "30 min from Belgrade"
+                },
+                "hh2": {
+                    "eyebrow": "The new villa — Hill House 2",
+                    "title": "Hill House 2",
+                    "subtitle": "A second space of the same standard for moments that call for a special setting. Pool, terrace and contemporary design — near Belgrade.",
+                    "trust1": "up to 150 guests",
+                    "trust2": "Pool & terrace",
+                    "trust3": "Contemporary design",
+                    "trust4": "30 min from Belgrade"
+                }
+            },
+            "sisterVilla": {
+                "eyebrow": "Our portfolio",
+                "hh1": {
+                    "title": "Discover Hill House — the original sister villa of the same standard",
+                    "cta": "Explore",
+                    "ariaLabel": "Visit Hill House"
+                },
+                "hh2": {
+                    "title": "Dates taken? Discover Hill House 2 — a sister villa of the same standard",
+                    "cta": "Explore",
+                    "ariaLabel": "Visit Hill House 2"
+                }
             }
         },
         "about": {

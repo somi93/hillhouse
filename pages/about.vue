@@ -31,31 +31,41 @@
 
 <script setup>
 import { useI18n } from 'vue-i18n'
-useI18n({ useScope: 'global' })
+import { computed } from 'vue'
 
-useHead({
-  title: 'O nama — Hill House Privatna Vila',
-  link: [{ rel: 'canonical', href: 'https://www.hillhouse.rs/about' }],
+const { locale } = useI18n({ useScope: 'global' })
+const isEn = computed(() => locale.value === 'en')
+
+useHead(computed(() => ({
+  title: isEn.value ? 'About — Hill House Luxury Villa' : 'O nama — Hill House Privatna Vila',
+  link: [{ rel: 'canonical', href: isEn.value ? 'https://www.hillhouse.rs/en/about' : 'https://www.hillhouse.rs/about' }],
   meta: [
     { name: 'robots', content: 'index, follow' },
     {
       name: 'description',
-      content: 'Saznajte više o Hill House vili — privatnom prostoru za proslave i posebne trenutke sa bazenom, spa zonom i panoramskim pogledom, 30 minuta od Beograda.',
+      content: isEn.value
+        ? 'Discover Hill House villa — a private space for celebrations and special moments with a pool, spa and panoramic views, 30 minutes from Belgrade.'
+        : 'Saznajte više o Hill House vili — privatnom prostoru za proslave i posebne trenutke sa bazenom, spa zonom i panoramskim pogledom, 30 minuta od Beograda.',
     },
-    { property: 'og:title', content: 'O nama — Hill House Privatna Vila' },
+    {
+      property: 'og:title',
+      content: isEn.value ? 'About — Hill House Luxury Villa' : 'O nama — Hill House Privatna Vila',
+    },
     {
       property: 'og:description',
-      content: 'Privatna luksuzna vila sa bazenom, spa zonom i atmosferom koja ostavlja utisak. Saznajte više o Hill House.',
+      content: isEn.value
+        ? 'A private luxury villa with pool, spa and an atmosphere that leaves a lasting impression. Learn more about Hill House.'
+        : 'Privatna luksuzna vila sa bazenom, spa zonom i atmosferom koja ostavlja utisak. Saznajte više o Hill House.',
     },
     {
       property: 'og:image',
       content: 'https://www.hillhouse.rs/hillhouse/media/images/gallery/professional/vila-prestige-hill-15-1920x1438.jpeg',
     },
-    { property: 'og:url', content: 'https://www.hillhouse.rs/about' },
+    { property: 'og:url', content: isEn.value ? 'https://www.hillhouse.rs/en/about' : 'https://www.hillhouse.rs/about' },
     { property: 'og:type', content: 'website' },
-    { property: 'og:locale', content: 'sr_RS' },
+    { property: 'og:locale', content: isEn.value ? 'en_US' : 'sr_RS' },
   ],
-})
+})))
 </script>
 
 <style scoped>

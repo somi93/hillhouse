@@ -23,31 +23,42 @@
 
 <script setup>
 import Gallery from '@/components/gallery/gallery'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 
-useHead({
-  title: 'Galerija — Hill House Privatna Vila',
-  link: [{ rel: 'canonical', href: 'https://www.hillhouse.rs/gallery' }],
+const { locale } = useI18n({ useScope: 'global' })
+const isEn = computed(() => locale.value === 'en')
+
+useHead(computed(() => ({
+  title: isEn.value ? 'Gallery — Hill House Luxury Villa' : 'Galerija — Hill House Privatna Vila',
+  link: [{ rel: 'canonical', href: isEn.value ? 'https://www.hillhouse.rs/en/gallery' : 'https://www.hillhouse.rs/gallery' }],
   meta: [
     { name: 'robots', content: 'index, follow' },
     {
       name: 'description',
-      content: 'Pregledajte fotografije Hill House vile — bazen, spa zona, enterijer i proslave. Prostor koji ostavlja utisak i pre prvog dolaska.',
+      content: isEn.value
+        ? 'Browse photos of Hill House villa — pool, spa, interiors and celebrations. A space that impresses before your first visit.'
+        : 'Pregledajte fotografije Hill House vile — bazen, spa zona, enterijer i proslave. Prostor koji ostavlja utisak i pre prvog dolaska.',
     },
-    { property: 'og:title', content: 'Galerija — Hill House Privatna Vila' },
+    {
+      property: 'og:title',
+      content: isEn.value ? 'Gallery — Hill House Luxury Villa' : 'Galerija — Hill House Privatna Vila',
+    },
     {
       property: 'og:description',
-      content: 'Fotografije Hill House vile — bazen, enterijer, proslave i produkcije. Prostor koji ostavlja utisak.',
+      content: isEn.value
+        ? 'Photos of Hill House villa — pool, interiors, events and productions. A space that leaves an impression.'
+        : 'Fotografije Hill House vile — bazen, enterijer, proslave i produkcije. Prostor koji ostavlja utisak.',
     },
     {
       property: 'og:image',
       content: 'https://www.hillhouse.rs/hillhouse/media/images/gallery/professional/vila-prestige-hill-15-1920x1438.jpeg',
     },
-    { property: 'og:url', content: 'https://www.hillhouse.rs/gallery' },
+    { property: 'og:url', content: isEn.value ? 'https://www.hillhouse.rs/en/gallery' : 'https://www.hillhouse.rs/gallery' },
     { property: 'og:type', content: 'website' },
-    { property: 'og:locale', content: 'sr_RS' },
+    { property: 'og:locale', content: isEn.value ? 'en_US' : 'sr_RS' },
   ],
-})
+})))
 
 const photos = ref(
     [
@@ -77,6 +88,7 @@ const photos = ref(
       },
       {
         "id": "DZQ58MV6VVoMzXy2",
+        "alt": "Living room with upstairs view",
         "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-2-1920x1440.jpeg",
         "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-2-1920x1440.jpeg",
         "description": "",
@@ -100,7 +112,7 @@ const photos = ref(
       },
       {
         "id": "DZQ58MV6VVoMzXy2",
-        "alt": "",
+        "alt": "Terrace and outdoor area",
         "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-4-1.jpeg",
         "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-4-1.jpeg",
         "description": "",
@@ -156,6 +168,7 @@ const photos = ref(
       },
       {
         "id": "DZQ58MV6VVoMzXy2",
+        "alt": "Spa and wellness area with towels",
         "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-8-1.jpeg",
         "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-8-1.jpeg",
         "description": "Spa and towels",
@@ -243,7 +256,7 @@ const photos = ref(
       },
       {
         "id": "DZQ58MV6VVoMzXy2",
-        "alt": "",
+        "alt": "Hill House exterior view",
         "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-14-1920x1280.jpeg",
         "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-14-1920x1280.jpeg",
         "description": "",
@@ -251,7 +264,7 @@ const photos = ref(
       },
       {
         "id": "DZQ58MV6VVoMzXy2",
-        "alt": "",
+        "alt": "Outdoor pool terrace at Hill House",
         "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-15-1920x1438.jpeg",
         "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-15-1920x1438.jpeg",
         "description": "",
@@ -259,7 +272,7 @@ const photos = ref(
       },
       {
         "id": "DZQ58MV6VVoMzXy2",
-        "alt": "",
+        "alt": "Villa terrace with panoramic view",
         "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-16-1920x1438.jpeg",
         "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-16-1920x1438.jpeg",
         "description": "",
@@ -267,7 +280,7 @@ const photos = ref(
       },
       {
         "id": "DZQ58MV6VVoMzXy2",
-        "alt": "",
+        "alt": "Living area with natural light",
         "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-17-1920x1280.jpeg",
         "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-17-1920x1280.jpeg",
         "description": "",
@@ -275,7 +288,7 @@ const photos = ref(
       },
       {
         "id": "DZQ58MV6VVoMzXy2",
-        "alt": "",
+        "alt": "Hill House pool and garden at dusk",
         "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-18-1920x1280.jpeg",
         "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-18-1920x1280.jpeg",
         "description": "",
@@ -283,7 +296,7 @@ const photos = ref(
       },
       {
         "id": "DZQ58MV6VVoMzXy2",
-        "alt": "",
+        "alt": "Modern interior with premium finishes at Hill House",
         "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-19-1920x1281.jpeg",
         "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-19-1920x1281.jpeg",
         "description": "",
@@ -291,7 +304,7 @@ const photos = ref(
       },
       {
         "id": "DZQ58MV6VVoMzXy2",
-        "alt": "",
+        "alt": "Outdoor terrace dining setup at Hill House",
         "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-20-1920x1280.jpeg",
         "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-20-1920x1280.jpeg",
         "description": "",
@@ -299,7 +312,7 @@ const photos = ref(
       },
       {
         "id": "DZQ58MV6VVoMzXy2",
-        "alt": "",
+        "alt": "Villa pool deck with lounge chairs at Hill House",
         "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-21-1920x1281.jpeg",
         "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-21-1920x1281.jpeg",
         "description": "",
@@ -307,7 +320,7 @@ const photos = ref(
       },
       {
         "id": "DZQ58MV6VVoMzXy2",
-        "alt": "",
+        "alt": "Evening ambiance at Hill House villa",
         "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-22-1920x1280.jpeg",
         "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-22-1920x1280.jpeg",
         "description": "",
@@ -315,7 +328,7 @@ const photos = ref(
       },
       {
         "id": "DZQ58MV6VVoMzXy2",
-        "alt": "",
+        "alt": "Luxury pool at night with LED lighting at Hill House",
         "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-23-1920x1440.jpeg",
         "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-23-1920x1440.jpeg",
         "description": "",
@@ -323,7 +336,7 @@ const photos = ref(
       },
       {
         "id": "DZQ58MV6VVoMzXy2",
-        "alt": "",
+        "alt": "Aerial view of Hill House villa and grounds",
         "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-24-1920x1440",
         "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-24-1920x1440",
         "description": "",
@@ -331,7 +344,7 @@ const photos = ref(
       },
       {
         "id": "DZQ58MV6VVoMzXy2",
-        "alt": "",
+        "alt": "Pool and terrace seating at Hill House",
         "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-25-1920x1440.jpeg",
         "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-25-1920x1440.jpeg",
         "description": "",
@@ -339,7 +352,7 @@ const photos = ref(
       },
       {
         "id": "DZQ58MV6VVoMzXy2",
-        "alt": "",
+        "alt": "Villa entrance with lush landscaping at Hill House",
         "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-26-1920x1440.jpeg",
         "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-26-1920x1440.jpeg",
         "description": "",
@@ -347,7 +360,7 @@ const photos = ref(
       },
       {
         "id": "DZQ58MV6VVoMzXy2",
-        "alt": "",
+        "alt": "Indoor lounge with fireplace at Hill House",
         "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-27-1920x1440.jpeg",
         "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-27-1920x1440.jpeg",
         "description": "",
@@ -355,7 +368,7 @@ const photos = ref(
       },
       {
         "id": "DZQ58MV6VVoMzXy2",
-        "alt": "",
+        "alt": "Master bedroom with en-suite at Hill House",
         "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-28-1920x1440.jpeg",
         "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-28-1920x1440.jpeg",
         "description": "",
@@ -363,7 +376,7 @@ const photos = ref(
       },
       {
         "id": "DZQ58MV6VVoMzXy2",
-        "alt": "",
+        "alt": "Pool and terrace at Hill House at sunset",
         "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-29-1920x1440.jpeg",
         "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-29-1920x1440.jpeg",
         "description": "",
@@ -371,7 +384,7 @@ const photos = ref(
       },
       {
         "id": "DZQ58MV6VVoMzXy2",
-        "alt": "",
+        "alt": "Hill House villa with pool and panoramic landscape",
         "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-30-1920x1440.jpeg",
         "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-30-1920x1440.jpeg",
         "description": "",

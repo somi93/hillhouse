@@ -61,20 +61,27 @@ const switchLocalePath = useSwitchLocalePath()
 const router = useRouter()
 const { locale } = useI18n({ useScope: "global" });
 const route = useRoute();
-const isHeroState = ref(String(route.name ?? '').split('___')[0] === "index");
+const heroRoutes = ['index', 'hill-house-1', 'hill-house-2']
+const isHeroRoute = (name) => heroRoutes.includes(String(name ?? '').split('___')[0])
+const isHeroState = ref(isHeroRoute(route.name));
 const navDrawer = ref(false);
 
+let _rafPending = false;
 const onScroll = () => {
-  if (String(route.name ?? '').split('___')[0] === "index") {
-    const doc = document.documentElement;
-    const top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
-    const hero = document.getElementById("videoBox");
-    const height = hero ? hero.getBoundingClientRect().height : 0;
-    isHeroState.value = top < height - HEADER_HEIGHT;
-    return;
-  }
-
-  isHeroState.value = false;
+  if (_rafPending) return;
+  _rafPending = true;
+  requestAnimationFrame(() => {
+    _rafPending = false;
+    if (isHeroRoute(route.name)) {
+      const doc = document.documentElement;
+      const top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
+      const hero = document.getElementById("videoBox");
+      const height = hero ? hero.getBoundingClientRect().height : 0;
+      isHeroState.value = top < height - HEADER_HEIGHT;
+      return;
+    }
+    isHeroState.value = false;
+  });
 };
 
 const changeLocale = (value) => {
@@ -85,7 +92,7 @@ const changeLocale = (value) => {
 watch(
   () => route.name,
   (name) => {
-    isHeroState.value = String(name ?? '').split('___')[0] === "index";
+    isHeroState.value = isHeroRoute(name);
   },
   {
     immediate: true,
@@ -95,7 +102,7 @@ watch(
 
 <style scoped>
 .mobile-site-header {
-  backdrop-filter: blur(18px);
+  backdrop-filter: blur(8px);
   transition: background 0.28s ease, border-color 0.28s ease;
 }
 

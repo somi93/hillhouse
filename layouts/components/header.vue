@@ -103,7 +103,9 @@ const localePath = useLocalePath()
 const switchLocalePath = useSwitchLocalePath()
 const route = useRoute();
 const router = useRouter();
-const isHeroState = ref(String(route.name ?? '').split('___')[0] === "index");
+const heroRoutes = ['index', 'hill-house-1', 'hill-house-2']
+const isHeroRoute = (name) => heroRoutes.includes(String(name ?? '').split('___')[0])
+const isHeroState = ref(isHeroRoute(route.name));
 const { locale, t } = useI18n({ useScope: "global" });
 
 const menuLeft = computed(() => [
@@ -145,21 +147,26 @@ const menuRight = computed(() => [
   },
 ]);
 
+let _rafPending = false;
 const onScroll = () => {
-  if (String(route.name ?? '').split('___')[0] === "index") {
-    const doc = document.documentElement;
-    const top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
-    const hero = document.getElementById("videoBox");
-    const height = hero ? hero.getBoundingClientRect().height : 0;
-    isHeroState.value = top < height - HEADER_HEIGHT;
-    return;
-  }
-
-  isHeroState.value = false;
+  if (_rafPending) return;
+  _rafPending = true;
+  requestAnimationFrame(() => {
+    _rafPending = false;
+    if (isHeroRoute(route.name)) {
+      const doc = document.documentElement;
+      const top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
+      const hero = document.getElementById("videoBox");
+      const height = hero ? hero.getBoundingClientRect().height : 0;
+      isHeroState.value = top < height - HEADER_HEIGHT;
+      return;
+    }
+    isHeroState.value = false;
+  });
 };
 
 const scrollTo = (target) => {
-  if (String(route.name ?? '').split('___')[0] === "index") {
+  if (isHeroRoute(route.name)) {
     const element = document.querySelector(target);
     if (!element) {
       return;
@@ -186,7 +193,7 @@ const isRouteActive = (to) => route.path === to || (to === '/' && route.path ===
 watch(
   () => route.name,
   (name) => {
-    isHeroState.value = String(name ?? '').split('___')[0] === "index";
+    isHeroState.value = isHeroRoute(name);
   },
   {
     immediate: true,
@@ -196,7 +203,7 @@ watch(
 
 <style scoped>
 .site-header {
-  backdrop-filter: blur(18px);
+  backdrop-filter: blur(8px);
   transition: background 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
 }
 

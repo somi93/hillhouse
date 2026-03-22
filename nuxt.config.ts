@@ -14,11 +14,12 @@ export default defineNuxtConfig({
                 { rel: 'shortcut icon', type: "image/x-icon", href: 'https://www.hillhouse.rs/favicon.ico' },
                 { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
                 { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
+                { rel: 'preload', as: 'image', href: '/hillhouse/media/images/gallery/professional/vila-prestige-hill-15-1920x1438.jpeg', fetchpriority: 'high' } as any,
                 // Non-render-blocking font load: preload → swap to stylesheet after parse
-                { rel: 'preload', as: 'style', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300&display=swap', onload: "this.onload=null;this.rel='stylesheet'" } as any,
+                { rel: 'preload', as: 'style', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300&display=optional', onload: "this.onload=null;this.rel='stylesheet'" } as any,
             ],
             noscript: [
-                { innerHTML: '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300&display=swap">' },
+                { innerHTML: '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300&display=optional">' },
             ],
         }
     },
@@ -46,7 +47,6 @@ export default defineNuxtConfig({
         transpile: ['vuetify'],
     },
     modules: [
-        'nuxt-aos',
         '@nuxtjs/device',
         '@nuxtjs/i18n',
         (_options, nuxt) => {
@@ -56,11 +56,7 @@ export default defineNuxtConfig({
             })
         },
         'nuxt-gtag',
-        '@stefanobartoletti/nuxt-social-share'
     ],
-    socialShare: {
-        // module options
-    },
     gtag: {
         id: 'G-LMR22J78MP',
         enabled: false,
@@ -85,5 +81,5 @@ export default defineNuxtConfig({
     },
     generate: {
         dir: 'hillhouse',
-    }
+    },
 })

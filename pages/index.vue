@@ -1,9 +1,25 @@
 ﻿<template>
-  <redesign-home></redesign-home>
+  <div class="homepage-redesign">
+    <villa-selector-hero />
+    <redesign-why />
+    <redesign-experiences />
+    <redesign-occasions />
+    <redesign-social-proof />
+    <redesign-gallery />
+    <redesign-cta />
+    <redesign-location />
+  </div>
 </template>
 
 <script setup>
-import RedesignHome from "@/components/home/redesign-home";
+import RedesignCta from "@/components/home/redesign/cta";
+import RedesignExperiences from "@/components/home/redesign/experiences";
+import RedesignGallery from "@/components/home/redesign/gallery";
+import VillaSelectorHero from "@/components/home/redesign/villa-selector-hero";
+import RedesignLocation from "@/components/home/redesign/location";
+import RedesignOccasions from "@/components/home/redesign/occasions";
+import RedesignSocialProof from "@/components/home/redesign/social-proof";
+import RedesignWhy from "@/components/home/redesign/why";
 import { onMounted } from "vue";
 
 onMounted(() => {
@@ -22,7 +38,7 @@ let structuredData = {
   url: "https://www.hillhouse.rs",
   name: "Hillhouse.rs",
   description:
-      "Privatna luksuzna vila za proslave, venčanja i posebne događaje sa bazenom, spa zonom i atmosferom koja ostavlja utisak — 30 minuta od Beograda.",
+    "Privatna luksuzna vila za proslave, venčanja i posebne događaje sa bazenom, spa zonom i atmosferom koja ostavlja utisak — 30 minuta od Beograda.",
   alternateName: "Vila Hill House Šepšin",
   publisher: {
     "@type": "Organization",
@@ -31,7 +47,7 @@ let structuredData = {
     url: "https://www.hillhouse.rs",
     sameAs: [
       "https://www.instagram.com/hill_luxury_house",
-      "https://www.facebook.com/hillhouselux"
+      "https://www.facebook.com/hillhouselux",
     ],
     logo: {
       "@type": "ImageObject",
@@ -142,12 +158,14 @@ useHead({
     },
     {
       name: "description",
-      content: "Hill House je privatna luksuzna vila za proslave, venčanja i posebne događaje sa bazenom, spa zonom i atmosferom koja ostavlja utisak — na 30 minuta od Beograda.",
+      content:
+        "Hill House je privatna luksuzna vila za proslave, venčanja i posebne događaje sa bazenom, spa zonom i atmosferom koja ostavlja utisak — na 30 minuta od Beograda.",
     },
     {
       hid: "keywords",
       name: "keywords",
-      content: "privatna vila za proslave, iznajmljivanje vile beograd, vila sa bazenom, vila za venčanje, proslave u prirodi, luksuzna vikendica beograd, hill house, šepšin",
+      content:
+        "privatna vila za proslave, iznajmljivanje vile beograd, vila sa bazenom, vila za venčanje, proslave u prirodi, luksuzna vikendica beograd, hill house, šepšin",
     },
     {
       property: "og:title",
@@ -155,7 +173,8 @@ useHead({
     },
     {
       property: "og:description",
-      content: "Privatna luksuzna vila sa bazenom, spa zonom i atmosferom koja ostavlja utisak. Za proslave, venčanja i posebne događaje — 30 minuta od Beograda.",
+      content:
+        "Privatna luksuzna vila sa bazenom, spa zonom i atmosferom koja ostavlja utisak. Za proslave, venčanja i posebne događaje — 30 minuta od Beograda.",
     },
     {
       property: "og:image",
@@ -196,7 +215,8 @@ useHead({
     },
     {
       name: "twitter:description",
-      content: "Privatna luksuzna vila sa bazenom, spa zonom i atmosferom koja ostavlja utisak. 30 minuta od Beograda.",
+      content:
+        "Privatna luksuzna vila sa bazenom, spa zonom i atmosferom koja ostavlja utisak. 30 minuta od Beograda.",
     },
     {
       name: "twitter:image",
@@ -211,3 +231,10 @@ useHead({
   __dangerouslyDisableSanitizers: ["script"],
 });
 </script>
+
+<style scoped>
+.homepage-redesign {
+  background: var(--surface-ivory);
+  color: var(--text-warm);
+}
+</style>

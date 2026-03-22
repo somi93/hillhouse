@@ -156,6 +156,54 @@ export default {
                 "time": "30 minuta od Beograda",
                 "cta": "Otvori lokaciju na mapi",
                 "mapNote": "Jednostavan dolazak iz Beograda, sa dovoljno izdvojenosti da prostor zadrži privatniji ton i mirniji ritam okupljanja."
+            },
+            "selector": {
+                "ariaLabel": "Izaberite vilu",
+                "eyebrow": "Naš portfolio",
+                "cta": "Istraži vilu",
+                "hh1": {
+                    "capacity": "do 150 gostiju",
+                    "price": "od 600€ / noći"
+                },
+                "hh2": {
+                    "capacity": "do 150 gostiju",
+                    "price": "od 600€ / noći"
+                }
+            },
+            "villaHero": {
+                "primaryCta": "Rezerviši termin",
+                "secondaryCta": "Pogledaj cenovnik",
+                "hh1": {
+                    "eyebrow": "Originalna vila — Hill House",
+                    "title": "Hill House",
+                    "subtitle": "Privatna vila za proslave, venčanja i posebne trenutke. Bazen, spa zona, terasa sa pogledom — 30 minuta od Beograda.",
+                    "trust1": "do 150 gostiju",
+                    "trust2": "10 mesta za noćenje",
+                    "trust3": "Spa, sauna i jacuzzi",
+                    "trust4": "30 min od Beograda"
+                },
+                "hh2": {
+                    "eyebrow": "Nova vila — Hill House 2",
+                    "title": "Hill House 2",
+                    "subtitle": "Drugi prostor istog standarda za trenutke koji zahtevaju poseban ambijent. Bazen, terasa i savremeni dizajn — u blizini Beograda.",
+                    "trust1": "do 150 gostiju",
+                    "trust2": "Bazen i terasa",
+                    "trust3": "Savremeni dizajn",
+                    "trust4": "30 min od Beograda"
+                }
+            },
+            "sisterVilla": {
+                "eyebrow": "Naš portfolio",
+                "hh1": {
+                    "title": "Pogledajte i Hill House — originalna sestra vila istog standarda",
+                    "cta": "Istraži",
+                    "ariaLabel": "Posetite Hill House"
+                },
+                "hh2": {
+                    "title": "Termini zauzeti? Pogledajte Hill House 2 — sestra vila istog standarda",
+                    "cta": "Istraži",
+                    "ariaLabel": "Posetite Hill House 2"
+                }
             }
         },
         "about": {
