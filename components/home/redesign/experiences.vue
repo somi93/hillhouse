@@ -45,34 +45,18 @@
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
+const props = defineProps({ villa: { type: String, default: 'hh1' } })
+const villaData = useVilla(props.villa)
 const { t } = useI18n({ useScope: 'global' })
 
-const experiences = computed(() => [
-  {
-    kicker: t('home.redesign.experiences.item1Kicker'),
-    title: t('home.redesign.experiences.item1Title'),
-    text: t('home.redesign.experiences.item1Text'),
-    image: '/hillhouse/media/images/gallery/professional/vila-prestige-hill-14-1920x1280.jpeg',
-    alt: 'Outdoor terrace and pool at Hill House',
-    reverse: false,
-  },
-  {
-    kicker: t('home.redesign.experiences.item2Kicker'),
-    title: t('home.redesign.experiences.item2Title'),
-    text: t('home.redesign.experiences.item2Text'),
-    image: '/hillhouse/media/images/gallery/interior/jacuzzi-with-food.jpeg',
-    alt: 'Jacuzzi and spa area at Hill House',
-    reverse: true,
-  },
-  {
-    kicker: t('home.redesign.experiences.item3Kicker'),
-    title: t('home.redesign.experiences.item3Title'),
-    text: t('home.redesign.experiences.item3Text'),
-    image: '/hillhouse/media/images/gallery/interior/club-lounge-sofas.jpeg',
-    alt: 'Interior lounge and cinema area at Hill House',
-    reverse: false,
-  },
-])
+const experiences = computed(() =>
+  villaData.experiences.map((e, i) => ({
+    ...e,
+    kicker: t(`home.redesign.experiences.item${i + 1}Kicker`),
+    title:  t(`home.redesign.experiences.item${i + 1}Title`),
+    text:   t(`home.redesign.experiences.item${i + 1}Text`),
+  }))
+)
 </script>
 
 <style scoped>

@@ -204,6 +204,35 @@ export default {
                     "cta": "Explore",
                     "ariaLabel": "Visit Hill House 2"
                 }
+            },
+            "villaCards": {
+                "eyebrow": "Our portfolio",
+                "title": "Two villas. One standard.",
+                "from": "from",
+                "cta": "Explore villa",
+                "hh1": {
+                    "eyebrow": "The original villa",
+                    "imageAlt": "Hill House — terrace and pool",
+                    "feature1": "up to 150 guests",
+                    "feature2": "10 sleeping places",
+                    "feature3": "Spa, sauna & jacuzzi",
+                    "feature4": "30 min from Belgrade",
+                    "price": "€600 / night"
+                },
+                "hh2": {
+                    "eyebrow": "New villa",
+                    "imageAlt": "Hill House 2 — A-frame villa with pool",
+                    "feature1": "up to 150 guests",
+                    "feature2": "Pool & terrace",
+                    "feature3": "Contemporary design",
+                    "feature4": "30 min from Belgrade",
+                    "price": "€600 / night"
+                }
+            },
+            "villaCardPromo": {
+                "eyebrow": "Our portfolio",
+                "title": "There's another option.",
+                "cta": "Explore"
             }
         },
         "about": {

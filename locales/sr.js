@@ -204,6 +204,35 @@ export default {
                     "cta": "Istraži",
                     "ariaLabel": "Posetite Hill House 2"
                 }
+            },
+            "villaCards": {
+                "eyebrow": "Naš portfolio",
+                "title": "Dve vile. Jedan standard.",
+                "from": "od",
+                "cta": "Istraži vilu",
+                "hh1": {
+                    "eyebrow": "Originalna vila",
+                    "imageAlt": "Hill House — terasa i bazen",
+                    "feature1": "do 150 gostiju",
+                    "feature2": "10 mesta za noćenje",
+                    "feature3": "Spa, sauna i jacuzzi",
+                    "feature4": "30 min od Beograda",
+                    "price": "600€ / noći"
+                },
+                "hh2": {
+                    "eyebrow": "Nova vila",
+                    "imageAlt": "Hill House 2 — A-frame vila sa bazenom",
+                    "feature1": "do 150 gostiju",
+                    "feature2": "Bazen i terasa",
+                    "feature3": "Savremeni dizajn",
+                    "feature4": "30 min od Beograda",
+                    "price": "600€ / noći"
+                }
+            },
+            "villaCardPromo": {
+                "eyebrow": "Naš portfolio",
+                "title": "Postoji još jedna opcija.",
+                "cta": "Istraži"
             }
         },
         "about": {

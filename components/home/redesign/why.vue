@@ -26,8 +26,8 @@
 
           <div class="why-hill-house__media">
             <v-img
-              src="/hillhouse/media/images/gallery/professional/vila-prestige-hill-29-1920x1440.jpeg"
-              alt="Hill House pool and terrace at sunset"
+              :src="villaData.images.why"
+              :alt="villaData.name + ' pool and terrace at sunset'"
               aspect-ratio="0.86"
               cover
               class="why-hill-house__image"
@@ -63,6 +63,9 @@
 <script setup>
 import { computed } from "vue";
 import { useI18n } from "vue-i18n";
+
+const props = defineProps({ villa: { type: String, default: 'hh1' } })
+const villaData = useVilla(props.villa)
 
 const localePath = useLocalePath()
 const { t } = useI18n({ useScope: "global" });

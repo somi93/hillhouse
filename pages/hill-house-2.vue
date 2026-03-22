@@ -1,29 +1,27 @@
 <template>
   <div class="villa-page">
-    <villa-hero villa="hh2" />
-    <redesign-why />
-    <redesign-experiences />
-    <redesign-occasions />
-    <redesign-social-proof />
-    <redesign-gallery />
+    <redesign-hero />
+    <redesign-why villa="hh2" />
+    <redesign-experiences villa="hh2" />
+    <redesign-social-proof villa="hh2" />
+    <redesign-gallery villa="hh2" />
     <redesign-cta />
-    <redesign-location />
-    <sister-villa target="hh1" />
+    <redesign-location villa="hh2" />
+    <villa-card-promo villa="hh1" />
   </div>
 </template>
 
 <script setup>
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import VillaHero from '@/components/home/redesign/villa-hero'
+import RedesignHero from '@/components/home/redesign/hero'
 import RedesignWhy from '@/components/home/redesign/why'
 import RedesignExperiences from '@/components/home/redesign/experiences'
-import RedesignOccasions from '@/components/home/redesign/occasions'
 import RedesignSocialProof from '@/components/home/redesign/social-proof'
 import RedesignGallery from '@/components/home/redesign/gallery'
 import RedesignCta from '@/components/home/redesign/cta'
 import RedesignLocation from '@/components/home/redesign/location'
-import SisterVilla from '@/components/home/redesign/sister-villa'
+import VillaCardPromo from '@/components/home/redesign/villa-card-promo'
 
 const { locale } = useI18n({ useScope: 'global' })
 const localePath = useLocalePath()

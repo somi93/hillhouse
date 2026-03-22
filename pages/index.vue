@@ -2,10 +2,9 @@
   <div class="homepage-redesign">
     <villa-selector-hero />
     <redesign-why />
-    <redesign-experiences />
+    <villa-cards />
     <redesign-occasions />
     <redesign-social-proof />
-    <redesign-gallery />
     <redesign-cta />
     <redesign-location />
   </div>
@@ -13,8 +12,7 @@
 
 <script setup>
 import RedesignCta from "@/components/home/redesign/cta";
-import RedesignExperiences from "@/components/home/redesign/experiences";
-import RedesignGallery from "@/components/home/redesign/gallery";
+import VillaCards from "@/components/home/redesign/villa-cards";
 import VillaSelectorHero from "@/components/home/redesign/villa-selector-hero";
 import RedesignLocation from "@/components/home/redesign/location";
 import RedesignOccasions from "@/components/home/redesign/occasions";

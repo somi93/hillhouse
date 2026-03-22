@@ -4,56 +4,30 @@
     class="villa-selector"
     :aria-label="t('home.redesign.selector.ariaLabel')"
   >
-    <!-- Hill House 1 -->
-    <article
-      class="vs-panel"
-      :class="{ 'vs-panel--active': hovered === 'hh1' }"
-      @mouseenter="hovered = 'hh1'"
-      @mouseleave="hovered = null"
-    >
-      <div class="vs-panel__bg vs-panel__bg--hh1"></div>
-      <div class="vs-panel__overlay"></div>
-      <div class="vs-panel__edge vs-panel__edge--right"></div>
-      <div class="vs-panel__content">
-        <p class="vs-eyebrow">{{ t('home.redesign.selector.eyebrow') }}</p>
-        <h2 class="vs-name">Hill House</h2>
-        <p class="vs-meta">
-          <span>{{ t('home.redesign.selector.hh1.capacity') }}</span>
-          <span class="vs-dot">·</span>
-          <span>{{ t('home.redesign.selector.hh1.price') }}</span>
-        </p>
-        <NuxtLink :to="localePath('/hill-house-1')" class="vs-cta">
-          {{ t('home.redesign.selector.cta') }}<span class="vs-cta__arr"> →</span>
-        </NuxtLink>
-      </div>
-    </article>
-
-    <!-- Gold divider -->
-    <div class="vs-divider" aria-hidden="true"></div>
-
-    <!-- Hill House 2 -->
-    <article
-      class="vs-panel"
-      :class="{ 'vs-panel--active': hovered === 'hh2' }"
-      @mouseenter="hovered = 'hh2'"
-      @mouseleave="hovered = null"
-    >
-      <div class="vs-panel__bg vs-panel__bg--hh2"></div>
-      <div class="vs-panel__overlay"></div>
-      <div class="vs-panel__edge vs-panel__edge--left"></div>
-      <div class="vs-panel__content vs-panel__content--flip">
-        <p class="vs-eyebrow">{{ t('home.redesign.selector.eyebrow') }}</p>
-        <h2 class="vs-name">Hill House 2</h2>
-        <p class="vs-meta">
-          <span>{{ t('home.redesign.selector.hh2.capacity') }}</span>
-          <span class="vs-dot">·</span>
-          <span>{{ t('home.redesign.selector.hh2.price') }}</span>
-        </p>
-        <NuxtLink :to="localePath('/hill-house-2')" class="vs-cta">
-          {{ t('home.redesign.selector.cta') }}<span class="vs-cta__arr"> →</span>
-        </NuxtLink>
-      </div>
-    </article>
+    <template v-for="(villa, i) in villas" :key="villa.id">
+      <article
+        class="vs-panel"
+        :class="{ 'vs-panel--active': hovered === villa.id }"
+        @mouseenter="hovered = villa.id"
+        @mouseleave="hovered = null"
+      >
+        <div class="vs-panel__bg" :style="{ backgroundImage: `url(${villa.images.card})` }"></div>
+        <div class="vs-panel__overlay"></div>
+        <div class="vs-panel__content" :class="{ 'vs-panel__content--flip': villa.flip }">
+          <p class="vs-eyebrow">{{ t('home.redesign.selector.eyebrow') }}</p>
+          <h2 class="vs-name">{{ villa.name }}</h2>
+          <p class="vs-meta">
+            <span>{{ t(`home.redesign.selector.${villa.id}.capacity`) }}</span>
+            <span class="vs-dot">·</span>
+            <span>{{ t(`home.redesign.selector.${villa.id}.price`) }}</span>
+          </p>
+          <NuxtLink :to="localePath(villa.slug)" class="vs-cta">
+            {{ t('home.redesign.selector.cta') }}<span class="vs-cta__arr"> →</span>
+          </NuxtLink>
+        </div>
+      </article>
+      <div v-if="i < villas.length - 1" class="vs-divider" aria-hidden="true"></div>
+    </template>
   </section>
 </template>
 
@@ -64,6 +38,7 @@ import { useI18n } from 'vue-i18n'
 const { t } = useI18n({ useScope: 'global' })
 const localePath = useLocalePath()
 const hovered = ref(null)
+const villas = useVillas()
 </script>
 
 <style scoped>
@@ -106,16 +81,7 @@ const hovered = ref(null)
 
 .vs-panel--active .vs-panel__bg { transform: scale(1.04); }
 
-/* ─── IMAGE PATHS — upload images here ───────────────────────── *
- * HH1: /public/hillhouse/media/images/hh1/selector.jpeg
- * HH2: /public/hillhouse/media/images/hh2/selector.jpeg
- * ─────────────────────────────────────────────────────────────── */
-.vs-panel__bg--hh1 {
-  background-image: url('/hillhouse/media/images/gallery/professional/vila-prestige-hill-20-1920x1280.jpeg');
-}
-.vs-panel__bg--hh2 {
-  background-image: url('/hillhouse2/media/images/landing.jpg');
-}
+/* image paths driven via :style in template — update in composables/useVillas.js */
 
 /* Base tint + corner vignette in one layer */
 .vs-panel__overlay {

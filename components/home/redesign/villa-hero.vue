@@ -1,6 +1,6 @@
 <template>
   <section id="videoBox" class="villa-hero">
-    <div class="villa-hero__bg" :class="`villa-hero__bg--${villa}`"></div>
+      <div class="villa-hero__bg" :style="{ backgroundImage: `url(${villaData.images.hero})` }"></div>
     <div class="villa-hero__overlay"></div>
     <div class="villa-hero__gradient"></div>
 
@@ -77,6 +77,7 @@ const props = defineProps({
   },
 })
 
+const villaData = useVilla(props.villa)
 const { t } = useI18n({ useScope: 'global' })
 const localePath = useLocalePath()
 
@@ -105,13 +106,7 @@ const trustItems = computed(() => [
   z-index: 0;
 }
 
-.villa-hero__bg--hh1 {
-  background-image: url('/hillhouse/media/images/gallery/professional/vila-prestige-hill-15-1920x1438.jpeg');
-}
-
-.villa-hero__bg--hh2 {
-  background-image: url('/hillhouse2/media/images/landing.jpg');
-}
+/* image driven via :style in template — update paths in composables/useVillas.js */
 
 /* ─── Overlays ───────────────────────────────────────────────── */
 .villa-hero__overlay,

@@ -17,7 +17,7 @@
               </div>
               <a
                 class="location-preview__link"
-                href="https://maps.app.goo.gl/PfMhd9qvQKDM3NVc7"
+                :href="villaData.location.mapsLink"
                 rel="noopener"
                 target="_blank"
               >
@@ -30,7 +30,7 @@
             <div class="location-preview__map-wrap">
               <iframe
                 class="location-preview__map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11376.723479775781!2d20.70986718088739!3d44.531929042754896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4750bd1c824fd29b%3A0x8b1d2647713d9c1d!2sHILL%20LUXURY%20HOUSE%201!5e0!3m2!1ssr!2srs!4v1774090941905!5m2!1ssr!2srs"
+                :src="villaData.location.mapSrc"
                 allowfullscreen=""
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
@@ -50,6 +50,8 @@
 import { mdiArrowTopRight } from "@mdi/js";
 import { useI18n } from "vue-i18n";
 
+const props = defineProps({ villa: { type: String, default: 'hh1' } })
+const villaData = useVilla(props.villa)
 const { t } = useI18n({ useScope: "global" });
 </script>
 

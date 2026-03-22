@@ -13,13 +13,13 @@
           <v-col cols="12" sm="6" md="7">
             <article class="proof-main-card">
               <p class="proof-main-card__quote">
-                "{{ t('home.redesign.social.mainQuote') }}"
+                "{{ mainReview.quote }}"
               </p>
               <div class="proof-main-card__meta">
-                <span class="proof-main-card__author">{{ t('home.redesign.social.mainAuthor') }}</span>
+                <span class="proof-main-card__author">{{ mainReview.author }}</span>
                 <a
                   class="proof-main-card__link"
-                  href="https://maps.app.goo.gl/b6Nhu3q5jcdvw3bu8"
+                  :href="mainReview.link"
                   target="_blank"
                   rel="noopener noreferrer"
                   :aria-label="t('home.redesign.social.mainLinkLabel')"
@@ -60,22 +60,12 @@ import { computed } from 'vue'
 import { mdiArrowTopRight } from '@mdi/js'
 import { useI18n } from 'vue-i18n'
 
+const props = defineProps({ villa: { type: String, default: 'hh1' } })
+const villaData = useVilla(props.villa)
 const { t } = useI18n({ useScope: 'global' })
 
-const supportingQuotes = computed(() => [
-  {
-    text: t('home.redesign.social.quote1'),
-    author: t('home.redesign.social.author1'),
-    source: t('home.redesign.social.source1'),
-    link: 'https://maps.app.goo.gl/4FVsjBFPNzy8z88R7',
-  },
-  {
-    text: t('home.redesign.social.quote2'),
-    author: t('home.redesign.social.author2'),
-    source: t('home.redesign.social.source2'),
-    link: 'https://maps.app.goo.gl/8mqmuvW237B2mrVT6',
-  },
-])
+const mainReview = computed(() => villaData.reviews.main)
+const supportingQuotes = computed(() => villaData.reviews.supporting)
 </script>
 
 <style scoped>
