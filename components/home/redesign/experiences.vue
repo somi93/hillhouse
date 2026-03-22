@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <section id="facilities" class="signature-experiences">
     <v-container>
       <div class="content-shell">
@@ -14,8 +14,8 @@
 
         <div class="experience-stack">
           <article v-for="experience in experiences" :key="experience.title" class="experience-panel">
-            <v-row :class="experience.reverse ? 'flex-lg-row-reverse' : ''" align="center">
-              <v-col cols="12" lg="7">
+            <v-row :class="experience.reverse ? 'flex-sm-row-reverse' : ''" align="center">
+              <v-col cols="12" sm="6" md="7">
                 <div class="experience-panel__image-wrap">
                   <v-img
                     :src="experience.image"
@@ -26,7 +26,7 @@
                   ></v-img>
                 </div>
               </v-col>
-              <v-col cols="12" lg="5">
+              <v-col cols="12" sm="6" md="5">
                 <div class="experience-panel__copy">
                   <p class="experience-panel__kicker">{{ experience.kicker }}</p>
                   <h3 class="experience-panel__title">{{ experience.title }}</h3>
@@ -52,7 +52,7 @@ const experiences = computed(() => [
     kicker: t('home.redesign.experiences.item1Kicker'),
     title: t('home.redesign.experiences.item1Title'),
     text: t('home.redesign.experiences.item1Text'),
-    image: '/hillhouse/media/images/gallery/vila-prestige-hill-14-1920x1280.jpeg',
+    image: '/hillhouse/media/images/gallery/professional/vila-prestige-hill-14-1920x1280.jpeg',
     alt: 'Outdoor terrace and pool at Hill House',
     reverse: false,
   },
@@ -60,7 +60,7 @@ const experiences = computed(() => [
     kicker: t('home.redesign.experiences.item2Kicker'),
     title: t('home.redesign.experiences.item2Title'),
     text: t('home.redesign.experiences.item2Text'),
-    image: '/hillhouse/media/images/gallery/images2/IMG_4303.jpeg',
+    image: '/hillhouse/media/images/gallery/interior/jacuzzi-with-food.jpeg',
     alt: 'Jacuzzi and spa area at Hill House',
     reverse: true,
   },
@@ -68,7 +68,7 @@ const experiences = computed(() => [
     kicker: t('home.redesign.experiences.item3Kicker'),
     title: t('home.redesign.experiences.item3Title'),
     text: t('home.redesign.experiences.item3Text'),
-    image: '/hillhouse/media/images/gallery/images2/IMG_4300.jpeg',
+    image: '/hillhouse/media/images/gallery/interior/club-lounge-sofas.jpeg',
     alt: 'Interior lounge and cinema area at Hill House',
     reverse: false,
   },
@@ -143,16 +143,77 @@ const experiences = computed(() => [
   background: rgba(255, 251, 246, 0.9);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 1366px) and (min-width: 961px) {
+  .signature-experiences {
+    padding: 112px 0 92px;
+  }
+
+  .experience-stack {
+    gap: 22px;
+  }
+
   .experience-panel {
-    padding: 24px;
+    padding: 20px;
   }
 
   .experience-panel__copy {
-    padding: 18px 4px 6px;
+    padding: 12px 6px;
   }
 
   .experience-panel__title {
+    font-size: clamp(1.6rem, 2.1vw, 2.2rem);
+  }
+}
+
+@media (max-width: 960px) and (min-width: 600px) {
+  .signature-experiences {
+    padding: 80px 0 60px;
+  }
+
+  .experience-stack {
+    gap: 20px;
+  }
+
+  .experience-panel {
+    padding: 20px;
+  }
+
+  .experience-panel__copy {
+    padding: 14px 16px;
+  }
+
+  .experience-panel__title {
+    font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+    max-width: 100%;
+  }
+
+  .experience-panel__text {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 599px) {
+  .signature-experiences {
+    padding: 60px 0 44px;
+  }
+
+  .experience-stack {
+    gap: 16px;
+  }
+
+  .experience-panel {
+    padding: 14px;
+  }
+
+  .experience-panel__copy {
+    padding: 14px 6px 4px;
+  }
+
+  .experience-panel__title {
+    max-width: 100%;
+  }
+
+  .experience-panel__text {
     max-width: 100%;
   }
 }

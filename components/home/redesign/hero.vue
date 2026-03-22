@@ -5,7 +5,6 @@
     <div class="hero-manifesto__overlay"></div>
     <div class="hero-manifesto__gradient"></div>
 
-
     <v-container class="hero-manifesto__container d-flex align-center">
       <div class="content-shell">
         <div class="hero-manifesto__copy">
@@ -32,7 +31,7 @@
               {{ t("home.redesign.hero.primaryCta") }}
             </v-btn>
             <v-btn
-              :to="{ name: 'gallery' }"
+              :to="localePath('/gallery')"
               variant="outlined"
               class="hero-manifesto__secondary"
               height="52px"
@@ -45,23 +44,25 @@
     </v-container>
 
     <div class="hero-manifesto__trust-wrap">
-      <div class="content-shell">
-        <v-row class="hero-manifesto__trust-grid" no-gutters>
-          <v-col
-            v-for="(item, index) in trustItems"
-            :key="item"
-            cols="12"
-            sm="6"
-            lg="3"
-            class="hero-manifesto__trust-col"
-          >
-            <v-sheet class="trust-tile d-flex flex-column justify-end" rounded="0">
-              <span class="trust-tile__index">0{{ index + 1 }}</span>
-              <p class="trust-tile__text mb-0">{{ item }}</p>
-            </v-sheet>
-          </v-col>
-        </v-row>
-      </div>
+      <v-container>
+        <div class="content-shell">
+          <v-row class="hero-manifesto__trust-grid" no-gutters>
+            <v-col
+              v-for="(item, index) in trustItems"
+              :key="item"
+              cols="12"
+              sm="6"
+              md="3"
+              class="hero-manifesto__trust-col"
+            >
+              <v-sheet class="trust-tile d-flex flex-column justify-end" rounded="0">
+                <span class="trust-tile__index">0{{ index + 1 }}</span>
+                <p class="trust-tile__text mb-0">{{ item }}</p>
+              </v-sheet>
+            </v-col>
+          </v-row>
+        </div>
+      </v-container>
     </div>
   </section>
 </template>
@@ -72,6 +73,7 @@ import { useI18n } from "vue-i18n";
 import DesktopVideo from "../videos/desktop";
 import MobileVideo from "../videos/mobile";
 
+const localePath = useLocalePath()
 const { t } = useI18n({ useScope: "global" });
 
 const trustItems = computed(() => [
@@ -85,7 +87,7 @@ const trustItems = computed(() => [
 <style scoped>
 .hero-manifesto {
   position: relative;
-  min-height: 100vh;
+  min-height: 100svh;
   margin-top: calc(-1 * var(--header-height-desktop));
   overflow: hidden;
   background: #111;
@@ -129,7 +131,11 @@ const trustItems = computed(() => [
 .hero-manifesto__container {
   position: relative;
   z-index: 3;
-  min-height: 100vh;
+  min-height: 100svh;
+}
+
+.hero-manifesto__container :deep(.v-container__content) {
+  width: 100%;
 }
 
 .hero-manifesto__copy {
@@ -219,7 +225,11 @@ const trustItems = computed(() => [
 .trust-tile {
   padding: 15px 18px;
   border: 1px solid rgba(255, 255, 255, 0.06);
-  background: linear-gradient(180deg, rgba(14, 14, 14, 0.46) 0%, rgba(14, 14, 14, 0.34) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(14, 14, 14, 0.46) 0%,
+    rgba(14, 14, 14, 0.34) 100%
+  );
   backdrop-filter: blur(10px);
   min-height: 84px;
   color: #fff;
@@ -239,7 +249,130 @@ const trustItems = computed(() => [
   line-height: 1.32;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1366px) and (min-width: 961px) {
+  .hero-manifesto,
+  .hero-manifesto__container {
+    min-height: min(100svh, 820px);
+  }
+
+  .hero-manifesto__copy {
+    max-width: 760px;
+    padding: 118px 0 132px;
+    padding-left: 22px;
+  }
+
+  .hero-manifesto__copy:before {
+    top: 122px;
+    height: 118px;
+  }
+
+  .hero-manifesto__title {
+    font-size: clamp(2.55rem, 3.85vw, 4.05rem);
+    max-width: 10ch;
+    margin-bottom: 18px;
+  }
+
+  .hero-manifesto__subtitle {
+    max-width: 44ch;
+    font-size: 0.98rem;
+    line-height: 1.58;
+  }
+
+  .hero-manifesto__actions {
+    margin-top: 24px !important;
+    gap: 12px !important;
+  }
+
+  .hero-manifesto__primary,
+  .hero-manifesto__secondary {
+    min-width: 0;
+    padding-inline: 24px;
+  }
+
+  .hero-manifesto__trust-wrap {
+    bottom: 10px;
+  }
+
+  .trust-tile {
+    min-height: 68px;
+    padding: 12px 13px;
+  }
+
+  .trust-tile__index {
+    margin-bottom: 8px;
+  }
+
+  .trust-tile__text {
+    font-size: 0.78rem;
+    line-height: 1.26;
+  }
+}
+
+@media (max-height: 820px) and (min-width: 961px) {
+  .hero-manifesto,
+  .hero-manifesto__container {
+    min-height: 760px;
+  }
+
+  .hero-manifesto__copy {
+    padding-bottom: 126px;
+  }
+}
+
+@media (max-width: 960px) and (min-width: 641px) {
+  .hero-manifesto__copy {
+    max-width: 800px;
+    padding: 108px 0 172px;
+    padding-left: 22px;
+  }
+
+  .hero-manifesto__copy:before {
+    top: 114px;
+    height: 110px;
+  }
+
+  .hero-manifesto__title {
+    font-size: clamp(2.4rem, 4.5vw, 3.2rem);
+    max-width: 14ch;
+    margin-bottom: 18px;
+  }
+
+  .hero-manifesto__subtitle {
+    max-width: 48ch;
+    font-size: 0.98rem;
+  }
+
+  .hero-manifesto__actions {
+    margin-top: 28px !important;
+    gap: 12px !important;
+  }
+
+  /* prevent eyebrow from wrapping to two lines */
+  .section-eyebrow {
+    letter-spacing: 0.12em;
+    font-size: 0.72rem;
+    margin-bottom: 16px;
+  }
+
+  .hero-manifesto__trust-wrap {
+    bottom: 18px;
+  }
+
+  .trust-tile {
+    min-height: 72px;
+    padding: 12px 14px;
+  }
+
+  .trust-tile__index {
+    margin-bottom: 7px;
+  }
+
+  .trust-tile__text {
+    font-size: 0.82rem;
+  }
+}
+
+@media (max-width: 780px) {
   .hero-manifesto__copy {
     max-width: 760px;
     padding: 136px 0 206px;
@@ -258,34 +391,63 @@ const trustItems = computed(() => [
 @media (max-width: 640px) {
   .hero-manifesto {
     margin-top: calc(-1 * var(--header-height-mobile));
+    min-height: auto;
+  }
+
+  .hero-manifesto__container {
+    min-height: auto;
   }
 
   .hero-manifesto__copy {
     max-width: 100%;
-    padding: 120px 0 228px;
+    padding: 120px 0 32px;
   }
 
   .hero-manifesto__actions {
     margin-top: 30px !important;
+    flex-direction: column;
+    align-items: stretch !important;
+    gap: 12px !important;
   }
 
   .hero-manifesto__primary,
   .hero-manifesto__secondary {
     min-width: 0;
-    width: 220px;
+    width: 100%;
   }
 
   .hero-manifesto__title {
-    max-width: 10.5ch;
+    max-width: 12ch;
     line-height: 0.98;
   }
 
+  .hero-manifesto__subtitle {
+    max-width: 100%;
+  }
+
   .hero-manifesto__trust-wrap {
-    bottom: 18px;
+    position: relative;
+    bottom: auto;
+    margin-top: 4px;
+    padding-bottom: 18px;
+  }
+
+  .hero-manifesto__trust-grid {
+    margin: 0 -4px;
+  }
+
+  .hero-manifesto__trust-col {
+    padding: 0 4px;
+    margin-top: 8px;
   }
 
   .trust-tile {
     min-height: auto;
+    padding: 14px 14px 12px;
+  }
+
+  .trust-tile__text {
+    font-size: 0.82rem;
   }
 }
 </style>

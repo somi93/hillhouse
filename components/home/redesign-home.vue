@@ -1,17 +1,17 @@
 <template>
   <div class="homepage-redesign">
-    <redesign-hero></redesign-hero>
-    <redesign-why></redesign-why>
-    <redesign-experiences></redesign-experiences>
-    <redesign-occasions></redesign-occasions>
-    <redesign-social-proof></redesign-social-proof>
-    <redesign-gallery></redesign-gallery>
-    <redesign-cta></redesign-cta>
-    <redesign-location></redesign-location>
+    <redesign-hero />
+    <redesign-why />
+    <redesign-experiences />
+    <redesign-occasions />
+    <redesign-social-proof />
+    <redesign-gallery />
+    <redesign-cta />
+    <redesign-location />
   </div>
 </template>
 
-<script setup> 
+<script setup>
 import RedesignCta from "./redesign/cta";
 import RedesignExperiences from "./redesign/experiences";
 import RedesignGallery from "./redesign/gallery";

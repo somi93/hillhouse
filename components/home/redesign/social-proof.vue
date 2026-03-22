@@ -10,7 +10,7 @@
         </div>
 
         <v-row align="stretch" class="social-proof__layout">
-          <v-col cols="12" lg="7">
+          <v-col cols="12" sm="6" md="7">
             <article class="proof-main-card">
               <p class="proof-main-card__quote">
                 "{{ t('home.redesign.social.mainQuote') }}"
@@ -29,7 +29,7 @@
               </div>
             </article>
           </v-col>
-          <v-col cols="12" lg="5">
+          <v-col cols="12" sm="6" md="5">
             <div class="proof-side-cards">
               <article v-for="quote in supportingQuotes" :key="quote.author" class="proof-side-card">
                 <p class="proof-side-card__quote">"{{ quote.text }}"</p>
@@ -110,7 +110,7 @@ const supportingQuotes = computed(() => [
 
 .proof-main-card__quote {
   color: var(--brand-dark);
-  font-size: clamp(1.22rem, 1.7vw, 1.95rem);
+  font-size: clamp(1.22rem, 1.7vw, 1.8rem);
   line-height: 1.62;
   margin-bottom: 26px;
   position: relative;
@@ -205,7 +205,35 @@ const supportingQuotes = computed(() => [
   transform: translateY(-1px);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 1366px) and (min-width: 961px) {
+  .social-proof {
+    padding: 112px 0 92px;
+  }
+
+  .proof-main-card {
+    padding: 36px 34px 30px;
+  }
+
+  .proof-main-card__quote {
+    font-size: clamp(1.08rem, 1.35vw, 1.48rem);
+    line-height: 1.54;
+  }
+
+  .proof-side-card {
+    padding: 22px 24px;
+  }
+
+  .proof-side-card__quote {
+    line-height: 1.62;
+  }
+}
+
+
+@media (max-width: 960px) {
+  .social-proof {
+    padding: 88px 0 68px;
+  }
+
   .proof-main-card,
   .proof-side-card {
     padding: 24px;
@@ -213,6 +241,7 @@ const supportingQuotes = computed(() => [
 
   .proof-main-card__quote {
     max-width: 100%;
+    font-size: clamp(1rem, 1.7vw, 1.95rem);
   }
 }
 </style>

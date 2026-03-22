@@ -4,17 +4,21 @@ import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 export default defineNuxtConfig({
     app: {
         head: {
-            htmlAttrs: {
-                lang: 'sr',
-            },
             meta: [
-                { charset: 'utf-8' }, // Set your desired charset
+                { charset: 'utf-8' },
+                { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+                { name: 'theme-color', content: '#151515' },
+                { property: 'og:site_name', content: 'Hill House' },
             ],
             link: [
-                { rel: 'shortcut icon', type: "image/x-icon", href: 'https://www.hillhouse.rs/favicon.ico' }, // Replace with your favicon file type and name
+                { rel: 'shortcut icon', type: "image/x-icon", href: 'https://www.hillhouse.rs/favicon.ico' },
                 { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
                 { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
-                { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display:ital@0;1&family=Lora:ital,wght@0,400;0,600;1,400&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300&family=Cinzel:wght@400;600&display=swap' },
+                // Non-render-blocking font load: preload → swap to stylesheet after parse
+                { rel: 'preload', as: 'style', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300&display=swap', onload: "this.onload=null;this.rel='stylesheet'" } as any,
+            ],
+            noscript: [
+                { innerHTML: '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300&display=swap">' },
             ],
         }
     },
@@ -63,7 +67,14 @@ export default defineNuxtConfig({
         debug: true, // Enable to test in development mode
     },
     i18n: {
-        vueI18n: './i18n.config.ts' // if you are using custom path, default
+        vueI18n: './i18n.config.ts',
+        strategy: 'prefix_except_default',
+        defaultLocale: 'sr',
+        locales: [
+            { code: 'sr', language: 'sr-RS', name: 'Srpski' },
+            { code: 'en', language: 'en-US', name: 'English' },
+        ],
+        baseUrl: 'https://www.hillhouse.rs',
     },
     vite: {
         vue: {

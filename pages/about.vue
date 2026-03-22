@@ -1,93 +1,91 @@
 <template>
-  <v-container id="about" style="padding-top: 72px">
-    <div
-        :class="!$vuetify.display.smAndDown ? 'pb-15' : ''">
-      <div
-          style="max-width: 1400px;margin: 0 auto;width: 100%"
-          :class="!$vuetify.display.smAndDown ? 'pb-15' : ''">
-        <v-row
-            style="position: relative"
-            :class="!$vuetify.display.smAndDown ? 'mb-15' : ''">
-          <v-col cols="12" lg="12" :class="!$vuetify.display.smAndDown ? 'pt-15' : 'px-5'">
-            <hill-section align="center">
-              <template #title>
-                {{ $t('layout.menu.about') }}
-              </template>
-              <template #description>
-                <p class="mb-3 text-grey-darken-2 text-left" v-html="$t('home.about.paragraph1')"></p>
-                <p class="text-grey-darken-2 text-left mb-3" v-html="$t('home.about.paragraph3')"></p>
-                <p class="text-grey-darken-2 text-left mb-3" v-html="$t('home.about.paragraph4')"></p>
-                <p class="text-grey-darken-2 text-left mb-3" v-html="$t('home.about.paragraph5')"></p>
-                <p class="text-grey-darken-2 text-left mb-3" v-html="$t('home.about.paragraph6')"></p>
-                <p class="text-grey-darken-2 text-left mb-3" v-html="$t('home.about.paragraph7')"></p>
-                <p class="text-grey-darken-2 text-left mb-3" v-html="$t('home.about.paragraph8')"></p>
-              </template>
-            </hill-section>
-          </v-col>
-        </v-row>
-      </div>
+  <div class="about-page">
+
+    <div class="about-page__header">
+      <v-container>
+        <div class="content-shell">
+          <p class="section-eyebrow section-eyebrow--light">{{ $t('layout.menu.about') }}</p>
+          <h1 class="about-page__title section-title section-title--light">
+            {{ $t('home.about.title') }}
+          </h1>
+        </div>
+      </v-container>
     </div>
-  </v-container>
+
+    <div class="about-page__body">
+      <v-container>
+        <div class="content-shell">
+          <div class="about-body">
+            <div class="about-body__text">
+              <p class="section-text section-text--warm" v-html="$t('home.about.paragraph1')"></p>
+              <p class="section-text section-text--warm mt-5" v-html="$t('home.about.paragraph3')"></p>
+              <p class="section-text section-text--warm mt-5" v-html="$t('home.about.paragraph7')"></p>
+            </div>
+          </div>
+        </div>
+      </v-container>
+    </div>
+
+  </div>
 </template>
 
 <script setup>
-import {ref, computed} from 'vue'
-import {
-  mdiAccountMultipleOutline,
-  mdiBathtubOutline,
-  mdiBedDoubleOutline,
-  mdiAccountMultiplePlusOutline
-} from '@mdi/js';
-import HillSection from "@/components/global/hill-section";
-import {useI18n} from "vue-i18n";
+import { useI18n } from 'vue-i18n'
+useI18n({ useScope: 'global' })
 
-const {locale, t} = useI18n({useScope: 'global'})
-
-const items = computed(() => {
-  return [
+useHead({
+  title: 'O nama — Hill House Privatna Vila',
+  link: [{ rel: 'canonical', href: 'https://www.hillhouse.rs/about' }],
+  meta: [
+    { name: 'robots', content: 'index, follow' },
     {
-      value: '120',
-      title: t('home.about.capacity'),
-      icon: mdiAccountMultiplePlusOutline
+      name: 'description',
+      content: 'Saznajte više o Hill House vili — privatnom prostoru za proslave i posebne trenutke sa bazenom, spa zonom i panoramskim pogledom, 30 minuta od Beograda.',
+    },
+    { property: 'og:title', content: 'O nama — Hill House Privatna Vila' },
+    {
+      property: 'og:description',
+      content: 'Privatna luksuzna vila sa bazenom, spa zonom i atmosferom koja ostavlja utisak. Saznajte više o Hill House.',
     },
     {
-      value: '10',
-      title: t('home.about.nightAccommodation'),
-      icon: mdiAccountMultipleOutline
+      property: 'og:image',
+      content: 'https://www.hillhouse.rs/hillhouse/media/images/gallery/professional/vila-prestige-hill-15-1920x1438.jpeg',
     },
-    {
-      value: '6',
-      title: t('home.about.beds'),
-      icon: mdiBedDoubleOutline
-    },
-    {
-      value: '1',
-      title: t('home.about.bathrooms'),
-      icon: mdiBathtubOutline
-    },
-  ]
+    { property: 'og:url', content: 'https://www.hillhouse.rs/about' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:locale', content: 'sr_RS' },
+  ],
 })
 </script>
 
-<style>
-.about-card {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  background-color: #fff;
-  aspect-ratio: 2.4;
-  box-shadow: 0 15px 46px rgba(0, 0, 0, .1);
+<style scoped>
+.about-page__header {
+  padding: 100px 0 72px;
+  background: radial-gradient(circle at top left, rgba(207, 169, 117, 0.18), transparent 30%),
+    linear-gradient(180deg, #171412 0%, #0f0d0c 100%);
 }
 
-.about-card:after {
-  content: "";
-  width: 150px;
-  height: 50px;
-  position: absolute;
-  right: -38px;
-  bottom: -39px;
-  background: url("/media/images/patterns/dots.png") center center no-repeat;
-  background-repeat: repeat;
-  transform: rotate(-42deg);
+.about-page__title {
+  max-width: 22ch;
+  margin: 0;
+}
+
+.about-page__body {
+  background: var(--surface-ivory);
+  padding: 72px 0 120px;
+}
+
+.about-body__text {
+  max-width: 680px;
+}
+
+@media (max-width: 959px) {
+  .about-page__header {
+    padding: 72px 0 52px;
+  }
+
+  .about-page__body {
+    padding: 48px 0 80px;
+  }
 }
 </style>

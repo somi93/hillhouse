@@ -1,8 +1,8 @@
 <template>
   <v-navigation-drawer v-model="model" temporary location="left" class="site-drawer" color="#151515">
     <div class="site-drawer__header">
-      <router-link :to="{ name: 'index' }" class="site-drawer__logo-link" @click="model = false">
-        <img src="/hillhouse/media/images/logo5.png" alt="Hill House logo" class="site-drawer__logo" />
+      <router-link :to="localePath('/')" class="site-drawer__logo-link" @click="model = false">
+        <img src="/hillhouse/media/images/logo.png" alt="Hill House logo" class="site-drawer__logo" />
       </router-link>
       <div class="site-drawer__locale">
         <v-btn
@@ -60,6 +60,8 @@ const model = computed({
   set: (value) => emit("update:modelValue", value),
 });
 
+const localePath = useLocalePath()
+const switchLocalePath = useSwitchLocalePath()
 const { locale, t } = useI18n({ useScope: "global" });
 const route = useRoute();
 const router = useRouter();
@@ -67,7 +69,8 @@ const router = useRouter();
 const items = computed(() => [
   {
     title: t("layout.menu.home"),
-    to: { name: "index" },
+    to: localePath('/'),
+
   },
   {
     title: t("layout.menu.about"),
@@ -87,11 +90,11 @@ const items = computed(() => [
   },
   {
     title: t("layout.menu.gallery"),
-    to: { name: "gallery" },
+    to: localePath('/gallery'),
   },
   {
     title: t("layout.menu.pricing"),
-    to: { name: "pricing" },
+    to: localePath('/pricing'),
   },
   {
     title: t("layout.menu.map"),
@@ -100,13 +103,14 @@ const items = computed(() => [
 ]);
 
 const changeLocale = (value) => {
-  locale.value = value;
+  const path = switchLocalePath(value)
+  if (path) router.push(path)
 };
 
 const navigateToHash = (target) => {
   model.value = false;
 
-  if (route.name === "index") {
+  if (String(route.name ?? '').split('___')[0] === "index") {
     const element = document.querySelector(target);
     if (!element) {
       return;
@@ -120,7 +124,7 @@ const navigateToHash = (target) => {
     return;
   }
 
-  router.push({ name: "index", hash: target });
+  router.push({ path: localePath('/'), hash: target });
 };
 </script>
 

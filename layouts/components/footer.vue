@@ -2,12 +2,13 @@
   <v-footer class="site-footer px-0">
     <v-container class="site-footer__container">
       <div class="site-footer__frame">
-        <v-row justify="space-between" class="pb-15">
-          <div>
+        <div class="site-footer__top">
+          <div class="site-footer__column site-footer__column--brand">
             <p class="site-footer__eyebrow">{{ $t("layout.footer.brandEyebrow") }}</p>
             <h2 class="site-footer__title">Hill House</h2>
           </div>
-          <div>
+
+          <div class="site-footer__column">
             <p class="site-footer__section-title">{{ $t("layout.footer.quickLinks") }}</p>
             <nav
               class="site-footer__nav"
@@ -28,7 +29,8 @@
               </template>
             </nav>
           </div>
-          <div>
+
+          <div class="site-footer__column">
             <p class="site-footer__section-title">{{ $t("layout.footer.reachOut") }}</p>
 
             <div class="site-footer__stack">
@@ -43,12 +45,12 @@
             </div>
           </div>
 
-          <div>
+          <div class="site-footer__column site-footer__column--social">
             <p class="site-footer__section-title">
               {{ $t("layout.footer.stayConnected") }}
             </p>
 
-            <v-row no-gutters justify="end" class="site-footer__social-links">
+            <div class="site-footer__social-links">
               <a
                 rel="noopener"
                 href="https://www.instagram.com/hill_luxury_house/"
@@ -85,11 +87,11 @@
               >
                 <v-icon color="#fff" :icon="mdiEmail" size="18"></v-icon>
               </a>
-            </v-row>
+            </div>
           </div>
-        </v-row>
+        </div>
 
-        <div class="site-footer__bottom mt-15">
+        <div class="site-footer__bottom">
           <p class="site-footer__copyright">{{ $t("layout.footer.copyright") }}</p>
           <a
             href="https://miloshpetrovic.com"
@@ -110,12 +112,14 @@ import { mdiFacebook, mdiInstagram, mdiEmail, mdiWhatsapp } from "@mdi/js";
 import { computed } from "vue";
 import { useI18n } from "vue-i18n";
 
+const localePath = useLocalePath()
 const { t } = useI18n({ useScope: "global" });
 const menuLeft = computed(() => {
   return [
     {
       title: "Hill House Luxury 1",
-      to: { name: "index" },
+      to: localePath('/'),
+
     },
     {
       title: "Hill House Luxury 2",
@@ -123,7 +127,7 @@ const menuLeft = computed(() => {
     },
     {
       title: t("layout.menu.gallery"),
-      to: { name: "gallery" },
+      to: localePath('/gallery'),
     },
     {
       title: t("layout.menu.map"),
@@ -168,6 +172,14 @@ const scrollTo = (target) => {
   gap: 42px;
 }
 
+.site-footer__top {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) repeat(3, minmax(0, 0.78fr));
+  gap: 28px;
+  padding-bottom: 46px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
 .site-footer__lead {
   display: grid;
   gap: 16px;
@@ -190,6 +202,16 @@ const scrollTo = (target) => {
   min-width: 0;
 }
 
+.site-footer__column--brand {
+  padding-right: 18px;
+}
+
+.site-footer__column--social {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
 .site-footer__eyebrow,
 .site-footer__section-title {
   color: rgba(207, 169, 117, 0.92);
@@ -204,6 +226,7 @@ const scrollTo = (target) => {
   font-size: clamp(2.2rem, 3vw, 3.2rem);
   line-height: 1.02;
   margin: 0;
+  max-width: 9ch;
 }
 
 .site-footer__description,
@@ -247,6 +270,7 @@ const scrollTo = (target) => {
   flex-wrap: wrap;
   gap: 12px;
   margin-top: 20px;
+  justify-content: flex-end;
 }
 
 .site-footer__social-link {
@@ -273,7 +297,7 @@ const scrollTo = (target) => {
   justify-content: space-between;
   align-items: center;
   gap: 24px;
-  padding-top: 2px;
+  padding-top: 0;
 }
 
 .site-footer__nav-link {
@@ -304,30 +328,118 @@ const scrollTo = (target) => {
   text-decoration: none;
 }
 
-@media (max-width: 1100px) {
-  .site-footer__columns {
+@media (max-width: 1366px) and (min-width: 961px) {
+  .site-footer {
+    padding: 64px 0 22px;
+  }
+
+  .site-footer__frame {
+    gap: 30px;
+  }
+
+  .site-footer__top {
+    gap: 22px;
+    padding-bottom: 30px;
+  }
+
+  .site-footer__title {
+    font-size: 2.35rem;
+  }
+
+  .site-footer__nav,
+  .site-footer__stack {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 1100px) and (min-width: 600px) {
+  .site-footer {
+    padding: 64px 0 24px;
+  }
+
+  .site-footer__frame {
+    gap: 28px;
+  }
+
+  .site-footer__top {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 36px;
+    padding-bottom: 28px;
+  }
+
+  .site-footer__column--brand {
+    padding-right: 0;
+  }
+
+  .site-footer__title {
+    font-size: 2rem;
+  }
+
+  .site-footer__column--social {
+    align-items: flex-start;
+  }
+
+  .site-footer__social-links {
+    justify-content: flex-start;
+    margin-top: 12px;
+  }
+
+  .site-footer__bottom {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+@media (max-width: 599px) {
+  .site-footer {
+    padding: 48px 0 20px;
+  }
+
+  .site-footer__frame {
+    gap: 24px;
+  }
+
+  .site-footer__top {
     grid-template-columns: 1fr;
+    gap: 20px;
+    padding-bottom: 20px;
+  }
+
+  .site-footer__column--brand {
+    padding-right: 0;
+  }
+
+  .site-footer__column--social {
+    align-items: flex-start;
+  }
+
+  .site-footer__eyebrow,
+  .site-footer__section-title {
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    margin-bottom: 12px;
+  }
+
+  .site-footer__title {
+    font-size: 1.9rem;
+  }
+
+  .site-footer__stack,
+  .site-footer__nav {
+    gap: 12px;
+  }
+
+  .site-footer__social-links {
+    justify-content: flex-start;
+    gap: 10px;
+    margin-top: 12px;
   }
 
   .site-footer__bottom {
     flex-direction: column;
     align-items: flex-start;
-  }
-}
-
-@media (max-width: 960px) {
-  .site-footer {
-    padding-top: 56px;
-  }
-}
-
-@media (max-width: 640px) {
-  .site-footer {
-    padding: 72px 0 24px;
-  }
-
-  .site-footer__bottom {
-    gap: 12px;
+    gap: 10px;
   }
 }
 </style>

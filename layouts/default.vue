@@ -140,12 +140,12 @@ const onScroll = () => {
 }
 
 .layout-main {
-  padding-top: var(--header-height-desktop) !important;
+  /* padding-top: var(--header-height-desktop) !important; */
 }
 
 @media (max-width: 600px) {
   .layout-main {
-    padding-top: var(--header-height-mobile) !important;
+    /* padding-top: var(--header-height-mobile) !important; */
   }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <video class="responsive-video" autoplay muted loop>
-    <source src="/hillhouse/media/videos/Sepsin_1080.mp4" type="video/mp4">
+    <source :src="'/hillhouse/media/videos/overview_1080.mp4'" type="video/mp4">
     Your browser does not support the video tag.
   </video>
 </template>

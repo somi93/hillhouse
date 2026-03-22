@@ -80,13 +80,51 @@ const occasions = computed(() => [
   line-height: 1.75;
 }
 
+@media (max-width: 1366px) and (min-width: 961px) {
+  .occasion-scenarios {
+    padding: 112px 0 92px;
+  }
+
+  .occasion-grid {
+    gap: 16px;
+  }
+
+  .occasion-card {
+    padding: 28px;
+    min-height: 196px;
+  }
+
+  .occasion-card__title {
+    font-size: 1.54rem;
+  }
+}
+
+@media (max-width: 780px) {
+  .occasion-scenarios {
+    padding: 104px 0 84px;
+  }
+
+  .occasion-card {
+    padding: 28px;
+    min-height: 0;
+  }
+}
+
 @media (max-width: 640px) {
+  .occasion-scenarios {
+    padding: 72px 0 52px;
+  }
+
   .occasion-grid {
     grid-template-columns: 1fr;
   }
 
   .occasion-card {
-    padding: 24px;
+    padding: 20px;
+  }
+
+  .occasion-card__title {
+    font-size: 1.46rem;
   }
 }
 </style>

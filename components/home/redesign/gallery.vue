@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <section class="curated-gallery">
     <v-container>
       <div class="content-shell">
@@ -37,22 +37,6 @@
         </button>
       </div>
     </div>
-
-    <v-container>
-      <div class="content-shell">
-        <div class="curated-gallery__action">
-          <v-btn
-            :to="{ name: 'gallery' }"
-            color="primary"
-            class="btn-reserve"
-            flat
-            height="52px"
-          >
-            {{ t('home.redesign.gallery.cta') }}
-          </v-btn>
-        </div>
-      </div>
-    </v-container>
 
     <v-dialog v-model="dialog" fullscreen scrim="rgba(8, 6, 5, 0.89)" class="gallery-dialog">
       <div v-if="selectedCategory" class="gallery-dialog__shell">
@@ -158,43 +142,43 @@ const categories = computed(() => [
     kicker: t('home.redesign.gallery.category1Kicker'),
     title: t('home.redesign.gallery.category1Title'),
     text: t('home.redesign.gallery.category1Text'),
-    cover: '/hillhouse/media/images/gallery/events/table.jpg',
+    cover: '/hillhouse/media/images/gallery/events/poolside-table-gold.jpg',
     items: [
       {
         type: 'image',
-        src: '/hillhouse/media/images/gallery/events/table.jpg',
-        thumb: '/hillhouse/media/images/gallery/events/table.jpg',
-        alt: 'Evening pool and event terrace at Hill House',
+        src: '/hillhouse/media/images/gallery/events/poolside-table-gold.jpg',
+        thumb: '/hillhouse/media/images/gallery/events/poolside-table-gold.jpg',
+        alt: 'Elegant poolside table with gold chiavari chairs at Hill House',
       },
       {
         type: 'image',
-        src: '/hillhouse/media/images/gallery/events/tableview.jpg',
-        thumb: '/hillhouse/media/images/gallery/events/tableview.jpg',
-        alt: 'Fire pit gathering area at Hill House',
+        src: '/hillhouse/media/images/gallery/events/pool-view-table-gold.jpg',
+        thumb: '/hillhouse/media/images/gallery/events/pool-view-table-gold.jpg',
+        alt: 'Event table with pool view at Hill House',
       },
       {
         type: 'image',
-        src: '/hillhouse/media/images/gallery/events/decoration.jpg',
-        thumb: '/hillhouse/media/images/gallery/events/decoration.jpg',
-        alt: 'Sunset exterior at Hill House',
+        src: '/hillhouse/media/images/gallery/events/night-terrace-arch.jpg',
+        thumb: '/hillhouse/media/images/gallery/events/night-terrace-arch.jpg',
+        alt: 'Illuminated floral arch on terrace at night at Hill House',
       },
       {
         type: 'image',
-        src: '/hillhouse/media/images/gallery/events/luxury.jpg',
-        thumb: '/hillhouse/media/images/gallery/events/luxury.jpg',
-        alt: 'Luxury decoration at Hill House',
+        src: '/hillhouse/media/images/gallery/events/boho-ceremony-arch.jpg',
+        thumb: '/hillhouse/media/images/gallery/events/boho-ceremony-arch.jpg',
+        alt: 'Boho ceremony arch with pampas grass and macramé at Hill House',
       },
       {
         type: 'image',
-        src: '/hillhouse/media/images/gallery/events/wedding.jpg',
-        thumb: '/hillhouse/media/images/gallery/events/wedding.jpg',
-        alt: 'Wedding celebration at Hill House',
+        src: '/hillhouse/media/images/gallery/events/outdoor-reception-pool.jpg',
+        thumb: '/hillhouse/media/images/gallery/events/outdoor-reception-pool.jpg',
+        alt: 'Outdoor wedding reception with round tables by the pool at Hill House',
       },
       {
         type: 'image',
-        src: '/hillhouse/media/images/gallery/images2/IMG_1857.jpeg',
-        thumb: '/hillhouse/media/images/gallery/images2/IMG_1857.jpeg',
-        alt: 'Long event table at Hill House',
+        src: '/hillhouse/media/images/gallery/events/pergola-dining-green.jpeg',
+        thumb: '/hillhouse/media/images/gallery/events/pergola-dining-green.jpeg',
+        alt: 'Outdoor pergola dining with green napkins at Hill House',
       },
     ],
   },
@@ -204,19 +188,19 @@ const categories = computed(() => [
     kicker: t('home.redesign.gallery.category2Kicker'),
     title: t('home.redesign.gallery.category2Title'),
     text: t('home.redesign.gallery.category2Text'),
-    cover: '/hillhouse/media/images/gallery/images2/spot1.jpg',
+    cover: '/hillhouse/media/images/gallery/productions/couple-shoot-poolside.jpg',
     items: [
       {
         type: 'image',
-        src: '/hillhouse/media/images/gallery/images2/spot1.jpg',
-        thumb: '/hillhouse/media/images/gallery/images2/spot1.jpg',
-        alt: 'Evening production-friendly angle at Hill House',
+        src: '/hillhouse/media/images/gallery/productions/couple-shoot-poolside.jpg',
+        thumb: '/hillhouse/media/images/gallery/productions/couple-shoot-poolside.jpg',
+        alt: 'Couple photo shoot by the pool at Hill House',
       },
       {
         type: 'image',
-        src: '/hillhouse/media/images/gallery/images2/zorana.jpg',
-        thumb: '/hillhouse/media/images/gallery/images2/zorana.jpg',
-        alt: 'Terrace setup suitable for filming at Hill House',
+        src: '/hillhouse/media/images/gallery/productions/pink-dress-terrace-shoot.jpg',
+        thumb: '/hillhouse/media/images/gallery/productions/pink-dress-terrace-shoot.jpg',
+        alt: 'Fashion shoot on the terrace at Hill House',
       },
     ],
   },
@@ -226,91 +210,91 @@ const categories = computed(() => [
     kicker: t('home.redesign.gallery.category3Kicker'),
     title: t('home.redesign.gallery.category3Title'),
     text: t('home.redesign.gallery.category3Text'),
-    cover: '/hillhouse/media/images/gallery/images/470901629_17918678640039592_3099890115148828767_n.jpg',
+    cover: '/hillhouse/media/images/gallery/interior/bathroom-marble-gold.jpg',
     items: [
       {
         type: 'image',
-        src: '/hillhouse/media/images/gallery/images/364001117_18242545369201536_4203418131381997904_n.jpg',
-        thumb: '/hillhouse/media/images/gallery/images/364001117_18242545369201536_4203418131381997904_n.jpg',
-        alt: 'Guest bedroom at Hill House',
+        src: '/hillhouse/media/images/gallery/interior/bedroom-velvet-headboard.jpg',
+        thumb: '/hillhouse/media/images/gallery/interior/bedroom-velvet-headboard.jpg',
+        alt: 'Luxury bedroom with velvet headboard and pendant lighting at Hill House',
       },
       {
         type: 'image',
-        src: '/hillhouse/media/images/gallery/images/470901629_17918678640039592_3099890115148828767_n.jpg',
-        thumb: '/hillhouse/media/images/gallery/images/470901629_17918678640039592_3099890115148828767_n.jpg',
-        alt: 'Cinema-style lounge at Hill House',
+        src: '/hillhouse/media/images/gallery/interior/cinema-lounge-green-led.jpg',
+        thumb: '/hillhouse/media/images/gallery/interior/cinema-lounge-green-led.jpg',
+        alt: 'Cinema lounge with curved sofas and green LED ambiance at Hill House',
       },
       {
         type: 'image',
-        src: '/hillhouse/media/images/gallery/images/482699287_17925166194039592_273481520265809030_n.jpg',
-        thumb: '/hillhouse/media/images/gallery/images/482699287_17925166194039592_273481520265809030_n.jpg',
-        alt: 'Marble bathroom at Hill House',
+        src: '/hillhouse/media/images/gallery/interior/bathroom-marble-gold.jpg',
+        thumb: '/hillhouse/media/images/gallery/interior/bathroom-marble-gold.jpg',
+        alt: 'Marble bathroom with gold fixtures and round mirror at Hill House',
       },
       {
         type: 'image',
-        src: '/hillhouse/media/images/gallery/images/469837374_17914743315039592_5709431169108135342_n.jpg',
-        thumb: '/hillhouse/media/images/gallery/images/469837374_17914743315039592_5709431169108135342_n.jpg',
-        alt: 'Dining detail at Hill House',
+        src: '/hillhouse/media/images/gallery/interior/living-room-shelves.jpg',
+        thumb: '/hillhouse/media/images/gallery/interior/living-room-shelves.jpg',
+        alt: 'Living room with built-in shelves and TV wall at Hill House',
       },
       {
         type: 'image',
-        src: '/hillhouse/media/images/gallery/images/470067531_17914988325039592_1901962374289323875_n.jpg',
-        thumb: '/hillhouse/media/images/gallery/images/470067531_17914988325039592_1901962374289323875_n.jpg',
-        alt: 'Refined entry and living detail at Hill House',
+        src: '/hillhouse/media/images/gallery/interior/terrace-sunset-lounge.jpg',
+        thumb: '/hillhouse/media/images/gallery/interior/terrace-sunset-lounge.jpg',
+        alt: 'Lit terrace lounge at sunset with panoramic valley view at Hill House',
       },
       {
         type: 'image',
-        src: '/hillhouse/media/images/gallery/images2/IMG_3660.jpeg',
-        thumb: '/hillhouse/media/images/gallery/images2/IMG_3660.jpeg',
-        alt: 'Sauna at Hill House',
+        src: '/hillhouse/media/images/gallery/interior/sauna-glass-door.jpeg',
+        thumb: '/hillhouse/media/images/gallery/interior/sauna-glass-door.jpeg',
+        alt: 'Private sauna with glass door and warm wood interior at Hill House',
       },
       {
         type: 'image',
-        src: '/hillhouse/media/images/gallery/images2/IMG_3676.jpeg',
-        thumb: '/hillhouse/media/images/gallery/images2/IMG_3676.jpeg',
-        alt: 'Spa lounge and sauna at Hill House',
+        src: '/hillhouse/media/images/gallery/interior/spa-lounge-blue-led.jpeg',
+        thumb: '/hillhouse/media/images/gallery/interior/spa-lounge-blue-led.jpeg',
+        alt: 'Spa lounge with star ceiling, blue LED lighting and sauna at Hill House',
       },
       {
         type: 'image',
-        src: '/hillhouse/media/images/gallery/images2/IMG_3786.jpeg',
-        thumb: '/hillhouse/media/images/gallery/images2/IMG_3786.jpeg',
-        alt: 'Wellness lounge corner at Hill House',
+        src: '/hillhouse/media/images/gallery/interior/lower-lounge-staircase.jpeg',
+        thumb: '/hillhouse/media/images/gallery/interior/lower-lounge-staircase.jpeg',
+        alt: 'Lower level lounge with staircase and ambient LED lighting at Hill House',
       },
       {
         type: 'image',
-        src: '/hillhouse/media/images/gallery/images2/IMG_4120.jpeg',
-        thumb: '/hillhouse/media/images/gallery/images2/IMG_4120.jpeg',
-        alt: 'Styled dining scene inside Hill House',
+        src: '/hillhouse/media/images/gallery/interior/dining-chandelier-roses.jpeg',
+        thumb: '/hillhouse/media/images/gallery/interior/dining-chandelier-roses.jpeg',
+        alt: 'Round dining table under chandelier with rose centerpiece at Hill House',
       },
       {
         type: 'image',
-        src: '/hillhouse/media/images/gallery/images2/IMG_4287.jpeg',
-        thumb: '/hillhouse/media/images/gallery/images2/IMG_4287.jpeg',
-        alt: 'Indoor dining setup at Hill House',
+        src: '/hillhouse/media/images/gallery/interior/dining-white-florals.jpeg',
+        thumb: '/hillhouse/media/images/gallery/interior/dining-white-florals.jpeg',
+        alt: 'Dining room set with white chairs and floral centerpiece at Hill House',
       },
       {
         type: 'image',
-        src: '/hillhouse/media/images/gallery/images2/IMG_4293.jpeg',
-        thumb: '/hillhouse/media/images/gallery/images2/IMG_4293.jpeg',
-        alt: 'Styled occasion table inside Hill House',
+        src: '/hillhouse/media/images/gallery/interior/dining-pink-setup.jpeg',
+        thumb: '/hillhouse/media/images/gallery/interior/dining-pink-setup.jpeg',
+        alt: 'Dining table set with pink napkins and floral runner at Hill House',
       },
       {
         type: 'image',
-        src: '/hillhouse/media/images/gallery/images2/IMG_4300.jpeg',
-        thumb: '/hillhouse/media/images/gallery/images2/IMG_4300.jpeg',
-        alt: 'Interior dining atmosphere at Hill House',
+        src: '/hillhouse/media/images/gallery/interior/club-lounge-sofas.jpeg',
+        thumb: '/hillhouse/media/images/gallery/interior/club-lounge-sofas.jpeg',
+        alt: 'Club lounge with white modular sofas and LED ceiling at Hill House',
       },
       {
         type: 'image',
-        src: '/hillhouse/media/images/gallery/images2/IMG_4302.jpeg',
-        thumb: '/hillhouse/media/images/gallery/images2/IMG_4302.jpeg',
-        alt: 'Floral interior styling at Hill House',
+        src: '/hillhouse/media/images/gallery/interior/lounge-floral-table.jpeg',
+        thumb: '/hillhouse/media/images/gallery/interior/lounge-floral-table.jpeg',
+        alt: 'Lounge area with round marble table and floral arrangement at Hill House',
       },
       {
         type: 'image',
-        src: '/hillhouse/media/images/gallery/images2/IMG_4303.jpeg',
-        thumb: '/hillhouse/media/images/gallery/images2/IMG_4303.jpeg',
-        alt: 'Jacuzzi corner at Hill House',
+        src: '/hillhouse/media/images/gallery/interior/jacuzzi-with-food.jpeg',
+        thumb: '/hillhouse/media/images/gallery/interior/jacuzzi-with-food.jpeg',
+        alt: 'Indoor jacuzzi with food and drinks tray at Hill House',
       },
     ],
   },
@@ -320,19 +304,19 @@ const categories = computed(() => [
     kicker: t('home.redesign.gallery.category4Kicker'),
     title: t('home.redesign.gallery.category4Title'),
     text: t('home.redesign.gallery.category4Text'),
-    cover: '/hillhouse/media/images/gallery/images/lounge.jpg',
+    cover: '/hillhouse/media/images/gallery/outdoor/outdoor-covered-lounge.jpg',
     items: [
       {
         type: 'image',
-        src: '/hillhouse/media/images/gallery/images/lounge.jpg',
-        thumb: '/hillhouse/media/images/gallery/images/lounge.jpg',
-        alt: 'Poolside lounge terrace at Hill House',
+        src: '/hillhouse/media/images/gallery/outdoor/outdoor-covered-lounge.jpg',
+        thumb: '/hillhouse/media/images/gallery/outdoor/outdoor-covered-lounge.jpg',
+        alt: 'Covered outdoor lounge terrace by the pool at Hill House',
       },
       {
         type: 'image',
-        src: '/hillhouse/media/images/gallery/images/474325820_17919892302039592_281499898998587183_n.jpg',
-        thumb: '/hillhouse/media/images/gallery/images/474325820_17919892302039592_281499898998587183_n.jpg',
-        alt: 'Sunset terrace view at Hill House',
+        src: '/hillhouse/media/images/gallery/interior/lounge-sheer-curtains.jpg',
+        thumb: '/hillhouse/media/images/gallery/interior/lounge-sheer-curtains.jpg',
+        alt: 'Indoor lounge with sheer curtains and modern chairs at Hill House',
       },
       {
         type: 'image',
@@ -342,39 +326,39 @@ const categories = computed(() => [
       },
       {
         type: 'image',
-        src: '/hillhouse/media/images/gallery/images2/IMG_0312.jpeg',
-        thumb: '/hillhouse/media/images/gallery/images2/IMG_0312.jpeg',
-        alt: 'Open-air pool view at Hill House',
+        src: '/hillhouse/media/images/gallery/outdoor/pool-sunset-palms.jpeg',
+        thumb: '/hillhouse/media/images/gallery/outdoor/pool-sunset-palms.jpeg',
+        alt: 'Infinity pool at sunset with palm trees at Hill House',
       },
       {
         type: 'image',
-        src: '/hillhouse/media/images/gallery/images2/IMG_1437.jpeg',
-        thumb: '/hillhouse/media/images/gallery/images2/IMG_1437.jpeg',
-        alt: 'Infinity pool view at sunset at Hill House',
+        src: '/hillhouse/media/images/gallery/outdoor/pool-loungers-pergola.jpeg',
+        thumb: '/hillhouse/media/images/gallery/outdoor/pool-loungers-pergola.jpeg',
+        alt: 'Pool with sun loungers and pergola on a summer day at Hill House',
       },
       {
         type: 'image',
-        src: '/hillhouse/media/images/gallery/images2/IMG_2392.jpeg',
-        thumb: '/hillhouse/media/images/gallery/images2/IMG_2392.jpeg',
-        alt: 'Poolside loungers at dusk at Hill House',
+        src: '/hillhouse/media/images/gallery/outdoor/pool-palm-dusk.jpeg',
+        thumb: '/hillhouse/media/images/gallery/outdoor/pool-palm-dusk.jpeg',
+        alt: 'Pool and palm tree at dusk with outdoor seating at Hill House',
       },
       {
         type: 'image',
-        src: '/hillhouse/media/images/gallery/images2/IMG_2851.jpeg',
-        thumb: '/hillhouse/media/images/gallery/images2/IMG_2851.jpeg',
-        alt: 'Palm-framed pool at twilight at Hill House',
+        src: '/hillhouse/media/images/gallery/outdoor/villa-pool-exterior.jpeg',
+        thumb: '/hillhouse/media/images/gallery/outdoor/villa-pool-exterior.jpeg',
+        alt: 'Villa exterior with pool and terrace seating at Hill House',
       },
       {
         type: 'image',
-        src: '/hillhouse/media/images/gallery/images2/IMG_2857.jpeg',
-        thumb: '/hillhouse/media/images/gallery/images2/IMG_2857.jpeg',
-        alt: 'Wide exterior view of Hill House and pool',
+        src: '/hillhouse/media/images/gallery/outdoor/villa-garden-path.jpeg',
+        thumb: '/hillhouse/media/images/gallery/outdoor/villa-garden-path.jpeg',
+        alt: 'Villa exterior with garden path and pool area at Hill House',
       },
       {
         type: 'image',
-        src: '/hillhouse/media/images/gallery/images2/IMG_7860.jpeg',
-        thumb: '/hillhouse/media/images/gallery/images2/IMG_7860.jpeg',
-        alt: 'Elegant dining setup inside Hill House',
+        src: '/hillhouse/media/images/gallery/outdoor/garden-path-flowers.jpeg',
+        thumb: '/hillhouse/media/images/gallery/outdoor/garden-path-flowers.jpeg',
+        alt: 'Garden path lined with flowering plants at Hill House',
       },
     ],
   },
@@ -384,21 +368,14 @@ const categories = computed(() => [
     kicker: t('home.redesign.gallery.category5Kicker'),
     title: t('home.redesign.gallery.category5Title'),
     text: t('home.redesign.gallery.category5Text'),
-    cover: '/hillhouse/media/images/gallery/vila-prestige-hill-15-1920x1438.jpeg',
+    cover: '/hillhouse/media/images/gallery/professional/vila-prestige-hill-15-1920x1438.jpeg',
     items: [
       {
         type: 'video',
         src: '/hillhouse/media/videos/overview.mp4',
-        poster: '/hillhouse/media/images/gallery/vila-prestige-hill-15-1920x1438.jpeg',
-        thumb: '/hillhouse/media/images/gallery/resized/vila-prestige-hill-15-1920x1438.jpeg',
+        poster: '/hillhouse/media/images/gallery/professional/vila-prestige-hill-15-1920x1438.jpeg',
+        thumb: '/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-15-1920x1438.jpeg',
         alt: 'Overview video of Hill House',
-      },
-      {
-        type: 'video',
-        src: '/hillhouse/media/videos/intro.mp4',
-        poster: '/hillhouse/media/images/gallery/vila-prestige-hill-14-1920x1280.jpeg',
-        thumb: '/hillhouse/media/images/gallery/resized/vila-prestige-hill-14-1920x1280.jpeg',
-        alt: 'Atmospheric intro video of Hill House',
       },
     ],
   },
@@ -540,6 +517,7 @@ watch([dialog, selectedCategoryId, activeItemIndex], async ([isOpen]) => {
 <style scoped>
 .curated-gallery {
   padding: 132px 0;
+  padding-top: 0;
   background: #fff;
 }
 
@@ -890,6 +868,58 @@ watch([dialog, selectedCategoryId, activeItemIndex], async ([isOpen]) => {
   text-transform: uppercase;
 }
 
+@media (max-width: 1366px) and (min-width: 961px) {
+  .curated-gallery {
+    padding: 112px 0 92px;
+  }
+
+  .curated-gallery__breakout {
+    width: min(1320px, calc(100vw - 48px));
+  }
+
+  .gallery-categories {
+    gap: 16px;
+  }
+
+  .gallery-category--hero,
+  .gallery-category--tall {
+    min-height: 460px;
+  }
+
+  .gallery-category--portrait {
+    min-height: 290px;
+  }
+
+  .gallery-dialog__stage {
+    padding: 66px 78px 116px;
+  }
+
+  .gallery-dialog__media,
+  .gallery-dialog__video {
+    width: min(1320px, calc(100vw - 180px));
+    height: calc(100vh - 196px);
+  }
+
+  .gallery-dialog__info {
+    width: min(1080px, calc(100vw - 88px));
+  }
+}
+
+@media (max-height: 820px) and (min-width: 961px) {
+  .gallery-dialog__stage {
+    padding: 58px 72px 102px;
+  }
+
+  .gallery-dialog__media,
+  .gallery-dialog__video {
+    height: calc(100vh - 176px);
+  }
+
+  .gallery-dialog__info {
+    bottom: 10px;
+  }
+}
+
 @media (max-width: 1264px) {
   .curated-gallery__breakout {
     width: min(1280px, calc(100vw - 28px));
@@ -904,9 +934,31 @@ watch([dialog, selectedCategoryId, activeItemIndex], async ([isOpen]) => {
   }
 }
 
-@media (max-width: 960px) {
+@media (max-width: 960px) and (min-width: 600px) {
+  .gallery-category--hero {
+    grid-column: span 12;
+    min-height: 380px;
+  }
+
+  .gallery-category--tall,
+  .gallery-category--portrait {
+    grid-column: span 6;
+    grid-row: span 1;
+    min-height: 280px;
+  }
+}
+
+@media (max-width: 780px) {
+  .curated-gallery {
+    padding: 92px 0 76px;
+  }
+
   .curated-gallery__breakout {
     width: calc(100vw - 24px);
+  }
+
+  .gallery-categories {
+    gap: 16px;
   }
 
   .gallery-dialog__topbar {
@@ -931,23 +983,32 @@ watch([dialog, selectedCategoryId, activeItemIndex], async ([isOpen]) => {
 }
 
 @media (max-width: 640px) {
+  .curated-gallery {
+    padding: 52px 0 48px;
+  }
+
   .gallery-categories {
     grid-template-columns: 1fr;
+    gap: 14px;
   }
 
   .gallery-category--hero,
   .gallery-category--tall,
   .gallery-category--portrait {
     grid-column: span 1;
-    min-height: 280px;
+    min-height: 248px;
   }
 
   .gallery-category__content {
-    padding: 20px;
+    padding: 16px;
   }
 
   .gallery-category__text {
     max-width: 100%;
+  }
+
+  .curated-gallery__action {
+    margin-top: 22px;
   }
 
   .gallery-dialog__topbar {

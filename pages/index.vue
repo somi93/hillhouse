@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <redesign-home></redesign-home>
 </template>
 
@@ -21,18 +21,22 @@ let structuredData = {
   "@type": "WebSite",
   url: "https://www.hillhouse.rs",
   name: "Hillhouse.rs",
-  description: "Premium vila za proslave, okupljanja i posebne trenutke u blizini Beograda.",
-  alternateName: "Izdavanje vikendice",
+  description:
+      "Privatna luksuzna vila za proslave, venčanja i posebne događaje sa bazenom, spa zonom i atmosferom koja ostavlja utisak — 30 minuta od Beograda.",
+  alternateName: "Vila Hill House Šepšin",
   publisher: {
     "@type": "Organization",
     "@id": "https://www.hillhouse.rs/#organization",
     name: "Hill House",
     url: "https://www.hillhouse.rs",
-    sameAs: "https://www.instagram.com/hill_luxury_house",
+    sameAs: [
+      "https://www.instagram.com/hill_luxury_house",
+      "https://www.facebook.com/hillhouselux"
+    ],
     logo: {
       "@type": "ImageObject",
       "@id": "https://www.hillhouse.rs/#/schema/logo/image/",
-      url: "https://www.hillhouse.rs/hillhouse/media/images/logo5.png",
+      url: "https://www.hillhouse.rs/hillhouse/media/images/logo.png",
       width: "994",
       height: "232",
       caption: "Hill House logo",
@@ -41,7 +45,7 @@ let structuredData = {
       "@type": "ImageObject",
       "@id": "https://www.hillhouse.rs/#mainImage",
       url:
-        "https://www.hillhouse.rs/hillhouse/media/images/gallery/vila-prestige-hill-15-1920x1438.jpeg",
+        "https://www.hillhouse.rs/hillhouse/media/images/gallery/professional/vila-prestige-hill-15-1920x1438.jpeg",
       width: "1920",
       height: "1438",
       caption: "Hill House vila",
@@ -54,14 +58,15 @@ let structuredData = {
       postalCode: "11433",
       addressCountry: "Serbia",
     },
-    email: "",
+    email: undefined,
     telephone: "+38169635632",
+    priceRange: "€€€",
   },
   image: {
     "@type": "ImageObject",
     "@id": "https://www.hillhouse.rs/#mainImage",
     url:
-      "https://www.hillhouse.rs/hillhouse/media/images/gallery/vila-prestige-hill-15-1920x1438.jpeg",
+      "https://www.hillhouse.rs/hillhouse/media/images/gallery/professional/vila-prestige-hill-15-1920x1438.jpeg",
     width: "1920",
     height: "1438",
     caption: "Hill House vila",
@@ -70,9 +75,9 @@ let structuredData = {
     "@type": "LocalBusiness",
     "@id": "https://www.hillhouse.rs", // Website URL for the house (same as website)
     url: "https://www.hillhouse.rs", // Website URL for the house
-    name: "Hill House - Vila za izdavanje",
+    name: "Hill House — Privatna vila za proslave i posebne trenutke",
     description:
-      "Hill House je premium vila za proslave, privatne događaje i okupljanja uz bazen, spa zonu i atmosferu luksuznog privatnog retreat-a.",
+      "Hill House je privatna luksuzna vila za proslave, venčanja i posebne događaje sa bazenom, spa zonom i atmosferom koja ostavlja utisak — Šepšin, 30 minuta od Beograda.",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Varovničkih ratnika",
@@ -123,7 +128,7 @@ let structuredData = {
 };
 
 useHead({
-  title: "Hill House - Vila za izdavanje",
+  title: "Hill House — Privatna vila za proslave i posebne trenutke",
   link: [
     {
       rel: "canonical",
@@ -137,26 +142,37 @@ useHead({
     },
     {
       name: "description",
-      content: `Hill House je premium vila za proslave, privatne događaje i posebne trenutke, sa bazenom, spa zonom i atmosferom koja ostavlja utisak, na samo 30 minuta od Beograda.`,
+      content: "Hill House je privatna luksuzna vila za proslave, venčanja i posebne događaje sa bazenom, spa zonom i atmosferom koja ostavlja utisak — na 30 minuta od Beograda.",
     },
     {
       hid: "keywords",
       name: "keywords",
-      content:
-        "hill house, iznajmljivanje vikendica, iznajmljivanje vila, vila u blizini beograda, luksuzne vile",
+      content: "privatna vila za proslave, iznajmljivanje vile beograd, vila sa bazenom, vila za venčanje, proslave u prirodi, luksuzna vikendica beograd, hill house, šepšin",
     },
     {
       property: "og:title",
-      content: "Hill House - Vila za izdavanje",
+      content: "Hill House — Privatna vila za proslave i posebne trenutke",
     },
     {
       property: "og:description",
-      content: `Hill House je premium vila za proslave, privatne događaje i posebne trenutke, sa bazenom, spa zonom i atmosferom koja ostavlja utisak, na samo 30 minuta od Beograda.`,
+      content: "Privatna luksuzna vila sa bazenom, spa zonom i atmosferom koja ostavlja utisak. Za proslave, venčanja i posebne događaje — 30 minuta od Beograda.",
     },
     {
       property: "og:image",
       content:
-        "https://www.hillhouse.rs/hillhouse/media/images/gallery/vila-prestige-hill-15-1920x1438.jpeg",
+        "https://www.hillhouse.rs/hillhouse/media/images/gallery/professional/vila-prestige-hill-15-1920x1438.jpeg",
+    },
+    {
+      property: "og:image:width",
+      content: "1920",
+    },
+    {
+      property: "og:image:height",
+      content: "1438",
+    },
+    {
+      property: "og:image:type",
+      content: "image/jpeg",
     },
     {
       property: "og:type",
@@ -169,6 +185,23 @@ useHead({
     {
       property: "og:url",
       content: "https://www.hillhouse.rs",
+    },
+    {
+      name: "twitter:card",
+      content: "summary_large_image",
+    },
+    {
+      name: "twitter:title",
+      content: "Hill House — Privatna vila za proslave i posebne trenutke",
+    },
+    {
+      name: "twitter:description",
+      content: "Privatna luksuzna vila sa bazenom, spa zonom i atmosferom koja ostavlja utisak. 30 minuta od Beograda.",
+    },
+    {
+      name: "twitter:image",
+      content:
+        "https://www.hillhouse.rs/hillhouse/media/images/gallery/professional/vila-prestige-hill-15-1920x1438.jpeg",
     },
   ],
   script: {

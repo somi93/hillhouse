@@ -3,7 +3,7 @@
     <v-container>
       <div class="content-shell">
         <v-row align="start" class="location-preview__grid">
-          <v-col cols="12" lg="5">
+          <v-col cols="12" sm="5" md="5">
             <div class="section-copy section-copy--narrow location-preview__copy">
               <p class="section-eyebrow">{{ t("home.redesign.location.eyebrow") }}</p>
               <h2 class="section-title section-title--dark location-preview__title">
@@ -26,7 +26,7 @@
               </a>
             </div>
           </v-col>
-          <v-col cols="12" lg="7">
+          <v-col cols="12" sm="7" md="7">
             <div class="location-preview__map-wrap">
               <iframe
                 class="location-preview__map"
@@ -145,7 +145,36 @@ const { t } = useI18n({ useScope: "global" });
   letter-spacing: 0.08em;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1366px) and (min-width: 961px) {
+  .location-preview {
+    padding: 108px 0 82px;
+  }
+
+  .location-preview__grid {
+    row-gap: 26px;
+  }
+
+  .location-preview__map-wrap {
+    min-height: 404px;
+  }
+}
+
+@media (max-width: 960px) and (min-width: 600px) {
+  .location-preview {
+    padding: 88px 0 72px;
+  }
+
+  .location-preview__map-wrap {
+    min-height: 420px;
+  }
+
+  .location-preview__title,
+  .location-preview__text {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 780px) {
   .location-preview {
     padding: 104px 0 76px;
   }
@@ -168,8 +197,13 @@ const { t } = useI18n({ useScope: "global" });
     padding: 88px 0 60px;
   }
 
+  .location-preview__facts {
+    gap: 10px;
+    margin: 22px 0 18px;
+  }
+
   .location-preview__map-wrap {
-    min-height: 320px;
+    min-height: 280px;
     border-radius: 18px;
   }
 

@@ -26,7 +26,7 @@
             {{ t('home.redesign.cta.primary') }}
           </v-btn>
           <v-btn
-            :to="{ name: 'pricing' }"
+            :to="localePath('/pricing')"
             variant="outlined"
             class="reservation-cta__secondary"
             width="220px"
@@ -47,6 +47,7 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
 
+const localePath = useLocalePath()
 const { t } = useI18n({ useScope: 'global' })
 </script>
 
@@ -54,14 +55,15 @@ const { t } = useI18n({ useScope: 'global' })
 .reservation-cta {
   padding: 124px 0;
   background:
-    linear-gradient(135deg, rgba(207, 169, 117, 0.12), transparent 32%),
+    radial-gradient(ellipse 60% 50% at 100% 100%, rgba(207, 169, 117, 0.09), transparent),
+    linear-gradient(135deg, rgba(207, 169, 117, 0.11), transparent 36%),
     #151515;
 }
 
 .reservation-cta__inner {
   display: grid;
   grid-template-columns: minmax(0, 1.3fr) minmax(320px, 0.7fr);
-  gap: 32px;
+  gap: 56px;
   align-items: center;
 }
 
@@ -70,7 +72,7 @@ const { t } = useI18n({ useScope: 'global' })
 }
 
 .reservation-cta__text {
-  max-width: 56ch;
+  max-width: 52ch;
 }
 
 .reservation-cta__actions {
@@ -79,8 +81,11 @@ const { t } = useI18n({ useScope: 'global' })
   align-items: flex-start;
   gap: 14px;
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 2px solid var(--brand-gold);
+  border-radius: 14px;
+  padding: 32px 28px;
+  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.32);
 }
 
 .reservation-cta__phone {
@@ -88,27 +93,123 @@ const { t } = useI18n({ useScope: 'global' })
   font-family: var(--font-heading);
   font-size: 2rem;
   text-decoration: none;
+  letter-spacing: 0.02em;
 }
 
 .reservation-cta__secondary {
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.34);
+  color: #fff !important;
+  border: 1px solid rgba(255, 255, 255, 0.28) !important;
   text-transform: none;
 }
 
 .reservation-cta__mail {
   color: var(--brand-gold);
   text-decoration: none;
+  font-size: 0.88rem;
+  letter-spacing: 0.06em;
 }
 
 .reservation-cta__note {
-  color: rgba(255, 255, 255, 0.62);
-  margin-top: 4px;
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 0.84rem;
+  margin-top: 2px;
 }
 
-@media (max-width: 1264px) {
+/* ── 1366px tablet-landscape ── */
+@media (max-width: 1366px) and (min-width: 961px) {
+  .reservation-cta {
+    padding: 108px 0 88px;
+  }
+
+  .reservation-cta__inner {
+    grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+    gap: 40px;
+  }
+
+  .reservation-cta__actions {
+    padding: 26px 24px;
+    gap: 12px;
+  }
+
+  .reservation-cta__phone {
+    font-size: 1.8rem;
+  }
+}
+
+/* ── tablet portrait / iPad: keep 2-column until ~768px ── */
+@media (max-width: 960px) and (min-width: 768px) {
+  .reservation-cta {
+    padding: 88px 0 72px;
+  }
+
+  .reservation-cta__inner {
+    grid-template-columns: 1fr 280px;
+    gap: 32px;
+  }
+
+  .reservation-cta__title {
+    font-size: clamp(1.9rem, 3.8vw, 2.6rem);
+    max-width: 20ch;
+  }
+
+  .reservation-cta__text {
+    max-width: 44ch;
+  }
+
+  .reservation-cta__actions {
+    align-self: stretch;
+    padding: 24px 20px;
+    gap: 12px;
+  }
+
+  .reservation-cta__phone {
+    font-size: 1.55rem;
+  }
+}
+
+/* ── single column below 768px ── */
+@media (max-width: 767px) {
+  .reservation-cta {
+    padding: 80px 0 64px;
+  }
+
   .reservation-cta__inner {
     grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .reservation-cta__title {
+    font-size: clamp(1.75rem, 5.8vw, 2.4rem);
+    max-width: 22ch;
+  }
+
+  .reservation-cta__actions {
+    align-items: stretch;
+    padding: 26px 22px;
+  }
+
+  .reservation-cta__phone {
+    font-size: 1.6rem;
+  }
+
+  .reservation-cta__actions :deep(.v-btn) {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .reservation-cta {
+    padding: 68px 0 52px;
+  }
+
+  .reservation-cta__actions {
+    padding: 20px 16px;
+    gap: 12px;
+  }
+
+  .reservation-cta__phone {
+    font-size: 1.45rem;
   }
 }
 </style>

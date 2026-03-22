@@ -7,78 +7,88 @@
     class="site-header"
     :class="isHeroState ? 'site-header--hero' : 'site-header--solid'"
   >
-    <div class="content-shell site-header__shell">
-      <div class="site-header__utility">
-        <div class="site-header__locale">
-          <v-btn
-            size="x-small"
-            variant="text"
-            class="site-header__locale-btn"
-            :class="locale === 'sr' ? 'site-header__locale-btn--active' : ''"
-            @click="changeLocale('sr')"
+    <v-container>
+      <div class="content-shell site-header__shell">
+        <div class="site-header__utility">
+          <div class="site-header__locale">
+            <v-btn
+              size="x-small"
+              variant="text"
+              class="site-header__locale-btn"
+              :class="locale === 'sr' ? 'site-header__locale-btn--active' : ''"
+              @click="changeLocale('sr')"
+            >
+              SR
+            </v-btn>
+            <v-btn
+              size="x-small"
+              variant="text"
+              class="site-header__locale-btn"
+              :class="locale === 'en' ? 'site-header__locale-btn--active' : ''"
+              @click="changeLocale('en')"
+            >
+              EN
+            </v-btn>
+          </div>
+        </div>
+
+        <div class="site-header__main">
+          <nav class="site-header__nav site-header__nav--left">
+            <template v-for="item in menuLeft" :key="item.title">
+              <router-link
+                v-if="item.to"
+                :to="item.to"
+                class="site-header__nav-link"
+                :class="isRouteActive(item.to) ? 'site-header__nav-link--active' : ''"
+              >
+                {{ item.title }}
+              </router-link>
+              <button
+                v-else
+                type="button"
+                class="site-header__nav-link"
+                @click="scrollTo(item.href)"
+              >
+                {{ item.title }}
+              </button>
+            </template>
+          </nav>
+
+          <router-link
+            :to="localePath('/')"
+            class="site-header__logo-link"
+            aria-label="Hill House home"
           >
-            SR
-          </v-btn>
-          <v-btn
-            size="x-small"
-            variant="text"
-            class="site-header__locale-btn"
-            :class="locale === 'en' ? 'site-header__locale-btn--active' : ''"
-            @click="changeLocale('en')"
-          >
-            EN
-          </v-btn>
+            <img
+              src="/hillhouse/media/images/logo.png"
+              alt="Hill House logo"
+              class="site-header__logo"
+            />
+          </router-link>
+
+          <nav class="site-header__nav site-header__nav--right">
+            <template v-for="item in menuRight" :key="item.title">
+              <router-link
+                v-if="item.to"
+                :to="item.to"
+                class="site-header__nav-link"
+                :class="isRouteActive(item.to) ? 'site-header__nav-link--active' : ''"
+              >
+                {{ item.title }}
+              </router-link>
+              <button
+                v-else
+                type="button"
+                class="site-header__nav-link"
+                @click="scrollTo(item.href)"
+              >
+                {{ item.title }}
+              </button>
+            </template>
+          </nav>
         </div>
       </div>
-
-      <div class="site-header__main">
-        <nav class="site-header__nav site-header__nav--left">
-          <template v-for="item in menuLeft" :key="item.title">
-            <router-link
-              v-if="item.to"
-              :to="item.to"
-              class="site-header__nav-link"
-              :class="isRouteActive(item.to) ? 'site-header__nav-link--active' : ''"
-            >
-              {{ item.title }}
-            </router-link>
-            <button
-              v-else
-              type="button"
-              class="site-header__nav-link"
-              @click="scrollTo(item.href)"
-            >
-              {{ item.title }}
-            </button>
-          </template>
-        </nav>
-
-        <router-link :to="{ name: 'index' }" class="site-header__logo-link" aria-label="Hill House home">
-          <img src="/hillhouse/media/images/logo5.png" alt="Hill House logo" class="site-header__logo" />
-        </router-link>
-
-        <nav class="site-header__nav site-header__nav--right">
-          <template v-for="item in menuRight" :key="item.title">
-            <router-link
-              v-if="item.to"
-              :to="item.to"
-              class="site-header__nav-link"
-              :class="isRouteActive(item.to) ? 'site-header__nav-link--active' : ''"
-            >
-              {{ item.title }}
-            </router-link>
-            <button
-              v-else
-              type="button"
-              class="site-header__nav-link"
-              @click="scrollTo(item.href)"
-            >
-              {{ item.title }}
-            </button>
-          </template>
-        </nav>
-      </div>
-    </div>
+    </v-container>
   </v-app-bar>
 </template>
 
@@ -89,19 +99,22 @@ import { useRoute, useRouter } from "vue-router";
 
 const HEADER_HEIGHT = 104;
 
+const localePath = useLocalePath()
+const switchLocalePath = useSwitchLocalePath()
 const route = useRoute();
 const router = useRouter();
-const isHeroState = ref(route.name === "index");
+const isHeroState = ref(String(route.name ?? '').split('___')[0] === "index");
 const { locale, t } = useI18n({ useScope: "global" });
 
 const menuLeft = computed(() => [
   {
     title: t("layout.menu.home"),
-    to: { name: "index" },
+    to: localePath('/'),
+
   },
   {
     title: t("layout.menu.about"),
-    to: { name: "about" },
+    to: localePath('/about'),
   },
   {
     title: t("layout.menu.facilities"),
@@ -120,11 +133,11 @@ const menuRight = computed(() => [
   },
   {
     title: t("layout.menu.gallery"),
-    to: { name: "gallery" },
+    to: localePath('/gallery'),
   },
   {
     title: t("layout.menu.pricing"),
-    to: { name: "pricing" },
+    to: localePath('/pricing'),
   },
   {
     title: t("layout.menu.map"),
@@ -133,7 +146,7 @@ const menuRight = computed(() => [
 ]);
 
 const onScroll = () => {
-  if (route.name === "index") {
+  if (String(route.name ?? '').split('___')[0] === "index") {
     const doc = document.documentElement;
     const top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
     const hero = document.getElementById("videoBox");
@@ -146,7 +159,7 @@ const onScroll = () => {
 };
 
 const scrollTo = (target) => {
-  if (route.name === "index") {
+  if (String(route.name ?? '').split('___')[0] === "index") {
     const element = document.querySelector(target);
     if (!element) {
       return;
@@ -160,19 +173,20 @@ const scrollTo = (target) => {
     return;
   }
 
-  router.push({ name: "index", hash: target });
+  router.push({ path: localePath('/'), hash: target });
 };
 
 const changeLocale = (value) => {
-  locale.value = value;
+  const path = switchLocalePath(value)
+  if (path) router.push(path)
 };
 
-const isRouteActive = (to) => route.name === to.name;
+const isRouteActive = (to) => route.path === to || (to === '/' && route.path === '/');
 
 watch(
   () => route.name,
   (name) => {
-    isHeroState.value = name === "index";
+    isHeroState.value = String(name ?? '').split('___')[0] === "index";
   },
   {
     immediate: true,
@@ -187,7 +201,12 @@ watch(
 }
 
 .site-header--hero {
-  background: linear-gradient(180deg, rgba(8, 8, 8, 0.54) 0%, rgba(8, 8, 8, 0.36) 62%, rgba(8, 8, 8, 0.18) 100%) !important;
+  background: linear-gradient(
+    180deg,
+    rgba(8, 8, 8, 0.54) 0%,
+    rgba(8, 8, 8, 0.36) 62%,
+    rgba(8, 8, 8, 0.18) 100%
+  ) !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   box-shadow: none;
 }
@@ -283,7 +302,13 @@ watch(
   right: 0;
   bottom: -7px;
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(207, 169, 117, 0.95) 20%, rgba(207, 169, 117, 0.95) 80%, transparent 100%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(207, 169, 117, 0.95) 20%,
+    rgba(207, 169, 117, 0.95) 80%,
+    transparent 100%
+  );
   opacity: 0;
   transform: scaleX(0.55);
   transform-origin: center;
@@ -317,5 +342,33 @@ watch(
 .site-header__logo {
   height: 68px;
   display: block;
+}
+
+@media (max-width: 1366px) and (min-width: 961px) {
+  .site-header__utility {
+    padding-top: 8px;
+  }
+
+  .site-header__main {
+    gap: 16px;
+  }
+
+  .site-header__nav {
+    gap: 14px;
+  }
+
+  .site-header__nav-link {
+    font-size: 0.76rem;
+    letter-spacing: 0.05em;
+    min-height: 38px;
+  }
+
+  .site-header__logo-link {
+    padding: 0 18px;
+  }
+
+  .site-header__logo {
+    height: 60px;
+  }
 }
 </style>

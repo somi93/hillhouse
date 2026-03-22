@@ -19,8 +19,8 @@
         <v-icon :icon="mdiMenu" size="22"></v-icon>
       </v-btn>
 
-      <router-link :to="{ name: 'index' }" class="mobile-site-header__logo-link" aria-label="Hill House home">
-        <img src="/hillhouse/media/images/logo5.png" alt="Hill House logo" class="mobile-site-header__logo" />
+      <router-link :to="localePath('/')" class="mobile-site-header__logo-link" aria-label="Hill House home">
+        <img src="/hillhouse/media/images/logo.png" alt="Hill House logo" class="mobile-site-header__logo" />
       </router-link>
 
       <div class="mobile-site-header__locale">
@@ -50,19 +50,22 @@
 <script setup>
 import { mdiMenu } from "@mdi/js";
 import { ref, watch } from "vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { useI18n } from "vue-i18n";
 import Drawer from "./drawer";
 
 const HEADER_HEIGHT = 84;
 
+const localePath = useLocalePath()
+const switchLocalePath = useSwitchLocalePath()
+const router = useRouter()
 const { locale } = useI18n({ useScope: "global" });
 const route = useRoute();
-const isHeroState = ref(route.name === "index");
+const isHeroState = ref(String(route.name ?? '').split('___')[0] === "index");
 const navDrawer = ref(false);
 
 const onScroll = () => {
-  if (route.name === "index") {
+  if (String(route.name ?? '').split('___')[0] === "index") {
     const doc = document.documentElement;
     const top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
     const hero = document.getElementById("videoBox");
@@ -75,13 +78,14 @@ const onScroll = () => {
 };
 
 const changeLocale = (value) => {
-  locale.value = value;
+  const path = switchLocalePath(value)
+  if (path) router.push(path)
 };
 
 watch(
   () => route.name,
   (name) => {
-    isHeroState.value = name === "index";
+    isHeroState.value = String(name ?? '').split('___')[0] === "index";
   },
   {
     immediate: true,

@@ -3,34 +3,34 @@
     <v-overlay
         v-model="overlay"
         width="100%"
-        content-class="bg-white"
-        class="bg-white"
+        content-class="gallery-overlay"
+        class="gallery-overlay"
         style="z-index: 9999"
         opacity="1">
       <v-btn
           position="absolute"
           style="right: 24px;top: 24px"
           variant="outlined"
-          color="#ccc"
+          color="rgba(255,255,255,0.18)"
           rounded="circle"
           size="40px"
           @click="overlay = false">
-        <v-icon size="24px" color="#000" :icon="mdiClose"></v-icon>
+        <v-icon size="22px" color="#fff" :icon="mdiClose"></v-icon>
       </v-btn>
       <v-row
           no-gutters
           style="height: 100vh;flex-wrap: nowrap"
           justify="space-between"
-          class="px-8"
+          class="px-6"
           align="center">
         <v-btn
             v-if="$device.isDesktop"
             variant="outlined"
-            color="#ccc"
+            color="rgba(255,255,255,0.18)"
             rounded="circle"
             size="48px"
             @click="previousImage">
-          <v-icon size="40px" color="#000" :icon="mdiChevronLeft"></v-icon>
+          <v-icon size="32px" color="#fff" :icon="mdiChevronLeft"></v-icon>
         </v-btn>
         <v-col cols="12" lg="11">
           <gallery-overlay-item
@@ -44,15 +44,17 @@
         <v-btn
             v-if="$device.isDesktop"
             variant="outlined"
-            color="#ccc"
+            color="rgba(255,255,255,0.18)"
             rounded="circle"
             size="48px"
             @click="nextImage">
-          <v-icon size="40px" color="#000" :icon="mdiChevronRight"></v-icon>
+          <v-icon size="32px" color="#fff" :icon="mdiChevronRight"></v-icon>
         </v-btn>
       </v-row>
-      <div style="position: absolute;right: 0px;bottom: 24px;width: 100%" class="text-center text-caption">
-        {{ imageIndex + 1 }}/{{ photos.length }}
+      <div class="gallery-overlay__counter">
+        <span class="gallery-overlay__index">{{ imageIndex + 1 }}</span>
+        <span class="gallery-overlay__sep">/</span>
+        <span class="gallery-overlay__total">{{ photos.length }}</span>
       </div>
     </v-overlay>
     <v-col cols="12" lg="12" class="mt-8">
@@ -134,49 +136,53 @@ export default {
 </script>
 
 <style>
-/* Main CSS */
+.grid-wrapper {
+  columns: 3;
+  column-gap: 12px;
+}
 .grid-wrapper > div {
   display: inline-block;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
+  width: 100%;
   position: relative;
-}
-.grid-wrapper > div:before {
-  border-radius: 5px;
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
 }
 .grid-wrapper > div img {
   width: 100%;
-  border-radius: 5px;
-}
-.grid-wrapper {
-  columns: 3;
-  column-gap: 16px;
-}
-@media (max-width: 1200px) {
-  .grid-wrapper {
-    columns: 3;
-  }
+  border-radius: 8px;
+  display: block;
 }
 @media (max-width: 992px) {
-  .grid-wrapper {
-    columns: 2;
-  }
-  .grid-wrapper > div {
-    width: 100%;
-  }
+  .grid-wrapper { columns: 2; }
 }
 @media (max-width: 640px) {
-  .grid-wrapper {
-    columns: auto;
-  }
-  .grid-wrapper > div {
-    width: 100%;
-  }
+  .grid-wrapper { columns: 1; }
 }
 
+/* Overlay */
+.gallery-overlay {
+  background: #0c0a09 !important;
+}
+.gallery-overlay__counter {
+  position: absolute;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+.gallery-overlay__index {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  color: #fff;
+  line-height: 1;
+}
+.gallery-overlay__sep {
+  color: rgba(178, 140, 89, 0.6);
+  font-size: 0.9rem;
+}
+.gallery-overlay__total {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.88rem;
+}
 </style>

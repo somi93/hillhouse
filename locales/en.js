@@ -151,8 +151,8 @@ export default {
             "location": {
                 "eyebrow": "Location preview",
                 "title": "Easy to reach, pleasantly secluded.",
-                "text": "Hill House is located in Sepsin, a short drive from Belgrade, making arrival easy for guests and organizers while still giving the event a sense of privacy and calm.",
-                "city": "Sepsin, Mladenovac",
+                "text": "Hill House is located in Šepsin, a short drive from Belgrade, making arrival easy for guests and organizers while still giving the event a sense of privacy and calm.",
+                "city": "Šepsin, Mladenovac",
                 "time": "30 minutes from Belgrade",
                 "cta": "Open location in maps",
                 "mapNote": "An easy arrival from Belgrade, with enough distance for the property to keep a more private tone and a calmer rhythm for gatherings."
@@ -171,7 +171,15 @@ export default {
             "paragraph5": "Due to its affluent offerings and maximum photogenicity of the entire estate, Hill House is an ideal choice for creating memories through family vacations, celebrations and gatherings with a larger number of people, bachelorette parties, wedding occasions, team building events, informal getaways with colleagues from the company, and more. Hill House can accommodate up to 120 guests during the daytime in the summer and 30 guests in the winter.",
             "paragraph6": "The villa is entirely designed with a designer touch, providing enough space and light for the maximum comfort of guests. The house comprises two levels, with its attic designed as a large outdoor terrace, offering the most prestigious view of the surrounding panorama. There is also a terrace at the entrance of the house, ideal for morning activities. The lower level of the house consists of a spacious living room, a fully equipped kitchen with a bar element, and a bathroom. The interior is 'separated' from the courtyard by glass portals that do not obstruct the view of the rest of the estate. There are two bedrooms, one with a double bed, while the other has two double beds and two bunk beds. Additionally, the living room features a large sofa bed suitable for two people. The total sleeping capacity of the villa is 10. The property is covered by a Wi-Fi signal, and the temperature is regulated by an air conditioning system.",
             "paragraph7": "The spa center is located in the basement and features a sauna, jacuzzi, mini cinema, toilet, and shower. During the winter season, the spa is included in the price, while during the summer season, there is an additional charge of 200€ per night.",
-            "paragraph8": "The perfect vacation is a matter of Hill House! <br/> Welcome..."
+            "paragraph8": "The perfect vacation is a matter of Hill House! <br/> Welcome...",
+            "kicker1": "The estate",
+            "heading1": "A hillside setting with a calm view between the trees",
+            "kicker2": "Outdoor living",
+            "heading2": "Pools, fire pits, and a summer kitchen under the stars",
+            "kicker3": "The villa",
+            "heading3": "Space designed for comfort, with room for ten",
+            "kicker4": "Spa & wellness",
+            "heading4": "A private spa in the lower level — sauna, jacuzzi, cinema"
         },
         "utilities": {
             "title": "Facilities and amenities of our Hill House",
@@ -226,7 +234,7 @@ export default {
         "surchargeMayToNovember": "The surcharge applies to the period from May 1st to November 1st",
     },
     "pricingPage": {
-        "mainTitle": "PRICELIST AND CONDITIONS FOR THE 2025 SEASON",
+        "mainTitle": "PRICELIST AND CONDITIONS",
         "validFrom": "Pricelist is valid for dates from May 1, 2025.",
         "mostPopular": "Most Popular",
         "priceSaturday": "Price per night on Saturdays:",

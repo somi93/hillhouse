@@ -10,9 +10,9 @@
         }"
         v-if="image"
         style="height: 80vh">
-      <img style="max-width: 100%;max-height: 100%;" :src="image.url" class="rounded"/><br/>
-      <v-col cols="12">
-        <p class="text-center">{{ image.description }}</p>
+      <img style="max-width: 100%;max-height: 100%;border-radius: 6px;" :src="image.url" :alt="image.alt || ''"/>
+      <v-col v-if="image.description" cols="12">
+        <p class="text-center" style="color: rgba(255,255,255,0.55); font-size: 0.85rem; margin-top: 12px;">{{ image.description }}</p>
       </v-col>
     </v-row>
   </div>
