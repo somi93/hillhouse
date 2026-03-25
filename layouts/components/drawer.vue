@@ -44,7 +44,7 @@
 <script setup>
 import { computed } from "vue";
 import { useI18n } from "vue-i18n";
-import { useRoute, useRouter } from "vue-router";
+import { useRouter } from "vue-router";
 
 const props = defineProps({
   modelValue: {
@@ -63,44 +63,10 @@ const model = computed({
 const localePath = useLocalePath()
 const switchLocalePath = useSwitchLocalePath()
 const { locale, t } = useI18n({ useScope: "global" });
-const route = useRoute();
 const router = useRouter();
+const { menuItems, navigateToSection } = useSectionNavigation();
 
-const items = computed(() => [
-  {
-    title: t("layout.menu.home"),
-    to: localePath('/'),
-
-  },
-  {
-    title: t("layout.menu.about"),
-    href: "#about",
-  },
-  {
-    title: t("layout.menu.facilities"),
-    href: "#facilities",
-  },
-  {
-    title: t("layout.menu.utilities"),
-    href: "#utilities",
-  },
-  {
-    title: t("layout.menu.testimonials"),
-    href: "#testimonials",
-  },
-  {
-    title: t("layout.menu.gallery"),
-    to: localePath('/gallery'),
-  },
-  {
-    title: t("layout.menu.pricing"),
-    to: localePath('/pricing'),
-  },
-  {
-    title: t("layout.menu.map"),
-    href: "#map",
-  },
-]);
+const items = computed(() => menuItems.value);
 
 const changeLocale = (value) => {
   const path = switchLocalePath(value)
@@ -109,22 +75,7 @@ const changeLocale = (value) => {
 
 const navigateToHash = (target) => {
   model.value = false;
-
-  if (String(route.name ?? '').split('___')[0] === "index") {
-    const element = document.querySelector(target);
-    if (!element) {
-      return;
-    }
-
-    window.scrollTo({
-      top: element.offsetTop - 112,
-      left: 0,
-      behavior: "smooth",
-    });
-    return;
-  }
-
-  router.push({ path: localePath('/'), hash: target });
+  navigateToSection(target);
 };
 </script>
 

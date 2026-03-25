@@ -112,43 +112,11 @@ import { mdiFacebook, mdiInstagram, mdiEmail, mdiWhatsapp } from "@mdi/js";
 import { computed } from "vue";
 import { useI18n } from "vue-i18n";
 
-const localePath = useLocalePath()
 const { t } = useI18n({ useScope: "global" });
-const menuLeft = computed(() => {
-  return [
-    {
-      title: "Hill House Luxury 1",
-      to: localePath('/'),
+const { menuItems, navigateToSection } = useSectionNavigation();
+const menuLeft = computed(() => menuItems.value);
 
-    },
-    {
-      title: "Hill House Luxury 2",
-      href: "#about",
-    },
-    {
-      title: t("layout.menu.gallery"),
-      to: localePath('/gallery'),
-    },
-    {
-      title: t("layout.menu.map"),
-      href: "#map",
-    },
-  ];
-});
-
-const scrollTo = (target) => {
-  const element = document.querySelector(target);
-
-  if (!element) {
-    return;
-  }
-
-  window.scrollTo({
-    top: element.offsetTop - 128,
-    left: 0,
-    behavior: "smooth",
-  });
-};
+const scrollTo = (target) => navigateToSection(target);
 </script>
 
 <style scoped>

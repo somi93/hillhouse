@@ -7,13 +7,13 @@
             <div class="section-copy why-hill-house__copy">
               <p class="section-eyebrow">{{ t("home.redesign.why.eyebrow") }}</p>
               <h2 class="section-title section-title--dark why-hill-house__title">
-                {{ t("home.redesign.why.title") }}
+                {{ t(`home.redesign.why.${props.villa}.title`) }}
               </h2>
               <p class="section-text section-text--warm why-hill-house__text">
-                {{ t("home.redesign.why.text") }}
+                {{ t(`home.redesign.why.${props.villa}.text`) }}
               </p>
               <v-btn
-                :to="localePath('/about')"
+                :to="localePath(aboutPath)"
                 color="primary"
                 class="btn-reserve why-hill-house__cta"
                 flat
@@ -64,30 +64,37 @@
 import { computed } from "vue";
 import { useI18n } from "vue-i18n";
 
-const props = defineProps({ villa: { type: String, default: 'hh1' } })
-const villaData = useVilla(props.villa)
+const props = defineProps({ villa: { type: String, default: "hh1" } });
+const villaData = useVilla(props.villa);
 
-const localePath = useLocalePath()
+const localePath = useLocalePath();
 const { t } = useI18n({ useScope: "global" });
 
-const proofItems = computed(() => [
-  {
-    value: t("home.redesign.why.proof1Value"),
-    label: t("home.redesign.why.proof1Label"),
-  },
-  {
-    value: t("home.redesign.why.proof2Value"),
-    label: t("home.redesign.why.proof2Label"),
-  },
-  {
-    value: t("home.redesign.why.proof3Value"),
-    label: t("home.redesign.why.proof3Label"),
-  },
-  {
-    value: t("home.redesign.why.proof4Value"),
-    label: t("home.redesign.why.proof4Label"),
-  },
-]);
+const aboutPath = computed(() =>
+  props.villa === "hh2" ? "/hill-house-2/about" : "/hill-house-1/about"
+);
+
+const proofItems = computed(() => {
+  const v = props.villa;
+  return [
+    {
+      value: t(`home.redesign.why.${v}.proof1Value`),
+      label: t(`home.redesign.why.${v}.proof1Label`),
+    },
+    {
+      value: t(`home.redesign.why.${v}.proof2Value`),
+      label: t(`home.redesign.why.${v}.proof2Label`),
+    },
+    {
+      value: t(`home.redesign.why.${v}.proof3Value`),
+      label: t(`home.redesign.why.${v}.proof3Label`),
+    },
+    {
+      value: t(`home.redesign.why.${v}.proof4Value`),
+      label: t(`home.redesign.why.${v}.proof4Label`),
+    },
+  ];
+});
 </script>
 
 <style scoped>
@@ -137,7 +144,7 @@ const proofItems = computed(() => [
 }
 
 .why-hill-house__image {
-  border-radius: 16px;    
+  border-radius: 16px;
   top: -40px;
   overflow: hidden;
   box-shadow: 0 34px 78px rgba(30, 20, 12, 0.14);
@@ -161,7 +168,12 @@ const proofItems = computed(() => [
   position: absolute;
   inset: 0 0 auto;
   height: 1px;
-  background: linear-gradient(90deg, rgba(214, 188, 149, 0) 0%, rgba(214, 188, 149, 0.7) 50%, rgba(214, 188, 149, 0) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(214, 188, 149, 0) 0%,
+    rgba(214, 188, 149, 0.7) 50%,
+    rgba(214, 188, 149, 0) 100%
+  );
 }
 
 .why-hill-house__proof-intro {

@@ -1,164 +1,80 @@
-<template>
+﻿<template>
   <div class="pricing-page">
-    <!-- ── Hero ──────────────────────────────────────────── -->
     <section class="pricing-hero">
       <v-container>
         <div class="content-shell pricing-hero__shell">
-          <h1 class="pricing-hero__title">{{ $t("pricingPage.mainTitle") }}</h1>
+          <p class="section-eyebrow">{{ $t("pricingPage.mainTitle") }}</p>
+          <h1 class="pricing-hero__title">
+            {{ isEn ? "Choose your villa" : "Izaberite vilu" }}
+          </h1>
+          <p class="pricing-hero__sub">
+            {{
+              isEn
+                ? "Each villa has its own character, capacity and pricing. Select the one that fits your occasion."
+                : "Svaka vila ima svoj karakter, kapacitet i cenovnik. Izaberite onu koja odgovara vašoj proslavi."
+            }}
+          </p>
         </div>
       </v-container>
     </section>
 
-    <!-- ── Pricing tiers ─────────────────────────────────── -->
-    <section class="pricing-tiers">
+    <section class="pricing-select">
       <v-container>
         <div class="content-shell">
-          <div class="pricing-grid">
-            <article
-              v-for="(tier, i) in pricingTiers"
-              :key="i"
-              :class="['tier-card', i === 0 && 'tier-card--featured']"
+          <div class="villa-cards">
+            <NuxtLink :to="localePath('/hill-house-1/pricing')" class="villa-card">
+              <div class="villa-card__inner">
+                <p class="villa-card__eyebrow">Hill House 1</p>
+                <h2 class="villa-card__title">
+                  {{ isEn ? "Private villa with spa" : "Privatna vila sa spa centrom" }}
+                </h2>
+                <ul class="villa-card__features">
+                  <li>{{ isEn ? "Up to 150 guests" : "Do 150 gostiju" }}</li>
+                  <li>{{ isEn ? "10 sleeping places" : "10 ležajeva" }}</li>
+                  <li>{{ isEn ? "Pool, sauna, jacuzzi" : "Bazen, sauna, jacuzzi" }}</li>
+                  <li>{{ isEn ? "30 min from Belgrade" : "30 min od Beograda" }}</li>
+                </ul>
+                <span class="villa-card__cta">
+                  {{ isEn ? "View pricing" : "Pogledaj cenovnik" }}
+                  <span class="villa-card__arrow">→</span>
+                </span>
+              </div>
+            </NuxtLink>
+
+            <NuxtLink
+              :to="localePath('/hill-house-2/pricing')"
+              class="villa-card villa-card--hh2"
             >
-              <div v-if="i === 0" class="tier-card__badge">
-                {{ $t("pricingPage.mostPopular") }}
+              <div class="villa-card__inner">
+                <p class="villa-card__eyebrow">Hill House 2</p>
+                <h2 class="villa-card__title">
+                  {{ isEn ? "Villa with event hall" : "Vila sa svečanom salom" }}
+                </h2>
+                <ul class="villa-card__features">
+                  <li>
+                    {{
+                      isEn ? "Up to 250 guests (outdoor)" : "Do 250 gostiju (otvoreno)"
+                    }}
+                  </li>
+                  <li>
+                    {{ isEn ? "Hall for up to 130 guests" : "Sala za do 130 gostiju" }}
+                  </li>
+                  <li>
+                    {{
+                      isEn
+                        ? "Infinity pool, open jacuzzi"
+                        : "Infinity bazen, otvoreni jacuzzi"
+                    }}
+                  </li>
+                  <li>{{ isEn ? "30 min from Belgrade" : "30 min od Beograda" }}</li>
+                </ul>
+                <span class="villa-card__cta">
+                  {{ isEn ? "View pricing" : "Pogledaj cenovnik" }}
+                  <span class="villa-card__arrow">→</span>
+                </span>
               </div>
-              <p class="tier-card__label">{{ tier.label }}</p>
-              <div class="tier-card__divider"></div>
-              <div class="tier-card__rows">
-                <div class="tier-card__row" v-for="row in tier.rows" :key="row.guests">
-                  <span class="tier-card__guests">{{ row.guests }}</span>
-                  <span class="tier-card__price">{{ row.price }}</span>
-                </div>
-              </div>
-              <v-btn
-                class="tier-card__cta"
-                :class="i === 0 ? 'btn-reserve' : 'tier-card__cta--outline'"
-                :color="i === 0 ? 'primary' : undefined"
-                :variant="i === 0 ? 'flat' : 'outlined'"
-                flat
-                height="50px"
-                href="tel:+38169635632"
-                rel="noopener"
-                target="_blank"
-              >
-                {{ $t("home.slider.reserve") }}
-              </v-btn>
-            </article>
+            </NuxtLink>
           </div>
-        </div>
-      </v-container>
-    </section>
-
-    <!-- ── Policy tiles ──────────────────────────────────── -->
-    <section class="pricing-policies">
-      <v-container>
-        <div class="content-shell">
-          <div class="policy-grid">
-            <div class="policy-tile">
-              <p class="policy-tile__kicker">
-                {{ $t("pricingPage.reservationTermsTitle") }}
-              </p>
-              <p class="policy-tile__text">
-                {{ $t("pricingPage.reservationTermsText") }}
-              </p>
-            </div>
-            <div class="policy-tile">
-              <p class="policy-tile__kicker">
-                {{ $t("pricingPage.cancellationPolicyTitle") }}
-              </p>
-              <p class="policy-tile__text">
-                {{ $t("pricingPage.cancellationPolicyText") }}
-              </p>
-            </div>
-            <div class="policy-tile">
-              <p class="policy-tile__kicker">
-                {{ $t("pricingPage.reschedulePolicyTitle") }}
-              </p>
-              <p class="policy-tile__text">
-                {{ $t("pricingPage.reschedulePolicyText") }}
-              </p>
-            </div>
-            <div class="policy-tile">
-              <p class="policy-tile__kicker">{{ $t("pricingPage.spaSurcharge") }}</p>
-              <p class="policy-tile__text">
-                <span class="policy-tile__highlight">200€</span>
-                &mdash; {{ $t("pricingPage.spaJacuzziNotice") }}
-              </p>
-            </div>
-            <div class="policy-tile">
-              <p class="policy-tile__kicker">
-                {{ $t("pricingPage.checkIn") }} / {{ $t("pricingPage.checkOut") }}
-              </p>
-              <p class="policy-tile__text">
-                {{ $t("pricingPage.checkIn") }} 14h &bull;
-                {{ $t("pricingPage.checkOut") }} 10h
-              </p>
-              <p class="policy-tile__text policy-tile__text--muted">
-                {{ $t("pricingPage.yardCleaning") }} {{ $t("pricingPage.houseCleaning") }}
-              </p>
-            </div>
-            <div class="policy-tile">
-              <p class="policy-tile__kicker">{{ $t("pricingPage.musicPolicyTitle") }}</p>
-              <ul class="policy-tile__list">
-                <li>{{ $t("pricingPage.musicFridaySaturday") }}</li>
-                <li>{{ $t("pricingPage.musicOtherDays") }}</li>
-              </ul>
-            </div>
-          </div>
-          <div class="policy-note">
-            {{ $t("pricingPage.equipmentPolicy") }}
-          </div>
-        </div>
-      </v-container>
-    </section>
-
-    <!-- ── Rules & Conditions ────────────────────────────── -->
-    <section class="pricing-rules">
-      <v-container>
-        <div class="content-shell">
-          <div class="pricing-rules__header">
-            <p class="section-eyebrow section-eyebrow--light">
-              {{ $t("pricingPage.rulesAndConditionsTitle") }}
-            </p>
-            <h2 class="pricing-rules__title">
-              {{ $t("pricingPage.rulesAndConditionsTitle") }}
-            </h2>
-          </div>
-          <ul class="rules-list">
-            <li>{{ $t("pricingPage.ruleFireworks") }}</li>
-            <li>{{ $t("pricingPage.ruleNoConfetti") }}</li>
-            <li>{{ $t("pricingPage.ruleNoPoolJumping") }}</li>
-            <li>{{ $t("pricingPage.ruleNoPoolEdgeWalking") }}</li>
-            <li>{{ $t("pricingPage.ruleNoPoolFoodDrinkObjects") }}</li>
-            <li>{{ $t("pricingPage.ruleNoBreakingItems") }}</li>
-            <li>{{ $t("pricingPage.ruleNoUnderageAlcohol") }}</li>
-            <li>{{ $t("pricingPage.ruleMinorsSupervision") }}</li>
-            <li>{{ $t("pricingPage.ruleNoFurnitureWalking") }}</li>
-            <li>{{ $t("pricingPage.ruleTenantResponsibility") }}</li>
-            <li>{{ $t("pricingPage.ruleDamageCompensation") }}</li>
-            <li>{{ $t("pricingPage.ruleNoPartiesUnder28") }}</li>
-            <li>{{ $t("pricingPage.ruleTrashDisposal") }}</li>
-            <li>{{ $t("pricingPage.ruleDishesIndoors") }}</li>
-          </ul>
-          <div class="rules-addenda">
-            <div class="rules-addendum">
-              <p class="rules-addendum__title">
-                {{ $t("pricingPage.entryPolicyTitle") }}
-              </p>
-              <p>{{ $t("pricingPage.entryPolicyText") }}</p>
-            </div>
-            <div class="rules-addendum">
-              <p>{{ $t("pricingPage.inventoryPolicy") }}</p>
-            </div>
-            <div class="rules-addendum">
-              <p>{{ $t("pricingPage.videoSurveillancePolicy") }}</p>
-              <p class="mt-2">{{ $t("pricingPage.ruleNoCameraTampering") }}</p>
-            </div>
-            <div class="rules-addendum">
-              <p>{{ $t("pricingPage.damageLiability") }}</p>
-            </div>
-          </div>
-          <p class="rules-contract">{{ $t("pricingPage.contractSigning") }}</p>
         </div>
       </v-container>
     </section>
@@ -169,91 +85,59 @@
 import { computed } from "vue";
 import { useI18n } from "vue-i18n";
 
-const { t, locale } = useI18n({ useScope: "global" });
-const isEn = computed(() => locale.value === 'en')
+const { locale } = useI18n({ useScope: "global" });
+const localePath = useLocalePath();
+const isEn = computed(() => locale.value === "en");
 
-const pricingTiers = computed(() => [
-  {
-    label: t("pricingPage.priceSaturday"),
-    rows: [
-      { guests: t("pricingPage.guestsUpTo50"), price: "1200€" },
-      { guests: t("pricingPage.guests50to100"), price: "1400€" },
-      { guests: t("pricingPage.guests100to150"), price: "1600€" },
+useHead(
+  computed(() => ({
+    title: isEn.value
+      ? "Pricing — Hill House Luxury Villas"
+      : "Cenovnik — Hill House Privatne Vile",
+    link: [
+      {
+        rel: "canonical",
+        href: isEn.value
+          ? "https://www.hillhouse.rs/en/pricing"
+          : "https://www.hillhouse.rs/pricing",
+      },
     ],
-  },
-  {
-    label: t("pricingPage.priceFridaySunday"),
-    rows: [
-      { guests: t("pricingPage.guestsUpTo50"), price: "800€" },
-      { guests: t("pricingPage.guests50to100"), price: "1000€" },
-      { guests: t("pricingPage.guests100to150"), price: "1200€" },
+    meta: [
+      { name: "robots", content: "index, follow" },
+      {
+        name: "description",
+        content: isEn.value
+          ? "Compare Hill House 1 and Hill House 2 villa pricing — events, weddings and special occasions near Belgrade. Choose the villa that fits your occasion."
+          : "Uporedite cenovnike Hill House 1 i Hill House 2 — proslave, venčanja i posebni događaji kod Beograda. Izaberite vilu koja odgovara vašoj proslavi.",
+      },
+      {
+        property: "og:title",
+        content: isEn.value
+          ? "Pricing — Hill House Luxury Villas"
+          : "Cenovnik — Hill House Privatne Vile",
+      },
+      {
+        property: "og:description",
+        content: isEn.value
+          ? "Compare Hill House villa rental rates for events, weddings and special occasions near Belgrade."
+          : "Cenovnici iznajmljivanja Hill House vila za proslave, venčanja i posebne događaje. 30 minuta od Beograda.",
+      },
+      {
+        property: "og:image",
+        content:
+          "https://www.hillhouse.rs/hillhouse/media/images/gallery/professional/vila-prestige-hill-15-1920x1438.jpeg",
+      },
+      {
+        property: "og:url",
+        content: isEn.value
+          ? "https://www.hillhouse.rs/en/pricing"
+          : "https://www.hillhouse.rs/pricing",
+      },
+      { property: "og:type", content: "website" },
+      { property: "og:locale", content: isEn.value ? "en_US" : "sr_RS" },
     ],
-  },
-  {
-    label: t("pricingPage.priceOtherDays"),
-    rows: [
-      { guests: t("pricingPage.guestsUpTo50"), price: "600€" },
-      { guests: t("pricingPage.guests50to100"), price: "800€" },
-      { guests: t("pricingPage.guests100to150"), price: "1000€" },
-    ],
-  },
-]);
-
-useHead(computed(() => ({
-  title: isEn.value ? 'Pricing — Hill House Luxury Villa' : 'Cenovnik — Hill House Privatna Vila',
-  link: [{ rel: 'canonical', href: isEn.value ? 'https://www.hillhouse.rs/en/pricing' : 'https://www.hillhouse.rs/pricing' }],
-  script: [
-    {
-      type: 'application/ld+json',
-      innerHTML: JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'Product',
-        name: isEn.value ? 'Hill House Villa Rental' : 'Iznajmljivanje Hill House vile',
-        description: isEn.value
-          ? 'Private luxury villa rental for events, weddings and celebrations near Belgrade.'
-          : 'Iznajmljivanje privatne luksuzne vile za proslave, venčanja i posebne događaje kod Beograda.',
-        image: 'https://www.hillhouse.rs/hillhouse/media/images/gallery/professional/vila-prestige-hill-15-1920x1438.jpeg',
-        url: isEn.value ? 'https://www.hillhouse.rs/en/pricing' : 'https://www.hillhouse.rs/pricing',
-        offers: [
-          { '@type': 'Offer', name: isEn.value ? 'Saturday (up to 50 guests)' : 'Subota (do 50 gostiju)', price: '1200', priceCurrency: 'EUR', availability: 'https://schema.org/InStock' },
-          { '@type': 'Offer', name: isEn.value ? 'Saturday (50–100 guests)' : 'Subota (50–100 gostiju)', price: '1400', priceCurrency: 'EUR', availability: 'https://schema.org/InStock' },
-          { '@type': 'Offer', name: isEn.value ? 'Saturday (100–150 guests)' : 'Subota (100–150 gostiju)', price: '1600', priceCurrency: 'EUR', availability: 'https://schema.org/InStock' },
-          { '@type': 'Offer', name: isEn.value ? 'Friday/Sunday (up to 50 guests)' : 'Petak/Nedjelja (do 50 gostiju)', price: '800', priceCurrency: 'EUR', availability: 'https://schema.org/InStock' },
-          { '@type': 'Offer', name: isEn.value ? 'Weekday (up to 50 guests)' : 'Radni dan (do 50 gostiju)', price: '600', priceCurrency: 'EUR', availability: 'https://schema.org/InStock' },
-        ],
-      }),
-    },
-  ],
-  meta: [
-    { name: 'robots', content: 'index, follow' },
-    {
-      name: 'description',
-      content: isEn.value
-        ? 'Hill House villa rental pricing — events, weddings and special occasions with pool and spa, 30 minutes from Belgrade. View rates and reserve your date.'
-        : 'Cenovnik iznajmljivanja Hill House vile — proslave, venčanja i posebni događaji sa bazenom i spa zonom, 30 minuta od Beograda. Pogledajte tarife i rezervišite datum.',
-    },
-    {
-      name: 'keywords',
-      content: isEn.value
-        ? 'villa rental price, private villa Belgrade, luxury villa events Serbia, Hill House pricing'
-        : 'cenovnik vile, iznajmljivanje vile cena, vila za proslave cena, hill house cenovnik, vila sa bazenom beograd cena',
-    },
-    { property: 'og:title', content: isEn.value ? 'Pricing — Hill House Luxury Villa' : 'Cenovnik — Hill House Privatna Vila' },
-    {
-      property: 'og:description',
-      content: isEn.value
-        ? 'Hill House villa rental rates for events, weddings and special occasions near Belgrade.'
-        : 'Cenovnik iznajmljivanja Hill House vile za proslave, venčanja i posebne događaje. 30 minuta od Beograda.',
-    },
-    {
-      property: 'og:image',
-      content: 'https://www.hillhouse.rs/hillhouse/media/images/gallery/professional/vila-prestige-hill-15-1920x1438.jpeg',
-    },
-    { property: 'og:url', content: isEn.value ? 'https://www.hillhouse.rs/en/pricing' : 'https://www.hillhouse.rs/pricing' },
-    { property: 'og:type', content: 'website' },
-    { property: 'og:locale', content: isEn.value ? 'en_US' : 'sr_RS' },
-  ],
-})));
+  }))
+);
 </script>
 
 <style scoped>
@@ -264,7 +148,7 @@ useHead(computed(() => ({
 
 /* ── Hero ──────────────────────────────────────────────── */
 .pricing-hero {
-  padding: 48px 0 0px;
+  padding: 48px 0 0;
   background: linear-gradient(160deg, #f7f1ea 0%, var(--surface-ivory) 100%);
   border-bottom: 1px solid rgba(95, 90, 82, 0.1);
 }
@@ -280,358 +164,130 @@ useHead(computed(() => ({
   margin: 18px 0 28px;
 }
 
-.pricing-hero__valid {
+.pricing-hero__sub {
   color: var(--text-warm);
-  font-size: 0.9rem;
-  letter-spacing: 0.04em;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
+  font-size: 1.05rem;
+  line-height: 1.72;
+  max-width: 58ch;
+  margin-bottom: 48px;
 }
 
-.pricing-hero__valid::before {
-  content: "";
-  display: inline-block;
-  width: 28px;
-  height: 1px;
-  background: var(--brand-gold);
-}
-
-/* ── Pricing tiers ─────────────────────────────────────── */
-.pricing-tiers {
-  padding: 88px 0 72px;
+/* ── Villa selection ───────────────────────────────────── */
+.pricing-select {
+  padding: 80px 0 96px;
   background: var(--surface-ivory);
 }
 
-.pricing-grid {
+.villa-cards {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
-  align-items: stretch;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
 }
 
-.tier-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  padding: 40px 32px 36px;
+.villa-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 20px;
+  border: 1px solid rgba(95, 90, 82, 0.12);
   background: #fff;
-  border: 1px solid rgba(95, 90, 82, 0.1);
-  border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(36, 24, 14, 0.06);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 8px 40px rgba(36, 24, 14, 0.07);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
 }
 
-.tier-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 48px rgba(36, 24, 14, 0.1);
+.villa-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 64px rgba(36, 24, 14, 0.12);
 }
 
-.tier-card--featured {
+.villa-card--hh2 {
   background: var(--brand-dark);
   border-color: transparent;
-  box-shadow: 0 24px 64px rgba(10, 8, 6, 0.28);
   color: #fff;
 }
 
-.tier-card--featured:hover {
-  box-shadow: 0 32px 72px rgba(10, 8, 6, 0.34);
+.villa-card__inner {
+  padding: 44px 40px 40px;
 }
 
-.tier-card__badge {
-  position: absolute;
-  top: -14px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: linear-gradient(135deg, #c19a66 0%, #b28c59 100%);
-  color: #181511;
-  font-size: 0.64rem;
+.villa-card__eyebrow {
+  font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  padding: 5px 18px;
-  border-radius: 999px;
-  white-space: nowrap;
+  color: var(--brand-gold);
+  margin-bottom: 16px;
 }
 
-.tier-card__label {
+.villa-card__title {
   font-family: var(--font-heading);
-  font-size: 1.2rem;
+  font-size: clamp(1.6rem, 2.4vw, 2rem);
+  line-height: 1.12;
   font-weight: 400;
-  line-height: 1.3;
-  margin-bottom: 20px;
+  margin-bottom: 28px;
   color: var(--brand-dark);
 }
 
-.tier-card--featured .tier-card__label {
-  color: rgba(255, 255, 255, 0.9);
+.villa-card--hh2 .villa-card__title {
+  color: #fff;
 }
 
-.tier-card__divider {
-  width: 36px;
-  height: 2px;
-  background: var(--brand-gold);
-  margin-bottom: 28px;
-}
-
-.tier-card__rows {
+.villa-card__features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 36px;
   display: flex;
   flex-direction: column;
-  gap: 0;
-  flex: 1;
-  margin-bottom: 32px;
+  gap: 10px;
 }
 
-.tier-card__row {
+.villa-card__features li {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 14px 0;
-  border-bottom: 1px solid rgba(95, 90, 82, 0.1);
-}
-
-.tier-card--featured .tier-card__row {
-  border-bottom-color: rgba(255, 255, 255, 0.08);
-}
-
-.tier-card__row:first-child {
-  border-top: 1px solid rgba(95, 90, 82, 0.1);
-}
-
-.tier-card--featured .tier-card__row:first-child {
-  border-top-color: rgba(255, 255, 255, 0.08);
-}
-
-.tier-card__guests {
-  font-size: 0.84rem;
-  color: var(--text-warm);
-}
-
-.tier-card--featured .tier-card__guests {
-  color: rgba(255, 255, 255, 0.62);
-}
-
-.tier-card__price {
-  font-family: var(--font-heading);
-  font-size: 1.6rem;
-  line-height: 1;
-  color: var(--brand-gold);
-}
-
-.tier-card__cta {
-  width: 100%;
-  letter-spacing: 0.06em;
-}
-
-.tier-card__cta--outline {
-  color: var(--brand-dark) !important;
-  border-color: rgba(95, 90, 82, 0.3) !important;
-}
-
-/* ── Policy tiles ──────────────────────────────────────── */
-.pricing-policies {
-  padding: 80px 0 72px;
-  background: #fff;
-  border-top: 1px solid rgba(95, 90, 82, 0.08);
-  border-bottom: 1px solid rgba(95, 90, 82, 0.08);
-}
-
-.policy-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1px;
-  background: rgba(95, 90, 82, 0.1);
-  border: 1px solid rgba(95, 90, 82, 0.1);
-  border-radius: 16px;
-  overflow: hidden;
-  margin-bottom: 36px;
-}
-
-.policy-tile {
-  background: #fff;
-  padding: 28px 26px;
-}
-
-.policy-tile__kicker {
-  color: var(--brand-gold);
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  font-size: 0.68rem;
-  margin-bottom: 10px;
-}
-
-.policy-tile__text {
-  color: var(--brand-dark);
-  line-height: 1.7;
-  font-size: 0.94rem;
-}
-
-.policy-tile__text--muted {
-  color: var(--text-warm);
-  font-size: 0.86rem;
-  margin-top: 6px;
-}
-
-.policy-tile__highlight {
-  color: var(--brand-gold);
-  font-family: var(--font-heading);
-  font-size: 1.15rem;
-}
-
-.policy-tile__list {
-  padding-left: 18px;
-  color: var(--brand-dark);
-  font-size: 0.92rem;
-  line-height: 1.9;
-}
-
-.policy-note {
-  background: rgba(178, 140, 89, 0.06);
-  border: 1px solid rgba(178, 140, 89, 0.16);
-  border-left: 3px solid var(--brand-gold);
-  border-radius: 0 12px 12px 0;
-  padding: 18px 22px;
-  color: var(--text-warm);
-  font-size: 0.92rem;
-  line-height: 1.72;
-}
-
-/* ── Rules section ─────────────────────────────────────── */
-.pricing-rules {
-  padding: 96px 0 104px;
-  background: radial-gradient(
-      ellipse 50% 40% at 92% 8%,
-      rgba(207, 169, 117, 0.1),
-      transparent
-    ),
-    linear-gradient(180deg, #191715 0%, #131110 100%);
-}
-
-.pricing-rules__header {
-  margin-bottom: 48px;
-}
-
-.pricing-rules__title {
-  color: #fff;
-  font-size: clamp(1.9rem, 3.2vw, 3rem);
-  line-height: 1.06;
-  margin-top: 14px;
-  max-width: 22ch;
-}
-
-.rules-list {
-  columns: 2;
-  column-gap: 48px;
-  padding-left: 20px;
-  margin-bottom: 56px;
-}
-
-.rules-list li {
-  color: rgba(255, 255, 255, 0.76);
+  gap: 10px;
   font-size: 0.93rem;
-  line-height: 1.72;
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  break-inside: avoid;
+  color: var(--text-warm);
+  line-height: 1.5;
 }
 
-.rules-list li::marker {
-  color: var(--brand-gold);
+.villa-card--hh2 .villa-card__features li {
+  color: rgba(255, 255, 255, 0.7);
 }
 
-.rules-addenda {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
-  margin-bottom: 48px;
-}
-
-.rules-addendum {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 12px;
-  padding: 22px 20px;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 0.9rem;
-  line-height: 1.74;
-}
-
-.rules-addendum__title {
-  color: rgba(214, 188, 149, 0.9);
-  font-size: 0.74rem;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  margin-bottom: 10px;
-}
-
-.rules-contract {
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-  color: rgba(255, 255, 255, 0.9);
-  font-family: var(--font-heading);
-  font-size: 1.1rem;
-  padding: 18px 26px;
-  background: rgba(178, 140, 89, 0.1);
-  border: 1px solid rgba(178, 140, 89, 0.28);
-  border-radius: 12px;
-}
-
-.rules-contract::before {
+.villa-card__features li::before {
   content: "";
-  display: inline-block;
-  width: 6px;
-  height: 6px;
+  flex-shrink: 0;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background: var(--brand-gold);
-  flex-shrink: 0;
+}
+
+.villa-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand-gold);
+}
+
+.villa-card__arrow {
+  font-size: 1.1rem;
+  transition: transform 0.2s ease;
+}
+
+.villa-card:hover .villa-card__arrow {
+  transform: translateX(4px);
 }
 
 /* ── Responsive ────────────────────────────────────────── */
-@media (max-width: 960px) and (min-width: 600px) {
+@media (max-width: 768px) {
   .pricing-hero {
-    padding: 48px 0 32px;
-  }
-
-  .pricing-tiers {
-    padding: 64px 0 56px;
-  }
-
-  .pricing-grid {
-    grid-template-columns: 1fr;
-    max-width: 520px;
-    margin: 0 auto;
-    gap: 28px;
-  }
-
-  .tier-card {
-    padding: 36px 28px 30px;
-  }
-
-  .pricing-policies {
-    padding: 60px 0 52px;
-  }
-
-  .policy-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .pricing-rules {
-    padding: 72px 0 80px;
-  }
-
-  .rules-list {
-    columns: 1;
-  }
-
-  .rules-addenda {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 599px) {
-  .pricing-hero {
-    padding: 36px 0 8px;
+    padding: 36px 0 0;
   }
 
   .pricing-hero__title {
@@ -639,48 +295,17 @@ useHead(computed(() => ({
     margin: 14px 0 20px;
   }
 
-  .pricing-tiers {
-    padding: 52px 0 44px;
+  .pricing-select {
+    padding: 56px 0 72px;
   }
 
-  .pricing-grid {
+  .villa-cards {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 20px;
   }
 
-  .tier-card {
-    padding: 32px 22px 26px;
-  }
-
-  .pricing-policies {
-    padding: 48px 0 40px;
-  }
-
-  .policy-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .policy-tile {
-    padding: 22px 18px;
-  }
-
-  .pricing-rules {
-    padding: 60px 0 68px;
-  }
-
-  .rules-list {
-    columns: 1;
-  }
-
-  .rules-addenda {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-
-  .rules-contract {
-    width: 100%;
-    font-size: 1rem;
-    padding: 16px 18px;
+  .villa-card__inner {
+    padding: 32px 28px 28px;
   }
 }
 </style>

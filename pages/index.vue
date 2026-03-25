@@ -1,12 +1,11 @@
 ﻿<template>
   <div class="homepage-redesign">
     <villa-selector-hero />
-    <redesign-why />
     <villa-cards />
     <redesign-occasions />
     <redesign-social-proof />
     <redesign-cta />
-    <redesign-location />
+    <redesign-location dual />
   </div>
 </template>
 
@@ -17,13 +16,17 @@ import VillaSelectorHero from "@/components/home/redesign/villa-selector-hero";
 import RedesignLocation from "@/components/home/redesign/location";
 import RedesignOccasions from "@/components/home/redesign/occasions";
 import RedesignSocialProof from "@/components/home/redesign/social-proof";
-import RedesignWhy from "@/components/home/redesign/why";
 import { onMounted } from "vue";
 
 onMounted(() => {
   if (window.location.hash) {
+    const target = document.getElementById(window.location.hash.slice(1));
+    if (!target) {
+      return;
+    }
+
     window.scrollTo({
-      top: document.getElementById(window.location.hash.slice(1)).offsetTop - 112,
+      top: target.offsetTop - 112,
       left: 0,
       behavior: "smooth",
     });

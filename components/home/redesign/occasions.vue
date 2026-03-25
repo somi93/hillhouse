@@ -1,5 +1,5 @@
 <template>
-  <section id="utilities" class="occasion-scenarios">
+  <section id="occasions" class="occasion-scenarios">
     <v-container>
       <div class="content-shell">
         <div class="section-copy section-copy--centered">

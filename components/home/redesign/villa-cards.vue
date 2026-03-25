@@ -1,5 +1,5 @@
 <template>
-  <section class="villa-cards-section">
+  <section id="villas" class="villa-cards-section">
     <v-container>
       <div class="content-shell">
         <div class="section-copy section-copy--centered vc-header">

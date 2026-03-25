@@ -6,9 +6,21 @@
     loop
     playsinline
     preload="none"
-    poster="/hillhouse/media/images/gallery/professional/vila-prestige-hill-15-1920x1438.jpeg"
+    :poster="heroVideo.poster"
   >
-    <source :src="'/hillhouse/media/videos/overview.mp4'" type="video/mp4">
+    <source :src="heroVideo.src" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
 </template>
+
+<script setup>
+const props = defineProps({
+  villa: {
+    type: String,
+    required: true, // 'hh1' | 'hh2'
+    default: "hh1",
+    validator: (v) => ["hh1", "hh2"].includes(v),
+  },
+});
+const { heroVideo } = useVilla(props.villa);
+</script>

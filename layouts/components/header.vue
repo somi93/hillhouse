@@ -103,49 +103,12 @@ const localePath = useLocalePath()
 const switchLocalePath = useSwitchLocalePath()
 const route = useRoute();
 const router = useRouter();
-const heroRoutes = ['index', 'hill-house-1', 'hill-house-2']
-const isHeroRoute = (name) => heroRoutes.includes(String(name ?? '').split('___')[0])
-const isHeroState = ref(isHeroRoute(route.name));
+const { menuItems, isHeroRoute, navigateToSection } = useSectionNavigation();
+const isHeroState = ref(isHeroRoute.value);
 const { locale, t } = useI18n({ useScope: "global" });
 
-const menuLeft = computed(() => [
-  {
-    title: t("layout.menu.home"),
-    to: localePath('/'),
-
-  },
-  {
-    title: t("layout.menu.about"),
-    to: localePath('/about'),
-  },
-  {
-    title: t("layout.menu.facilities"),
-    href: "#facilities",
-  },
-  {
-    title: t("layout.menu.utilities"),
-    href: "#utilities",
-  },
-]);
-
-const menuRight = computed(() => [
-  {
-    title: t("layout.menu.testimonials"),
-    href: "#testimonials",
-  },
-  {
-    title: t("layout.menu.gallery"),
-    to: localePath('/gallery'),
-  },
-  {
-    title: t("layout.menu.pricing"),
-    to: localePath('/pricing'),
-  },
-  {
-    title: t("layout.menu.map"),
-    href: "#map",
-  },
-]);
+const menuLeft = computed(() => menuItems.value.slice(0, Math.ceil(menuItems.value.length / 2)));
+const menuRight = computed(() => menuItems.value.slice(Math.ceil(menuItems.value.length / 2)));
 
 let _rafPending = false;
 const onScroll = () => {
@@ -153,7 +116,7 @@ const onScroll = () => {
   _rafPending = true;
   requestAnimationFrame(() => {
     _rafPending = false;
-    if (isHeroRoute(route.name)) {
+    if (isHeroRoute.value) {
       const doc = document.documentElement;
       const top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
       const hero = document.getElementById("videoBox");
@@ -165,23 +128,7 @@ const onScroll = () => {
   });
 };
 
-const scrollTo = (target) => {
-  if (isHeroRoute(route.name)) {
-    const element = document.querySelector(target);
-    if (!element) {
-      return;
-    }
-
-    window.scrollTo({
-      top: element.offsetTop - 112,
-      left: 0,
-      behavior: "smooth",
-    });
-    return;
-  }
-
-  router.push({ path: localePath('/'), hash: target });
-};
+const scrollTo = (target) => navigateToSection(target);
 
 const changeLocale = (value) => {
   const path = switchLocalePath(value)
@@ -192,8 +139,8 @@ const isRouteActive = (to) => route.path === to || (to === '/' && route.path ===
 
 watch(
   () => route.name,
-  (name) => {
-    isHeroState.value = isHeroRoute(name);
+  () => {
+    isHeroState.value = isHeroRoute.value;
   },
   {
     immediate: true,

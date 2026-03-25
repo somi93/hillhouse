@@ -1,672 +1,263 @@
 ﻿<template>
   <div class="gallery-page">
-    <div class="gallery-page__header">
+    <section class="gallery-hero">
       <v-container>
-        <div class="content-shell">
-          <p class="section-eyebrow">{{ $t('layout.menu.gallery') }}</p>
-          <h1 class="gallery-page__title section-title section-title--light">
-            {{ $t('home.gallery.title') }}
+        <div class="content-shell gallery-hero__shell">
+          <p class="section-eyebrow">{{ $t("layout.menu.gallery") }}</p>
+          <h1 class="gallery-hero__title">
+            {{ isEn ? 'Choose your gallery' : 'Izaberite galeriju' }}
           </h1>
+          <p class="gallery-hero__sub">
+            {{ isEn
+              ? 'Each villa has its own unique atmosphere. Browse the gallery of the one that intrigues you.'
+              : 'Svaka vila ima svoju jedinstvenu atmosferu. Pregledajte galeriju one koja vas zanima.'
+            }}
+          </p>
         </div>
       </v-container>
-    </div>
+    </section>
 
-    <div class="gallery-page__grid">
+    <section class="gallery-select">
       <v-container>
         <div class="content-shell">
-          <gallery :photos="photos" />
+          <div class="villa-cards">
+
+            <NuxtLink :to="localePath('/hill-house-1/gallery')" class="villa-card">
+              <div class="villa-card__image-wrap">
+                <v-img
+                  src="/hillhouse/media/images/gallery/professional/vila-prestige-hill-15-1920x1438.jpeg"
+                  :alt="isEn ? 'Hill House 1 gallery' : 'Hill House 1 galerija'"
+                  cover
+                  aspect-ratio="1.5"
+                  class="villa-card__image"
+                ></v-img>
+                <div class="villa-card__overlay"></div>
+              </div>
+              <div class="villa-card__inner">
+                <p class="villa-card__eyebrow">Hill House 1</p>
+                <h2 class="villa-card__title">{{ isEn ? 'Private villa with spa' : 'Privatna vila sa spa centrom' }}</h2>
+                <span class="villa-card__cta">
+                  {{ isEn ? 'View gallery' : 'Pogledaj galeriju' }}
+                  <span class="villa-card__arrow">→</span>
+                </span>
+              </div>
+            </NuxtLink>
+
+            <NuxtLink :to="localePath('/hill-house-2/gallery')" class="villa-card">
+              <div class="villa-card__image-wrap">
+                <v-img
+                  src="/hillhouse2/media/images/gallery/exterior/prestige-hill-2-12-1920x2560.jpg"
+                  :alt="isEn ? 'Hill House 2 gallery' : 'Hill House 2 galerija'"
+                  cover
+                  aspect-ratio="1.5"
+                  class="villa-card__image"
+                ></v-img>
+                <div class="villa-card__overlay"></div>
+              </div>
+              <div class="villa-card__inner">
+                <p class="villa-card__eyebrow">Hill House 2</p>
+                <h2 class="villa-card__title">{{ isEn ? 'Villa with event hall' : 'Vila sa svečanom salom' }}</h2>
+                <span class="villa-card__cta">
+                  {{ isEn ? 'View gallery' : 'Pogledaj galeriju' }}
+                  <span class="villa-card__arrow">→</span>
+                </span>
+              </div>
+            </NuxtLink>
+
+          </div>
         </div>
       </v-container>
-    </div>
+    </section>
   </div>
 </template>
 
 <script setup>
-import Gallery from '@/components/gallery/gallery'
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { locale } = useI18n({ useScope: 'global' })
+const localePath = useLocalePath()
 const isEn = computed(() => locale.value === 'en')
 
 useHead(computed(() => ({
-  title: isEn.value ? 'Gallery — Hill House Luxury Villa' : 'Galerija — Hill House Privatna Vila',
-  link: [{ rel: 'canonical', href: isEn.value ? 'https://www.hillhouse.rs/en/gallery' : 'https://www.hillhouse.rs/gallery' }],
+  title: isEn.value
+    ? 'Gallery — Hill House Luxury Villas'
+    : 'Galerija — Hill House Privatne Vile',
+  link: [
+    {
+      rel: 'canonical',
+      href: isEn.value
+        ? 'https://www.hillhouse.rs/en/gallery'
+        : 'https://www.hillhouse.rs/gallery',
+    },
+  ],
   meta: [
     { name: 'robots', content: 'index, follow' },
     {
       name: 'description',
       content: isEn.value
-        ? 'Browse photos of Hill House villa — pool, spa, interiors and celebrations. A space that impresses before your first visit.'
-        : 'Pregledajte fotografije Hill House vile — bazen, spa zona, enterijer i proslave. Prostor koji ostavlja utisak i pre prvog dolaska.',
+        ? 'Browse photo galleries of Hill House 1 and Hill House 2 — two luxury villas for events, weddings and celebrations near Belgrade.'
+        : 'Pregledajte galerije fotografija Hill House 1 i Hill House 2 — dve luksuzne vile za proslave, venčanja i posebne događaje kod Beograda.',
     },
     {
       property: 'og:title',
-      content: isEn.value ? 'Gallery — Hill House Luxury Villa' : 'Galerija — Hill House Privatna Vila',
+      content: isEn.value
+        ? 'Gallery — Hill House Luxury Villas'
+        : 'Galerija — Hill House Privatne Vile',
     },
     {
       property: 'og:description',
       content: isEn.value
-        ? 'Photos of Hill House villa — pool, interiors, events and productions. A space that leaves an impression.'
-        : 'Fotografije Hill House vile — bazen, enterijer, proslave i produkcije. Prostor koji ostavlja utisak.',
+        ? 'Galleries of Hill House 1 and Hill House 2 villas — pool, interiors, events and more.'
+        : 'Galerije Hill House 1 i Hill House 2 — bazen, enterijer, proslave i još mnogo toga.',
     },
     {
       property: 'og:image',
       content: 'https://www.hillhouse.rs/hillhouse/media/images/gallery/professional/vila-prestige-hill-15-1920x1438.jpeg',
     },
-    { property: 'og:url', content: isEn.value ? 'https://www.hillhouse.rs/en/gallery' : 'https://www.hillhouse.rs/gallery' },
+    {
+      property: 'og:url',
+      content: isEn.value
+        ? 'https://www.hillhouse.rs/en/gallery'
+        : 'https://www.hillhouse.rs/gallery',
+    },
     { property: 'og:type', content: 'website' },
     { property: 'og:locale', content: isEn.value ? 'en_US' : 'sr_RS' },
   ],
 })))
-
-const photos = ref(
-    [
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Living room with jacuzzi",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill.jpeg",
-        "description": "Dnevna soba",
-        "params": {"dimensions": {"width": 1600, "height": 720}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Villa yard",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-1-1920x1440.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-1-1920x1440.jpeg",
-        "description": "Bazen",
-        "params": {"dimensions": {"width": 1920, "height": 1440}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Home theatre in the living room",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-2-1.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-2-1.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 900, "height": 1200}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Living room with upstairs view",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-2-1920x1440.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-2-1920x1440.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1440}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Swimming pool with green led at night",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-3-1.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-3-1.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 900, "height": 1200}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Swimming pool",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-3-1920x1440.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-3-1920x1440.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1440}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Terrace and outdoor area",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-4-1.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-4-1.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 900, "height": 1200}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Living room with upstairs in the background",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-4-1920x1440.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-4-1920x1440.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1440}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Sauna",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-5-1.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-5-1.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 900, "height": 1200}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Dining room",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-5-1920x1280.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-5-1920x1280.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1280}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Home theatre",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-6.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-6.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 900, "height": 1200}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Sauna inside living room",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-7-1.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-7-1.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 900, "height": 1200}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Bedroom",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-7-1920x1281.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-7-1920x1281.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1440}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Spa and wellness area with towels",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-8-1.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-8-1.jpeg",
-        "description": "Spa and towels",
-        "params": {"dimensions": {"width": 900, "height": 1200}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Bathroom",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-8-1920x1281.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-8-1920x1281.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1440}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Living room and sauna",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-9-1.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-9-1.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 540, "height": 1200}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Bedroom",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-9-1920x1280.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-9-1920x1280.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1440}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Living room",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-10-1.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-10-1.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 900, "height": 1200}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Hall",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-10-1920x2880.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-10-1920x2880.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 2880}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Living room",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-11.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-11.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 1600, "height": 720}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Living room and bar behind",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-12-1.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-12-1.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 540, "height": 1200}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Villa and fire pit",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-12-1920x1281.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-12-1920x1281.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1281}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Living room and sauna",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-13-1.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-13-1.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 540, "height": 1200}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Hill house",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-13-1920x1281.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-13-1920x1281.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1281}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Hill House exterior view",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-14-1920x1280.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-14-1920x1280.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1280}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Outdoor pool terrace at Hill House",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-15-1920x1438.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-15-1920x1438.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1438}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Villa terrace with panoramic view",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-16-1920x1438.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-16-1920x1438.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1438}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Living area with natural light",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-17-1920x1280.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-17-1920x1280.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1280}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Hill House pool and garden at dusk",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-18-1920x1280.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-18-1920x1280.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1280}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Modern interior with premium finishes at Hill House",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-19-1920x1281.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-19-1920x1281.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1281}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Outdoor terrace dining setup at Hill House",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-20-1920x1280.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-20-1920x1280.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1280}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Villa pool deck with lounge chairs at Hill House",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-21-1920x1281.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-21-1920x1281.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1281}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Evening ambiance at Hill House villa",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-22-1920x1280.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-22-1920x1280.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1280}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Luxury pool at night with LED lighting at Hill House",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-23-1920x1440.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-23-1920x1440.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1440}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Aerial view of Hill House villa and grounds",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-24-1920x1440",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-24-1920x1440",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1440}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Pool and terrace seating at Hill House",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-25-1920x1440.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-25-1920x1440.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1440}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Villa entrance with lush landscaping at Hill House",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-26-1920x1440.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-26-1920x1440.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1440}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Indoor lounge with fireplace at Hill House",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-27-1920x1440.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-27-1920x1440.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1440}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Master bedroom with en-suite at Hill House",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-28-1920x1440.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-28-1920x1440.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1440}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Pool and terrace at Hill House at sunset",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-29-1920x1440.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-29-1920x1440.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1440}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Hill House villa with pool and panoramic landscape",
-        "url": "/hillhouse/media/images/gallery/professional/vila-prestige-hill-30-1920x1440.jpeg",
-        "resized": "/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-30-1920x1440.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1440}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Evening pool and event terrace at Hill House",
-        "url": "/hillhouse/media/images/gallery/events/poolside-table-gold.jpg",
-        "resized": "/hillhouse/media/images/gallery/events/poolside-table-gold.jpg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1280}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Event table with pool view at Hill House",
-        "url": "/hillhouse/media/images/gallery/events/pool-view-table-gold.jpg",
-        "resized": "/hillhouse/media/images/gallery/events/pool-view-table-gold.jpg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1280}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Illuminated floral arch on terrace at night at Hill House",
-        "url": "/hillhouse/media/images/gallery/events/night-terrace-arch.jpg",
-        "resized": "/hillhouse/media/images/gallery/events/night-terrace-arch.jpg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1280}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Boho ceremony arch with pampas grass and macramé at Hill House",
-        "url": "/hillhouse/media/images/gallery/events/boho-ceremony-arch.jpg",
-        "resized": "/hillhouse/media/images/gallery/events/boho-ceremony-arch.jpg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1280}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Outdoor wedding reception with round tables by the pool at Hill House",
-        "url": "/hillhouse/media/images/gallery/events/outdoor-reception-pool.jpg",
-        "resized": "/hillhouse/media/images/gallery/events/outdoor-reception-pool.jpg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1280}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Outdoor pergola dining with green napkins at Hill House",
-        "url": "/hillhouse/media/images/gallery/events/pergola-dining-green.jpeg",
-        "resized": "/hillhouse/media/images/gallery/events/pergola-dining-green.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 900, "height": 1200}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Couple photo shoot by the pool at Hill House",
-        "url": "/hillhouse/media/images/gallery/productions/couple-shoot-poolside.jpg",
-        "resized": "/hillhouse/media/images/gallery/productions/couple-shoot-poolside.jpg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1280}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Fashion shoot on the terrace at Hill House",
-        "url": "/hillhouse/media/images/gallery/productions/pink-dress-terrace-shoot.jpg",
-        "resized": "/hillhouse/media/images/gallery/productions/pink-dress-terrace-shoot.jpg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1280}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Luxury bedroom with velvet headboard and pendant lighting at Hill House",
-        "url": "/hillhouse/media/images/gallery/interior/bedroom-velvet-headboard.jpg",
-        "resized": "/hillhouse/media/images/gallery/interior/bedroom-velvet-headboard.jpg",
-        "description": "",
-        "params": {"dimensions": {"width": 900, "height": 1200}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Cinema lounge with curved sofas and green LED ambiance at Hill House",
-        "url": "/hillhouse/media/images/gallery/interior/cinema-lounge-green-led.jpg",
-        "resized": "/hillhouse/media/images/gallery/interior/cinema-lounge-green-led.jpg",
-        "description": "",
-        "params": {"dimensions": {"width": 900, "height": 1200}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Marble bathroom with gold fixtures and round mirror at Hill House",
-        "url": "/hillhouse/media/images/gallery/interior/bathroom-marble-gold.jpg",
-        "resized": "/hillhouse/media/images/gallery/interior/bathroom-marble-gold.jpg",
-        "description": "",
-        "params": {"dimensions": {"width": 900, "height": 1200}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Lit terrace lounge at sunset with panoramic valley view at Hill House",
-        "url": "/hillhouse/media/images/gallery/interior/terrace-sunset-lounge.jpg",
-        "resized": "/hillhouse/media/images/gallery/interior/terrace-sunset-lounge.jpg",
-        "description": "",
-        "params": {"dimensions": {"width": 900, "height": 1200}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Living room with built-in shelves and TV wall at Hill House",
-        "url": "/hillhouse/media/images/gallery/interior/living-room-shelves.jpg",
-        "resized": "/hillhouse/media/images/gallery/interior/living-room-shelves.jpg",
-        "description": "",
-        "params": {"dimensions": {"width": 900, "height": 1200}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Private sauna with glass door and warm wood interior at Hill House",
-        "url": "/hillhouse/media/images/gallery/interior/sauna-glass-door.jpeg",
-        "resized": "/hillhouse/media/images/gallery/interior/sauna-glass-door.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 900, "height": 1200}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Spa lounge with star ceiling, blue LED lighting and sauna at Hill House",
-        "url": "/hillhouse/media/images/gallery/interior/spa-lounge-blue-led.jpeg",
-        "resized": "/hillhouse/media/images/gallery/interior/spa-lounge-blue-led.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 900, "height": 1200}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Lower level lounge with staircase and ambient LED lighting at Hill House",
-        "url": "/hillhouse/media/images/gallery/interior/lower-lounge-staircase.jpeg",
-        "resized": "/hillhouse/media/images/gallery/interior/lower-lounge-staircase.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 900, "height": 1200}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Round dining table under chandelier with rose centerpiece at Hill House",
-        "url": "/hillhouse/media/images/gallery/interior/dining-chandelier-roses.jpeg",
-        "resized": "/hillhouse/media/images/gallery/interior/dining-chandelier-roses.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1280}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Dining room set with white chairs and floral centerpiece at Hill House",
-        "url": "/hillhouse/media/images/gallery/interior/dining-white-florals.jpeg",
-        "resized": "/hillhouse/media/images/gallery/interior/dining-white-florals.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1280}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Dining table set with pink napkins and floral runner at Hill House",
-        "url": "/hillhouse/media/images/gallery/interior/dining-pink-setup.jpeg",
-        "resized": "/hillhouse/media/images/gallery/interior/dining-pink-setup.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1280}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Club lounge with white modular sofas and LED ceiling at Hill House",
-        "url": "/hillhouse/media/images/gallery/interior/club-lounge-sofas.jpeg",
-        "resized": "/hillhouse/media/images/gallery/interior/club-lounge-sofas.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1280}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Lounge area with round marble table and floral arrangement at Hill House",
-        "url": "/hillhouse/media/images/gallery/interior/lounge-floral-table.jpeg",
-        "resized": "/hillhouse/media/images/gallery/interior/lounge-floral-table.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1280}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Indoor jacuzzi with food and drinks tray at Hill House",
-        "url": "/hillhouse/media/images/gallery/interior/jacuzzi-with-food.jpeg",
-        "resized": "/hillhouse/media/images/gallery/interior/jacuzzi-with-food.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 900, "height": 1200}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Covered outdoor lounge terrace by the pool at Hill House",
-        "url": "/hillhouse/media/images/gallery/outdoor/outdoor-covered-lounge.jpg",
-        "resized": "/hillhouse/media/images/gallery/outdoor/outdoor-covered-lounge.jpg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1280}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Indoor lounge with sheer curtains and modern chairs at Hill House",
-        "url": "/hillhouse/media/images/gallery/interior/lounge-sheer-curtains.jpg",
-        "resized": "/hillhouse/media/images/gallery/interior/lounge-sheer-curtains.jpg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1280}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Outdoor terrace and telescope at Hill House",
-        "url": "/hillhouse/media/images/facilities/telescope.jpg",
-        "resized": "/hillhouse/media/images/facilities/telescope.jpg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1280}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Infinity pool at sunset with palm trees at Hill House",
-        "url": "/hillhouse/media/images/gallery/outdoor/pool-sunset-palms.jpeg",
-        "resized": "/hillhouse/media/images/gallery/outdoor/pool-sunset-palms.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1280}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Pool with sun loungers and pergola on a summer day at Hill House",
-        "url": "/hillhouse/media/images/gallery/outdoor/pool-loungers-pergola.jpeg",
-        "resized": "/hillhouse/media/images/gallery/outdoor/pool-loungers-pergola.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1280}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Pool and palm tree at dusk with outdoor seating at Hill House",
-        "url": "/hillhouse/media/images/gallery/outdoor/pool-palm-dusk.jpeg",
-        "resized": "/hillhouse/media/images/gallery/outdoor/pool-palm-dusk.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1280}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Villa exterior with pool and terrace seating at Hill House",
-        "url": "/hillhouse/media/images/gallery/outdoor/villa-pool-exterior.jpeg",
-        "resized": "/hillhouse/media/images/gallery/outdoor/villa-pool-exterior.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1280}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Villa exterior with garden path and pool area at Hill House",
-        "url": "/hillhouse/media/images/gallery/outdoor/villa-garden-path.jpeg",
-        "resized": "/hillhouse/media/images/gallery/outdoor/villa-garden-path.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 1920, "height": 1280}},
-      },
-      {
-        "id": "DZQ58MV6VVoMzXy2",
-        "alt": "Garden path lined with flowering plants at Hill House",
-        "url": "/hillhouse/media/images/gallery/outdoor/garden-path-flowers.jpeg",
-        "resized": "/hillhouse/media/images/gallery/outdoor/garden-path-flowers.jpeg",
-        "description": "",
-        "params": {"dimensions": {"width": 900, "height": 1200}},
-      },
-    ]
-);
 </script>
 
 <style scoped>
-.gallery-page__header {
-  padding: 100px 0 72px;
-  background: radial-gradient(circle at top left, rgba(207, 169, 117, 0.18), transparent 30%),
-    linear-gradient(180deg, #171412 0%, #0f0d0c 100%);
-}
-
-.gallery-page__title {
-  max-width: 26ch;
-  margin-bottom: 18px;
-}
-
-.gallery-page__desc {
-  max-width: 620px;
-  opacity: 0.82;
-}
-
-.gallery-page__grid {
-  padding: 64px 0 96px;
+.gallery-page {
   background: var(--surface-ivory);
 }
 
-@media (max-width: 959px) {
-  .gallery-page__header {
-    padding: 72px 0 52px;
+/* ── Hero ── */
+.gallery-hero {
+  padding: 48px 0 0;
+  background: linear-gradient(160deg, #f7f1ea 0%, var(--surface-ivory) 100%);
+  border-bottom: 1px solid rgba(95, 90, 82, 0.1);
+}
+
+.gallery-hero__shell {
+  max-width: 820px;
+}
+
+.gallery-hero__title {
+  color: var(--brand-dark);
+  font-size: clamp(3.2rem, 6vw, 4rem);
+  line-height: 0.96;
+  margin: 18px 0 28px;
+}
+
+.gallery-hero__sub {
+  color: var(--text-warm);
+  font-size: 1.05rem;
+  line-height: 1.72;
+  max-width: 58ch;
+  margin-bottom: 48px;
+}
+
+/* ── Selection ── */
+.gallery-select {
+  padding: 80px 0 96px;
+  background: var(--surface-ivory);
+}
+
+.villa-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.villa-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(95, 90, 82, 0.12);
+  box-shadow: 0 8px 40px rgba(36, 24, 14, 0.07);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.villa-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 64px rgba(36, 24, 14, 0.12);
+}
+
+.villa-card__image-wrap {
+  position: relative;
+}
+
+.villa-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 40%, rgba(10, 8, 6, 0.35) 100%);
+  pointer-events: none;
+}
+
+.villa-card__inner {
+  padding: 28px 32px 32px;
+  background: #fff;
+}
+
+.villa-card__eyebrow {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--brand-gold);
+  margin-bottom: 10px;
+}
+
+.villa-card__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 2vw, 1.7rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--brand-dark);
+  margin-bottom: 20px;
+}
+
+.villa-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand-gold);
+}
+
+.villa-card__arrow {
+  font-size: 1.1rem;
+  transition: transform 0.2s ease;
+}
+
+.villa-card:hover .villa-card__arrow {
+  transform: translateX(4px);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .gallery-hero {
+    padding: 36px 0 0;
+  }
+
+  .gallery-hero__title {
+    font-size: clamp(2.6rem, 10vw, 3rem);
+    margin: 14px 0 20px;
+  }
+
+  .gallery-select {
+    padding: 56px 0 72px;
+  }
+
+  .villa-cards {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 }
 </style>

@@ -13,9 +13,23 @@
                 {{ t("home.redesign.location.text") }}
               </p>
               <div class="location-preview__facts">
-                <span>{{ t("home.redesign.location.city") }}</span>
+                <span>{{ t("home.redesign.location.time") }}</span>
               </div>
+              <template v-if="dual">
+                <a
+                  v-for="v in allVillas"
+                  :key="v.id"
+                  class="location-preview__link"
+                  :href="v.location.mapsLink"
+                  rel="noopener"
+                  target="_blank"
+                >
+                  <span>{{ v.name }} — {{ t("home.redesign.location.cta") }}</span>
+                  <v-icon :icon="mdiArrowTopRight" size="18"></v-icon>
+                </a>
+              </template>
               <a
+                v-else
                 class="location-preview__link"
                 :href="villaData.location.mapsLink"
                 rel="noopener"
@@ -30,13 +44,26 @@
             <div class="location-preview__map-wrap">
               <iframe
                 class="location-preview__map"
-                :src="villaData.location.mapSrc"
+                :src="dual ? COMBINED_MAP_SRC : villaData.location.mapSrc"
                 allowfullscreen=""
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
               ></iframe>
               <div class="location-preview__map-badge">
-                <span>{{ t("home.redesign.location.city") }}</span>
+                <template v-if="dual">
+                  <a
+                    v-for="v in allVillas"
+                    :key="v.id"
+                    class="location-preview__map-badge-link"
+                    :href="v.location.mapsLink"
+                    rel="noopener"
+                    target="_blank"
+                  >
+                    <span>{{ v.name }}</span>
+                    <v-icon :icon="mdiArrowTopRight" size="14"></v-icon>
+                  </a>
+                </template>
+                <span v-else>{{ t("home.redesign.location.city") }}</span>
               </div>
             </div>
           </v-col>
@@ -50,8 +77,16 @@
 import { mdiArrowTopRight } from "@mdi/js";
 import { useI18n } from "vue-i18n";
 
-const props = defineProps({ villa: { type: String, default: 'hh1' } })
+// Centered between HH1 (20.7099, 44.5319) and HH2 (20.6484, 44.5591)
+// at zoom ~13 — both villas appear as labeled Places on the map
+const COMBINED_MAP_SRC = 'https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15000!2d20.679142!3d44.545495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ssr!2srs!4v1774300000000!5m2!1ssr!2srs'
+
+const props = defineProps({
+  villa: { type: String, default: 'hh1' },
+  dual: { type: Boolean, default: false },
+})
 const villaData = useVilla(props.villa)
+const allVillas = useVillas()
 const { t } = useI18n({ useScope: "global" });
 </script>
 
@@ -102,10 +137,44 @@ const { t } = useI18n({ useScope: "global" });
   letter-spacing: 0.16em;
   font-size: 0.8rem;
   transition: gap 0.2s ease, color 0.2s ease;
+  margin-bottom: 10px;
 }
 
 .location-preview__link:hover {
   gap: 14px;
+}
+
+.location-preview__link:last-of-type {
+  margin-bottom: 0;
+}
+
+.location-preview__map-badge-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: rgba(255, 253, 249, 0.86);
+  color: var(--brand-dark);
+  text-decoration: none;
+  border: 1px solid rgba(95, 90, 82, 0.08);
+  backdrop-filter: blur(10px);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  transition: background 0.2s ease;
+}
+
+.location-preview__map-badge-link:hover {
+  background: rgba(255, 253, 249, 0.96);
+}
+
+.location-preview__dual-maps {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.location-preview__map-wrap--half {
+  min-height: 300px;
 }
 
 .location-preview__map-wrap {

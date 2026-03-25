@@ -1,6 +1,6 @@
 <template>
   <div class="villa-page">
-    <redesign-hero />
+    <redesign-hero villa="hh2" />
     <redesign-why villa="hh2" />
     <redesign-experiences villa="hh2" />
     <redesign-social-proof villa="hh2" />
@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import RedesignHero from '@/components/home/redesign/hero'
 import RedesignWhy from '@/components/home/redesign/why'
@@ -24,7 +24,21 @@ import RedesignLocation from '@/components/home/redesign/location'
 import VillaCardPromo from '@/components/home/redesign/villa-card-promo'
 
 const { locale } = useI18n({ useScope: 'global' })
-const localePath = useLocalePath()
+
+onMounted(() => {
+  if (window.location.hash) {
+    const target = document.getElementById(window.location.hash.slice(1))
+    if (!target) {
+      return
+    }
+
+    window.scrollTo({
+      top: target.offsetTop - 112,
+      left: 0,
+      behavior: 'smooth',
+    })
+  }
+})
 
 useHead(computed(() => {
   const isSr = locale.value !== 'en'

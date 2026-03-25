@@ -6,9 +6,13 @@
     loop
     playsinline
     preload="none"
-    poster="/hillhouse/media/images/gallery/professional/resized/vila-prestige-hill-15-1920x1438.jpeg"
+    :poster="heroVideo.poster"
   >
-    <source :src="'/hillhouse/media/videos/overview.mp4'" type="video/mp4">
+    <source :src="heroVideo.src" type="video/mp4">
     Your browser does not support the video tag.
   </video>
 </template>
+
+<script setup>
+const { heroVideo } = useVilla('hh1')
+</script>

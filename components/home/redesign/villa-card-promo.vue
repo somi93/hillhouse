@@ -73,7 +73,9 @@ const promoLabel = computed(() =>
 /* ─── Section ──────────────────────────────────────────────── */
 .vcp-section {
   padding: 100px 0 112px;
-  background: #1a1714;
+  background:
+    radial-gradient(circle at top left, rgba(207, 169, 117, 0.12), transparent 24%),
+    linear-gradient(180deg, #f7f1ea 0%, #efe4d6 100%);
 }
 
 /* ─── Header ───────────────────────────────────────────────── */
@@ -92,13 +94,14 @@ const promoLabel = computed(() =>
 
 .vcp-header__title {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(2rem, 3.2vw, 3rem);
+  font-size: clamp(1.8rem, 2.6vw, 2.5rem);
   font-weight: 300;
-  color: #f0ead8;
+  color: #241d18;
   letter-spacing: 0.01em;
   line-height: 1.15;
-  margin: 0;
-  max-width: 28ch;
+  margin: 0 auto;
+  max-width: 14ch;
+  text-align: center;
 }
 
 /* ─── Card ─────────────────────────────────────────────────── */
@@ -106,13 +109,13 @@ const promoLabel = computed(() =>
   display: grid;
   grid-template-columns: 55% 1fr;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(117, 89, 52, 0.14);
+  background: rgba(255, 251, 246, 0.88);
   transition: border-color 0.3s ease;
 }
 
 .vcp-card:hover {
-  border-color: rgba(207, 169, 117, 0.28);
+  border-color: rgba(207, 169, 117, 0.42);
 }
 
 /* Image side */
@@ -132,7 +135,6 @@ const promoLabel = computed(() =>
 .vcp-card__image-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to right, transparent 60%, #1a1714 100%);
   pointer-events: none;
 }
 
@@ -157,7 +159,7 @@ const promoLabel = computed(() =>
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: clamp(2rem, 2.8vw, 2.8rem);
   font-weight: 300;
-  color: #f0ead8;
+  color: #241d18;
   letter-spacing: 0.01em;
   line-height: 1.1;
   margin-bottom: 24px;
@@ -178,7 +180,7 @@ const promoLabel = computed(() =>
   align-items: center;
   gap: 10px;
   font-size: 0.875rem;
-  color: rgba(240, 234, 216, 0.65);
+  color: rgba(36, 29, 24, 0.72);
   line-height: 1.4;
 }
 
@@ -201,7 +203,7 @@ const promoLabel = computed(() =>
 .vcp-card__price-from {
   font-size: 0.75rem;
   letter-spacing: 0.06em;
-  color: rgba(240, 234, 216, 0.45);
+  color: rgba(36, 29, 24, 0.42);
   text-transform: uppercase;
 }
 
@@ -219,9 +221,9 @@ const promoLabel = computed(() =>
   align-items: center;
   gap: 8px;
   padding: 13px 28px;
-  background: transparent;
+  background: #241d18;
   border: 1px solid rgba(207, 169, 117, 0.55);
-  color: #cfa975;
+  color: #f5ecdf;
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -247,9 +249,6 @@ const promoLabel = computed(() =>
     min-height: 260px;
   }
 
-  .vcp-card__image-overlay {
-    background: linear-gradient(to bottom, transparent 55%, #1a1714 100%);
-  }
 
   .vcp-card__content-side {
     padding: 36px 32px 40px;
@@ -260,8 +259,6 @@ const promoLabel = computed(() =>
   .vcp-section {
     padding: 72px 0 80px;
   }
-
-  .vcp-header { margin-bottom: 36px; }
 
   .vcp-card__content-side {
     padding: 28px 24px 32px;

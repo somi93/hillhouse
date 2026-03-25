@@ -1,7 +1,7 @@
 <template>
   <section id="videoBox" class="hero-manifesto">
-    <desktop-video v-if="$device.isDesktop"></desktop-video>
-    <mobile-video v-else></mobile-video>
+    <desktop-video v-if="$device.isDesktop" :villa="villa"></desktop-video>
+    <mobile-video v-else :villa="villa"></mobile-video>
     <div class="hero-manifesto__overlay"></div>
     <div class="hero-manifesto__gradient"></div>
 
@@ -73,12 +73,23 @@ import { useI18n } from "vue-i18n";
 import DesktopVideo from "../videos/desktop";
 import MobileVideo from "../videos/mobile";
 
-const localePath = useLocalePath()
+const props = defineProps({
+  villa: {
+    type: String,
+    required: true,
+    validator: (v) => ["hh1", "hh2"].includes(v),
+    default: "hh1",
+  },
+});
+
+const localePath = useLocalePath();
 const { t } = useI18n({ useScope: "global" });
 
 const trustItems = computed(() => [
   t("home.redesign.hero.trust1"),
-  t("home.redesign.hero.trust2"),
+  props.villa === "hh2"
+    ? t("home.redesign.hero.hh2.trust2")
+    : t("home.redesign.hero.trust2"),
   t("home.redesign.hero.trust3"),
   t("home.redesign.hero.trust4"),
 ]);

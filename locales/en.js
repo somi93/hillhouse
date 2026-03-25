@@ -52,41 +52,75 @@ export default {
                 "title": "A private villa for celebrations worth remembering.",
                 "subtitle": "For celebrations, gatherings, and special moments, with a pool, spa zone, and an atmosphere that leaves an impression, only 30 minutes from Belgrade.",
                 "primaryCta": "Reserve your date",
+                "villas": "Villas",
+                "occasions": "Occasions",
+                "villaOverview": "About villa",
+                "amenities": "Amenities",
                 "secondaryCta": "View gallery",
                 "trust1": "An atmosphere made for stylish events",
                 "trust2": "Private spa and pool",
                 "trust3": "30 min from Belgrade",
-                "trust4": "For celebrations, gatherings, and events"
+                "trust4": "For celebrations, gatherings, and events",
+                "hh2": {
+                    "trust2": "Event hall for up to 130 guests"
+                }
             },
             "why": {
                 "eyebrow": "A private destination for special occasions",
-                "title": "Mesto sa posebnim zalaskom sunca",
-                "text": "Hill House is chosen for more than location or amenities. It stands out for the impression it leaves from the very first arrival. It is a villa where atmosphere, layout, and amenities work together to give both stays and events a calmer, more elegant tone.",
                 "cta": "Learn more about the villa",
                 "proofIntro": "Why this place leaves an impression",
                 "proofNote": "Everything is arranged so that both the occasion and the stay feel considered and naturally in place.",
-                "proof1Value": "150",
-                "proof1Label": "guests for celebrations and events",
-                "proof2Value": "10",
-                "proof2Label": "sleeping places",
-                "proof3Value": "Spa",
-                "proof3Label": "jacuzzi, sauna, and wellness zone",
-                "proof4Value": "30 minutes",
-                "proof4Label": "an easy drive from Belgrade"
+                "hh1": {
+                    "title": "A place with a special sunset",
+                    "text": "Hill House is chosen for more than location or amenities. It stands out for the impression it leaves from the very first arrival. It is a villa where atmosphere, layout, and amenities work together to give both stays and events a calmer, more elegant tone.",
+                    "proof1Value": "150",
+                    "proof1Label": "guests for celebrations and events",
+                    "proof2Value": "10",
+                    "proof2Label": "sleeping places",
+                    "proof3Value": "Spa",
+                    "proof3Label": "jacuzzi, sauna, and wellness zone",
+                    "proof4Value": "30 minutes",
+                    "proof4Label": "an easy drive from Belgrade"
+                },
+                "hh2": {
+                    "title": "A place with a special charm",
+                    "text": "Created for those who seek more than an ordinary space. Ideal for weddings, celebrations, and moments that deserve a perfect setting.",
+                    "proof1Value": "250",
+                    "proof1Label": "guests for celebrations and events",
+                    "proof2Value": "7",
+                    "proof2Label": "sleeping places",
+                    "proof3Value": "Sala",
+                    "proof3Label": "event hall for up to 130 guests",
+                    "proof4Value": "30 minutes",
+                    "proof4Label": "an easy drive from Belgrade"
+                }
             },
             "experiences": {
                 "eyebrow": "Signature experiences",
                 "title": "More than a villa! A place for your special moments!",
                 "description": "From the open-air scene around the pool to wellness downtime and an interior that keeps the atmosphere even when the occasion moves inside, Hill House is designed so each part of the space works in the same rhythm.",
-                "item1Kicker": "Open-air scene",
-                "item1Title": "Large terrace for celebrations",
-                "item1Text": "A spacious terrace ideal for outdoor celebrations, created for unforgettable moments under the open sky.",
-                "item2Kicker": "Wellness zone",
-                "item2Title": "A spa zone for pauses",
-                "item2Text": "A peaceful corner where time slows down, and every moment becomes a delight.",
-                "item3Kicker": "Interior",
-                "item3Title": "An interior that exudes luxury",
-                "item3Text": "Luxury in every detail"
+                "hh1": {
+                    "item1Kicker": "Outdoor space",
+                    "item1Title": "Large outdoor terrace",
+                    "item1Text": "A spacious terrace ideal for open-air celebrations, created for unforgettable moments under the open sky.",
+                    "item2Kicker": "Wellness",
+                    "item2Title": "Spa retreat",
+                    "item2Text": "A corner of peace where time slows down and every moment becomes a pleasure.",
+                    "item3Kicker": "Interior",
+                    "item3Title": "An interior that breathes luxury",
+                    "item3Text": "Luxury in every detail."
+                },
+                "hh2": {
+                    "item1Kicker": "Indoor hall",
+                    "item1Title": "Indoor event hall",
+                    "item1Text": "A modern event hall with a capacity of up to 130 guests – an ideal space for unforgettable events.",
+                    "item2Kicker": "Open-air scene",
+                    "item2Title": "Large terrace",
+                    "item2Text": "A spacious terrace for celebrations with a capacity of up to 250 guests – ideal for large outdoor events.",
+                    "item3Kicker": "Interior",
+                    "item3Title": "Luxury interior",
+                    "item3Text": "A modern interior with luxurious details that leaves a strong impression."
+                }
             },
             "occasions": {
                 "eyebrow": "Scenarios",
@@ -137,7 +171,10 @@ export default {
                 "category4Text": "Open views, terrace, and pool as the main stage of the space through day and evening.",
                 "category5Kicker": "In motion",
                 "category5Title": "Motion preview",
-                "category5Text": "Short video frames that carry the rhythm, light, and atmosphere more directly."
+                "category5Text": "Short video frames that carry the rhythm, light, and atmosphere more directly.",
+                "category6Kicker": "Event hall",
+                "category6Title": "Indoor hall for celebrations",
+                "category6Text": "A professionally equipped indoor hall for weddings, celebrations and corporate events."
             },
             "cta": {
                 "eyebrow": "Final reservation",
@@ -166,8 +203,8 @@ export default {
                     "price": "from €600 / night"
                 },
                 "hh2": {
-                    "capacity": "up to 150 guests",
-                    "price": "from €600 / night"
+                    "capacity": "up to 250 guests",
+                    "price": "from €800 / night"
                 }
             },
             "villaHero": {
@@ -185,10 +222,10 @@ export default {
                 "hh2": {
                     "eyebrow": "The new villa — Hill House 2",
                     "title": "Hill House 2",
-                    "subtitle": "A second space of the same standard for moments that call for a special setting. Pool, terrace and contemporary design — near Belgrade.",
-                    "trust1": "up to 150 guests",
-                    "trust2": "Pool & terrace",
-                    "trust3": "Contemporary design",
+                    "subtitle": "Private villa with event hall for up to 130 guests, covered summerhouse and pool — on-site capacity up to 250, 30 minutes from Belgrade.",
+                    "trust1": "up to 250 guests",
+                    "trust2": "7 sleeping places",
+                    "trust3": "Event hall & summerhouse",
                     "trust4": "30 min from Belgrade"
                 }
             },
@@ -221,17 +258,17 @@ export default {
                 },
                 "hh2": {
                     "eyebrow": "New villa",
-                    "imageAlt": "Hill House 2 — A-frame villa with pool",
-                    "feature1": "up to 150 guests",
-                    "feature2": "Pool & terrace",
-                    "feature3": "Contemporary design",
+                    "imageAlt": "Hill House 2 — Villa with pool and event hall",
+                    "feature1": "up to 250 guests",
+                    "feature2": "7 sleeping places",
+                    "feature3": "Event hall & summerhouse",
                     "feature4": "30 min from Belgrade",
-                    "price": "€600 / night"
+                    "price": "€800 / night"
                 }
             },
             "villaCardPromo": {
                 "eyebrow": "Our portfolio",
-                "title": "There's another option.",
+                "title": "Explore the other villa.",
                 "cta": "Explore"
             }
         },
@@ -318,8 +355,9 @@ export default {
         "priceFridaySunday": "Price per night on Fridays and Sundays:",
         "priceOtherDays": "Price per night on other days:",
         "guestsUpTo50": "up to 50 guests",
-        "guests50to100": "from 50-100 guests",
-        "guests100to150": "from 100-150 guests",
+        "guests50to100": "up to 100 guests",
+        "guests100to150": "up to 150 guests",
+        "hh1DailyRentNote": "Day rental — the price is reduced by €50.",
         "reservationTermsTitle": "The reservation is considered confirmed",
         "reservationTermsText": "after an advance payment of 40% of the total rental price. The payment deadline is 48 hours from the agreement.",
         "cancellationPolicyTitle": "Cancellation of reservation",
@@ -357,9 +395,32 @@ export default {
         "videoSurveillancePolicy": "The estate is under video surveillance, and if the stated rules are not respected, we reserve the right to stop the celebration or vacation at any moment, and you are obliged to leave the estate as soon as possible.",
         "ruleNoCameraTampering": "Turning off or covering cameras is prohibited.",
         "damageLiability": "The tenant is obliged to compensate for any damage caused during the rented period, and this is regulated by the contract.",
+        "villaToggleHH1": "Hill House 1",
+        "villaToggleHH2": "Hill House 2",
+        "guestsUpTo20": "up to 20 guests",
+        "guests50": "up to 50 guests",
+        "guests100": "up to 100 guests",
+        "guestsOver100": "over 100 guests",
+        "hh2PromoPriceLabel": "Promo — weekdays (Nov–Mar)",
+        "hh2WeekdaysLabel": "Weekdays (Mon–Thu)",
+        "hh2SalaNote": "Hall surcharge: €400/day, applies April–October — the hall is included in the off-season price. Note: overnight stay requires hall rental.",
+        "hh2EquipmentPolicy": "For up to 100 guests, our dishes, tables, chairs, and tablecloths are provided. For more guests, equipment must be rented independently.",
         "contractSigning": "Signing the contract is mandatory."
     },
     "global": {
         "moreDetails": "More details"
+    },
+    "home2": {
+        "about": {
+            "title": "About Hill House 2",
+            "paragraph1": "Welcome to our luxury estate — a place where luxury, charm, and natural beauty come together to create the perfect setting for every celebration. Just half an hour from Belgrade, our property offers complete privacy and comfort, ideal for weddings, parties, and exclusive events.",
+            "featuresTitle": "A space that takes your breath away:",
+            "feature1": "An enclosed event hall with a capacity of up to 130 guests, featuring an elegant bar and 4 restrooms — perfect for sophisticated and intimate occasions.",
+            "feature2": "A spacious poolside terrace surrounded by tall palms, with a capacity of up to 250 guests, ideal for outdoor celebrations and summer receptions.",
+            "feature3": "A luxurious house interior: a master bedroom with an en-suite bathroom and pool views, two additional guest rooms, and a generous living area with kitchen and dining room.",
+            "feature4": "Outdoor amenities: an infinity pool, open jacuzzi, a summerhouse with a grill, three restrooms, and a shower cabin. Parking is provided for all guests.",
+            "paragraph2": "Every detail of the estate has been carefully considered — from the elegant interior and towering palms to the infinity pool and open-air socialising spaces. Our property enables the organisation of events that leave a lasting impression and create memories that endure.",
+            "paragraph3": "Experience the perfect blend of luxury, privacy, and natural beauty — all just half an hour's drive from Belgrade."
+        }
     }
 }

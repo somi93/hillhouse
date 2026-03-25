@@ -1,20 +1,29 @@
 ﻿<template>
-  <section id="facilities" class="signature-experiences">
+  <section id="amenities" class="signature-experiences">
     <v-container>
       <div class="content-shell">
         <div class="section-copy section-copy--centered">
-          <p class="section-eyebrow">{{ t('home.redesign.experiences.eyebrow') }}</p>
+          <p class="section-eyebrow">{{ t("home.redesign.experiences.eyebrow") }}</p>
           <h2 class="section-title section-title--dark signature-experiences__title">
-            {{ t('home.redesign.experiences.title') }}
+            {{ t("home.redesign.experiences.title") }}
           </h2>
-          <p class="section-text section-text--warm section-text--wide signature-experiences__description">
-            {{ t('home.redesign.experiences.description') }}
+          <p
+            class="section-text section-text--warm section-text--wide signature-experiences__description"
+          >
+            {{ t("home.redesign.experiences.description") }}
           </p>
         </div>
 
         <div class="experience-stack">
-          <article v-for="experience in experiences" :key="experience.title" class="experience-panel">
-            <v-row :class="experience.reverse ? 'flex-sm-row-reverse' : ''" align="center">
+          <article
+            v-for="experience in experiences"
+            :key="experience.title"
+            class="experience-panel"
+          >
+            <v-row
+              :class="experience.reverse ? 'flex-sm-row-reverse' : ''"
+              align="center"
+            >
               <v-col cols="12" sm="6" md="7">
                 <div class="experience-panel__image-wrap">
                   <v-img
@@ -42,21 +51,21 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
-import { useI18n } from 'vue-i18n'
+import { computed } from "vue";
+import { useI18n } from "vue-i18n";
 
-const props = defineProps({ villa: { type: String, default: 'hh1' } })
-const villaData = useVilla(props.villa)
-const { t } = useI18n({ useScope: 'global' })
-
+const props = defineProps({ villa: { type: String, default: "hh1" } });
+const villaData = useVilla(props.villa);
+const { t } = useI18n({ useScope: "global" });
+console.log(villaData.experiences);
 const experiences = computed(() =>
   villaData.experiences.map((e, i) => ({
     ...e,
-    kicker: t(`home.redesign.experiences.item${i + 1}Kicker`),
-    title:  t(`home.redesign.experiences.item${i + 1}Title`),
-    text:   t(`home.redesign.experiences.item${i + 1}Text`),
+    kicker: t(`home.redesign.experiences.${props.villa}.item${i + 1}Kicker`),
+    title: t(`home.redesign.experiences.${props.villa}.item${i + 1}Title`),
+    text: t(`home.redesign.experiences.${props.villa}.item${i + 1}Text`),
   }))
-)
+);
 </script>
 
 <style scoped>

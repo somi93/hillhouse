@@ -94,7 +94,7 @@ html {
 }
 
 .section-title {
-    font-size: clamp(2.2rem, 3.7vw, 4.1rem);
+    font-size: clamp(2.2rem, 3.7vw, 4rem);
     line-height: 1.06;
     margin-bottom: 22px;
 }

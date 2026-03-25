@@ -1,5 +1,5 @@
 ﻿<template>
-  <section class="curated-gallery">
+  <section id="gallery" class="curated-gallery">
     <v-container>
       <div class="content-shell">
         <div class="section-copy section-copy--centered">
@@ -62,7 +62,8 @@
                   playsinline
                   preload="metadata"
                 >
-                  <source :src="activeItem.src" type="video/mp4" />
+                  <source :src="activeItem.src" :type="activeItem.src.endsWith('.mov') ? 'video/quicktime' : 'video/mp4'" />
+                  <source v-if="activeItem.src.endsWith('.mov')" :src="activeItem.src" type="video/mp4" />
                 </video>
               </template>
               <v-img
