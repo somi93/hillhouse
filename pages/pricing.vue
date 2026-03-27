@@ -84,60 +84,78 @@
 <script setup>
 import { computed } from "vue";
 import { useI18n } from "vue-i18n";
+import {
+  SEO_DEFAULT_IMAGE,
+  buildAbsoluteUrl,
+  createBreadcrumbSchema,
+  createWebPageSchema,
+  useSeoPage,
+} from "@/composables/useSeo";
 
 const { locale } = useI18n({ useScope: "global" });
 const localePath = useLocalePath();
 const isEn = computed(() => locale.value === "en");
 
-useHead(
-  computed(() => ({
-    title: isEn.value
-      ? "Pricing — Hill House Luxury Villas"
-      : "Cenovnik — Hill House Privatne Vile",
-    link: [
+useSeoPage({
+  path: "/pricing",
+  title: {
+    sr: "Cenovnik | Hill House privatne vile",
+    en: "Pricing | Hill House private villas",
+  },
+  description: {
+    sr: "Uporedite cenovnike vila Hill House i Hill House 2 za proslave, venčanja, okupljanja i posebne događaje na 30 minuta od Beograda.",
+    en: "Compare pricing for Hill House and Hill House 2 villas for celebrations, weddings, gatherings and special occasions 30 minutes from Belgrade.",
+  },
+  keywords: {
+    sr: "cenovnik vile za proslave, cena iznajmljivanja vile beograd, hill house cenovnik, vila za vencanje cena",
+    en: "villa pricing belgrade, private villa rental cost serbia, hill house pricing, wedding venue rates",
+  },
+  image: SEO_DEFAULT_IMAGE,
+  schemas: (localeCode) => {
+    const breadcrumbItems = [
+      { name: localeCode === "en" ? "Home" : "Početna", path: "/" },
+      { name: localeCode === "en" ? "Pricing" : "Cenovnik", path: "/pricing" },
+    ];
+    const title = localeCode === "en" ? "Pricing | Hill House private villas" : "Cenovnik | Hill House privatne vile";
+    const description =
+      localeCode === "en"
+        ? "Comparison page for Hill House and Hill House 2 pricing near Belgrade."
+        : "Uporedna stranica cenovnika Hill House i Hill House 2 vila nadomak Beograda.";
+
+    return [
+      createBreadcrumbSchema(breadcrumbItems, localeCode),
+      createWebPageSchema({
+        path: "/pricing",
+        localeCode,
+        title,
+        description,
+        type: "CollectionPage",
+        image: SEO_DEFAULT_IMAGE,
+        breadcrumbItems,
+      }),
       {
-        rel: "canonical",
-        href: isEn.value
-          ? "https://www.hillhouse.rs/en/pricing"
-          : "https://www.hillhouse.rs/pricing",
+        "@context": "https://schema.org",
+        "@type": "OfferCatalog",
+        name: localeCode === "en" ? "Hill House villa pricing" : "Hill House cenovnik vila",
+        url: buildAbsoluteUrl("/pricing", localeCode),
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Hill House",
+            url: buildAbsoluteUrl("/hill-house-1/pricing", localeCode),
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Hill House 2",
+            url: buildAbsoluteUrl("/hill-house-2/pricing", localeCode),
+          },
+        ],
       },
-    ],
-    meta: [
-      { name: "robots", content: "index, follow" },
-      {
-        name: "description",
-        content: isEn.value
-          ? "Compare Hill House 1 and Hill House 2 villa pricing — events, weddings and special occasions near Belgrade. Choose the villa that fits your occasion."
-          : "Uporedite cenovnike Hill House 1 i Hill House 2 — proslave, venčanja i posebni događaji kod Beograda. Izaberite vilu koja odgovara vašoj proslavi.",
-      },
-      {
-        property: "og:title",
-        content: isEn.value
-          ? "Pricing — Hill House Luxury Villas"
-          : "Cenovnik — Hill House Privatne Vile",
-      },
-      {
-        property: "og:description",
-        content: isEn.value
-          ? "Compare Hill House villa rental rates for events, weddings and special occasions near Belgrade."
-          : "Cenovnici iznajmljivanja Hill House vila za proslave, venčanja i posebne događaje. 30 minuta od Beograda.",
-      },
-      {
-        property: "og:image",
-        content:
-          "https://www.hillhouse.rs/hillhouse/media/images/gallery/professional/vila-prestige-hill-15-1920x1438.jpeg",
-      },
-      {
-        property: "og:url",
-        content: isEn.value
-          ? "https://www.hillhouse.rs/en/pricing"
-          : "https://www.hillhouse.rs/pricing",
-      },
-      { property: "og:type", content: "website" },
-      { property: "og:locale", content: isEn.value ? "en_US" : "sr_RS" },
-    ],
-  }))
-);
+    ];
+  },
+});
 </script>
 
 <style scoped>

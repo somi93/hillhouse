@@ -15,21 +15,8 @@
               <div class="location-preview__facts">
                 <span>{{ t("home.redesign.location.time") }}</span>
               </div>
-              <template v-if="dual">
-                <a
-                  v-for="v in allVillas"
-                  :key="v.id"
-                  class="location-preview__link"
-                  :href="v.location.mapsLink"
-                  rel="noopener"
-                  target="_blank"
-                >
-                  <span>{{ v.name }} — {{ t("home.redesign.location.cta") }}</span>
-                  <v-icon :icon="mdiArrowTopRight" size="18"></v-icon>
-                </a>
-              </template>
               <a
-                v-else
+                v-if="!dual"
                 class="location-preview__link"
                 :href="villaData.location.mapsLink"
                 rel="noopener"
@@ -42,13 +29,7 @@
           </v-col>
           <v-col cols="12" sm="7" md="7">
             <div class="location-preview__map-wrap">
-              <iframe
-                class="location-preview__map"
-                :src="dual ? COMBINED_MAP_SRC : villaData.location.mapSrc"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-              ></iframe>
+              <HomeRedesignLocationMap :pins="mapPins" />
               <div class="location-preview__map-badge">
                 <template v-if="dual">
                   <a
@@ -77,17 +58,30 @@
 import { mdiArrowTopRight } from "@mdi/js";
 import { useI18n } from "vue-i18n";
 
-// Centered between HH1 (20.7099, 44.5319) and HH2 (20.6484, 44.5591)
-// at zoom ~13 — both villas appear as labeled Places on the map
-const COMBINED_MAP_SRC = 'https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15000!2d20.679142!3d44.545495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ssr!2srs!4v1774300000000!5m2!1ssr!2srs'
-
 const props = defineProps({
-  villa: { type: String, default: 'hh1' },
+  villa: { type: String, default: "hh1" },
   dual: { type: Boolean, default: false },
-})
-const villaData = useVilla(props.villa)
-const allVillas = useVillas()
+});
+const villaData = useVilla(props.villa);
+const allVillas = useVillas();
 const { t } = useI18n({ useScope: "global" });
+
+const mapPins = computed(() => {
+  if (props.dual) {
+    return allVillas.map((v) => ({
+      coords: v.location.coords,
+      label: v.name,
+      mapsLink: v.location.mapsLink,
+    }));
+  }
+  return [
+    {
+      coords: villaData.location.coords,
+      label: villaData.name,
+      mapsLink: villaData.location.mapsLink,
+    },
+  ];
+});
 </script>
 
 <style scoped>

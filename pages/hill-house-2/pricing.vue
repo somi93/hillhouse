@@ -146,6 +146,12 @@
 <script setup>
 import { computed } from "vue";
 import { useI18n } from "vue-i18n";
+import {
+  buildAbsoluteUrl,
+  createBreadcrumbSchema,
+  createWebPageSchema,
+  useSeoPage,
+} from "@/composables/useSeo";
 
 const { t, locale } = useI18n({ useScope: "global" });
 const isEn = computed(() => locale.value === "en");
@@ -177,106 +183,86 @@ const pricingTiers = computed(() => [
   },
 ]);
 
-useHead(
-  computed(() => ({
-    title: isEn.value
-      ? "Pricing — Hill House 2 Luxury Villa"
-      : "Cenovnik — Hill House 2 Privatna Vila",
-    link: [
+
+useSeoPage({
+  path: "/hill-house-2/pricing",
+  title: {
+    sr: "Cenovnik Hill House 2 | Vila sa salom za proslave",
+    en: "Hill House 2 pricing | Villa with event hall",
+  },
+  description: {
+    sr: "Pogledajte cenovnik Hill House 2 vile za venčanja i proslave sa svečanom salom, infinity bazenom i kapacitetom do 250 gostiju.",
+    en: "View Hill House 2 pricing for weddings and events with event hall, infinity pool and capacity for up to 250 guests.",
+  },
+  keywords: {
+    sr: "hill house 2 cenovnik, cena vile sa salom, prostor za vencanje cena, infinity bazen vila cenovnik",
+    en: "hill house 2 pricing, villa with hall rates, wedding venue price near belgrade, infinity pool villa cost",
+  },
+  image: {
+    url: "/hillhouse2/media/images/gallery/exterior/prestige-hill-2-12-1920x2560.jpg",
+    width: 1920,
+    height: 2560,
+    alt: "Hill House 2 pricing page cover image",
+  },
+  schemas: (localeCode) => {
+    const breadcrumbItems = [
+      { name: localeCode === "en" ? "Home" : "Početna", path: "/" },
+      { name: "Hill House 2", path: "/hill-house-2" },
+      { name: localeCode === "en" ? "Pricing" : "Cenovnik", path: "/hill-house-2/pricing" },
+    ];
+    const title =
+      localeCode === "en"
+        ? "Hill House 2 pricing | Villa with event hall"
+        : "Cenovnik Hill House 2 | Vila sa salom za proslave";
+    const description =
+      localeCode === "en"
+        ? "Rates for Hill House 2 villa rentals near Belgrade."
+        : "Cene iznajmljivanja Hill House 2 vile nadomak Beograda.";
+
+    return [
+      createBreadcrumbSchema(breadcrumbItems, localeCode),
+      createWebPageSchema({
+        path: "/hill-house-2/pricing",
+        localeCode,
+        title,
+        description,
+        image: "/hillhouse2/media/images/gallery/exterior/prestige-hill-2-12-1920x2560.jpg",
+        breadcrumbItems,
+      }),
       {
-        rel: "canonical",
-        href: isEn.value
-          ? "https://www.hillhouse.rs/en/hill-house-2/pricing"
-          : "https://www.hillhouse.rs/hill-house-2/pricing",
+        "@context": "https://schema.org",
+        "@type": "Product",
+        name: localeCode === "en" ? "Hill House 2 villa rental" : "Iznajmljivanje Hill House 2 vile",
+        description,
+        image: buildAbsoluteUrl("/hillhouse2/media/images/gallery/exterior/prestige-hill-2-12-1920x2560.jpg", "sr").replace("/en/", "/"),
+        url: buildAbsoluteUrl("/hill-house-2/pricing", localeCode),
+        offers: [
+          {
+            "@type": "Offer",
+            name: localeCode === "en" ? "Saturday up to 50 guests" : "Subota do 50 gostiju",
+            price: "1200",
+            priceCurrency: "EUR",
+            availability: "https://schema.org/InStock",
+          },
+          {
+            "@type": "Offer",
+            name: localeCode === "en" ? "Friday or Sunday up to 50 guests" : "Petak ili nedelja do 50 gostiju",
+            price: "1000",
+            priceCurrency: "EUR",
+            availability: "https://schema.org/InStock",
+          },
+          {
+            "@type": "Offer",
+            name: localeCode === "en" ? "Weekdays up to 50 guests" : "Radni dani do 50 gostiju",
+            price: "800",
+            priceCurrency: "EUR",
+            availability: "https://schema.org/InStock",
+          },
+        ],
       },
-    ],
-    script: [
-      {
-        type: "application/ld+json",
-        innerHTML: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Product",
-          name: isEn.value
-            ? "Hill House 2 Villa Rental"
-            : "Iznajmljivanje Hill House 2 vile",
-          description: isEn.value
-            ? "Private luxury villa rental for weddings, events and celebrations near Belgrade. Infinity pool, event hall for up to 250 guests."
-            : "Iznajmljivanje privatne luksuzne vile za venčanja, proslave i posebne događaje kod Beograda. Infinity bazen, svečana sala za do 250 gostiju.",
-          image:
-            "https://www.hillhouse.rs/hillhouse2/media/images/gallery/exterior/hh2-exterior-1.jpeg",
-          url: isEn.value
-            ? "https://www.hillhouse.rs/en/hill-house-2/pricing"
-            : "https://www.hillhouse.rs/hill-house-2/pricing",
-          offers: [
-            {
-              "@type": "Offer",
-              name: isEn.value ? "Saturday (up to 50 guests)" : "Subota (do 50 gostiju)",
-              price: "1200",
-              priceCurrency: "EUR",
-              availability: "https://schema.org/InStock",
-            },
-            {
-              "@type": "Offer",
-              name: isEn.value ? "Saturday (50–100 guests)" : "Subota (50–100 gostiju)",
-              price: "1400",
-              priceCurrency: "EUR",
-              availability: "https://schema.org/InStock",
-            },
-            {
-              "@type": "Offer",
-              name: isEn.value
-                ? "Saturday (over 100 guests)"
-                : "Subota (preko 100 gostiju)",
-              price: "1600",
-              priceCurrency: "EUR",
-              availability: "https://schema.org/InStock",
-            },
-          ],
-        }),
-      },
-    ],
-    meta: [
-      { name: "robots", content: "index, follow" },
-      {
-        name: "description",
-        content: isEn.value
-          ? "Hill House 2 villa rental pricing — weddings, events and celebrations with infinity pool and event hall for up to 250 guests, 30 minutes from Belgrade."
-          : "Cenovnik iznajmljivanja Hill House 2 vile — venčanja, proslave i posebni događaji sa infinity bazenom i salom za do 250 gostiju, 30 minuta od Beograda.",
-      },
-      {
-        name: "keywords",
-        content: isEn.value
-          ? "hill house 2 pricing, villa rental Belgrade, luxury villa weddings Serbia, event hall rental"
-          : "hill house 2 cenovnik, iznajmljivanje vile za vencanje, sala za proslave cena beograd",
-      },
-      {
-        property: "og:title",
-        content: isEn.value
-          ? "Pricing — Hill House 2 Luxury Villa"
-          : "Cenovnik — Hill House 2 Privatna Vila",
-      },
-      {
-        property: "og:description",
-        content: isEn.value
-          ? "Hill House 2 villa rental rates for weddings, events and special occasions near Belgrade. Infinity pool and event hall."
-          : "Cenovnik iznajmljivanja Hill House 2 vile za venčanja, proslave i posebne događaje. Infinity bazen i svečana sala.",
-      },
-      {
-        property: "og:image",
-        content:
-          "https://www.hillhouse.rs/hillhouse2/media/images/gallery/exterior/hh2-exterior-1.jpeg",
-      },
-      {
-        property: "og:url",
-        content: isEn.value
-          ? "https://www.hillhouse.rs/en/hill-house-2/pricing"
-          : "https://www.hillhouse.rs/hill-house-2/pricing",
-      },
-      { property: "og:type", content: "website" },
-      { property: "og:locale", content: isEn.value ? "en_US" : "sr_RS" },
-    ],
-  }))
-);
+    ];
+  },
+});
 </script>
 
 <style scoped>

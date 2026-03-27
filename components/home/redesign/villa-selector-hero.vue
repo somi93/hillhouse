@@ -4,6 +4,7 @@
     class="villa-selector"
     :aria-label="t('home.redesign.selector.ariaLabel')"
   >
+    <h1 class="sr-only">{{ t('home.redesign.hero.title') }}</h1>
     <template v-for="(villa, i) in villas" :key="villa.id">
       <article
         class="vs-panel"
@@ -11,7 +12,16 @@
         @mouseenter="hovered = villa.id"
         @mouseleave="hovered = null"
       >
-        <div class="vs-panel__bg" :style="{ backgroundImage: `url(${villa.images.card})` }"></div>
+        <div
+          class="vs-panel__bg"
+          :style="{
+            backgroundImage: `url(${villa.images.selectorCard ?? villa.images.card})`,
+            backgroundSize: villa.images.selectorCard ? '200% 100%' : 'cover',
+            backgroundPosition: villa.images.selectorCard
+              ? (villa.flip ? '100% 50%' : '0% 50%')
+              : 'center center',
+          }"
+        ></div>
         <div class="vs-panel__overlay"></div>
         <div class="vs-panel__content" :class="{ 'vs-panel__content--flip': villa.flip }">
           <p class="vs-eyebrow">{{ t('home.redesign.selector.eyebrow') }}</p>
@@ -79,7 +89,7 @@ const villas = useVillas()
   transition: transform 0.85s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.vs-panel--active .vs-panel__bg { transform: scale(1.04); }
+.vs-panel--active .vs-panel__bg { transform: none; }
 
 /* image paths driven via :style in template — update in composables/useVillas.js */
 

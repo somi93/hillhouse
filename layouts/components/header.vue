@@ -39,9 +39,9 @@
                 v-if="item.to"
                 :to="item.to"
                 class="site-header__nav-link"
-                :class="isRouteActive(item.to) ? 'site-header__nav-link--active' : ''"
+                :class="[isRouteActive(item.to) ? 'site-header__nav-link--active' : '', item.back ? 'site-header__nav-link--back' : '']"
               >
-                {{ item.title }}
+                <v-icon v-if="item.back" :icon="mdiChevronLeft" size="15" class="site-header__back-icon"></v-icon>{{ item.title }}
               </router-link>
               <button
                 v-else
@@ -72,9 +72,9 @@
                 v-if="item.to"
                 :to="item.to"
                 class="site-header__nav-link"
-                :class="isRouteActive(item.to) ? 'site-header__nav-link--active' : ''"
+                :class="[isRouteActive(item.to) ? 'site-header__nav-link--active' : '', item.back ? 'site-header__nav-link--back' : '']"
               >
-                {{ item.title }}
+                <v-icon v-if="item.back" :icon="mdiChevronLeft" size="15" class="site-header__back-icon"></v-icon>{{ item.title }}
               </router-link>
               <button
                 v-else
@@ -96,6 +96,7 @@
 import { computed, ref, watch } from "vue";
 import { useI18n } from "vue-i18n";
 import { useRoute, useRouter } from "vue-router";
+import { mdiChevronLeft } from "@mdi/js";
 
 const HEADER_HEIGHT = 104;
 
@@ -280,6 +281,16 @@ watch(
 .site-header__nav-link--active::after {
   opacity: 1;
   transform: scaleX(1);
+}
+
+.site-header__nav-link--back {
+  opacity: 0.72;
+}
+
+.site-header__back-icon {
+  vertical-align: middle;
+  margin-right: 1px;
+  margin-top: -1px;
 }
 
 .site-header__nav-link:focus-visible {

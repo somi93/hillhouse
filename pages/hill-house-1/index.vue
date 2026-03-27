@@ -22,9 +22,14 @@ import RedesignGallery from "@/components/home/redesign/gallery";
 import RedesignCta from "@/components/home/redesign/cta";
 import RedesignLocation from "@/components/home/redesign/location";
 import VillaCardPromo from "@/components/home/redesign/villa-card-promo";
+import {
+  createBreadcrumbSchema,
+  createVillaBusinessSchema,
+  createWebPageSchema,
+  useSeoPage,
+} from "@/composables/useSeo";
 
 const { locale } = useI18n({ useScope: "global" });
-const localePath = useLocalePath();
 
 onMounted(() => {
   if (window.location.hash) {
@@ -41,46 +46,63 @@ onMounted(() => {
   }
 });
 
-useHead(
-  computed(() => {
-    const isSr = locale.value !== "en";
-    return {
-      title: isSr
-        ? "Hill House — Privatna luksuzna vila za proslave | Šepšin"
-        : "Hill House — Private Luxury Villa for Events | Šepšin",
-      meta: [
-        {
-          name: "description",
-          content: isSr
-            ? "Privatna luksuzna vila za proslave, venčanja i posebne događaje. Bazen, spa zona, terasa sa pogledom — 30 minuta od Beograda."
-            : "Private luxury villa for celebrations, weddings and special events. Pool, spa zone, terrace with a view — 30 minutes from Belgrade.",
-        },
-        {
-          property: "og:title",
-          content: isSr
-            ? "Hill House — Privatna vila za proslave"
-            : "Hill House — Private Villa for Events",
-        },
-        {
-          property: "og:description",
-          content: isSr
-            ? "Luksuzna privatna vila, bazen, spa — Šepšin, 30 min od Beograda."
-            : "Luxury private villa, pool, spa — Šepšin, 30 min from Belgrade.",
-        },
-        {
-          property: "og:url",
-          content: isSr
-            ? "https://www.hillhouse.rs/hill-house-1"
-            : "https://www.hillhouse.rs/en/hill-house-1",
-        },
-        {
-          rel: "canonical",
-          href: isSr
-            ? "https://www.hillhouse.rs/hill-house-1"
-            : "https://www.hillhouse.rs/en/hill-house-1",
-        },
-      ],
-    };
-  })
-);
+useSeoPage({
+  path: "/hill-house-1",
+  title: {
+    sr: "Hill House | Privatna luksuzna vila za proslave u Šepšinu",
+    en: "Hill House | Private luxury villa for events in Sepsin",
+  },
+  description: {
+    sr: "Hill House je privatna vila za proslave, venčanja i posebne događaje sa bazenom, spa zonom, terasom sa pogledom i smeštajem za goste, 30 minuta od Beograda.",
+    en: "Hill House is a private villa for celebrations, weddings and special events with pool, spa zone, view terrace and guest accommodation, 30 minutes from Belgrade.",
+  },
+  keywords: {
+    sr: "hill house vila, privatna vila za proslave, vila sa bazenom sepsin, vila za vencanje blizu beograda, luksuzna vila srbija",
+    en: "hill house villa, private event villa sepsin, wedding villa near belgrade, luxury villa with pool serbia, spa villa rental",
+  },
+  image: {
+    url: "/hillhouse/media/images/gallery/professional/vila-prestige-hill-15-1920x1438.jpeg",
+    width: 1920,
+    height: 1438,
+    alt: "Hill House villa with pool and terrace",
+  },
+  schemas: (localeCode) => {
+    const title =
+      localeCode === "en"
+        ? "Hill House | Private luxury villa for events in Sepsin"
+        : "Hill House | Privatna luksuzna vila za proslave u Šepšinu";
+    const description =
+      localeCode === "en"
+        ? "Luxury event villa with pool, spa, terrace and accommodation near Belgrade."
+        : "Luksuzna vila za događaje sa bazenom, spa zonom, terasom i smeštajem nadomak Beograda.";
+    const breadcrumbItems = [
+      { name: localeCode === "en" ? "Home" : "Početna", path: "/" },
+      { name: "Hill House", path: "/hill-house-1" },
+    ];
+
+    return [
+      createBreadcrumbSchema(breadcrumbItems, localeCode),
+      createWebPageSchema({
+        path: "/hill-house-1",
+        localeCode,
+        title,
+        description,
+        image: "/hillhouse/media/images/gallery/professional/vila-prestige-hill-15-1920x1438.jpeg",
+        breadcrumbItems,
+      }),
+      createVillaBusinessSchema({
+        name: "Hill House",
+        path: "/hill-house-1",
+        localeCode,
+        description,
+        image: "/hillhouse/media/images/gallery/professional/vila-prestige-hill-15-1920x1438.jpeg",
+        geo: { latitude: 44.531929, longitude: 20.709867 },
+        mapsLink: "https://maps.app.goo.gl/JTjSLyJM5MhdmGri7",
+        amenities: ["Private Pool", "Spa", "Jacuzzi", "Sauna", "Free Parking", "Free WiFi"],
+        eventCapacity: 150,
+        sleepingCapacity: 10,
+      }),
+    ];
+  },
+});
 </script>

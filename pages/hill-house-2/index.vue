@@ -22,6 +22,12 @@ import RedesignGallery from '@/components/home/redesign/gallery'
 import RedesignCta from '@/components/home/redesign/cta'
 import RedesignLocation from '@/components/home/redesign/location'
 import VillaCardPromo from '@/components/home/redesign/villa-card-promo'
+import {
+  createBreadcrumbSchema,
+  createVillaBusinessSchema,
+  createWebPageSchema,
+  useSeoPage,
+} from '@/composables/useSeo'
 
 const { locale } = useI18n({ useScope: 'global' })
 
@@ -40,24 +46,63 @@ onMounted(() => {
   }
 })
 
-useHead(computed(() => {
-  const isSr = locale.value !== 'en'
-  return {
-    title: isSr
-      ? 'Hill House 2 — Privatna luksuzna vila za proslave | Šepšin'
-      : 'Hill House 2 — Private Luxury Villa for Events | Šepšin',
-    meta: [
-      {
-        name: 'description',
-        content: isSr
-          ? 'Hill House 2 — privatna luksuzna vila za proslave i posebne događaje. Bazen, terasa, savremeni dizajn — 30 minuta od Beograda.'
-          : 'Hill House 2 — private luxury villa for celebrations and special events. Pool, terrace, contemporary design — 30 minutes from Belgrade.',
-      },
-      { property: 'og:title', content: isSr ? 'Hill House 2 — Privatna vila za proslave' : 'Hill House 2 — Private Villa for Events' },
-      { property: 'og:description', content: isSr ? 'Luksuzna privatna vila, bazen, savremeni dizajn — Šepšin, 30 min od Beograda.' : 'Luxury private villa, pool, contemporary design — Šepšin, 30 min from Belgrade.' },
-      { property: 'og:url', content: isSr ? 'https://www.hillhouse.rs/hill-house-2' : 'https://www.hillhouse.rs/en/hill-house-2' },
-      { rel: 'canonical', href: isSr ? 'https://www.hillhouse.rs/hill-house-2' : 'https://www.hillhouse.rs/en/hill-house-2' },
-    ],
-  }
-}))
+useSeoPage({
+  path: '/hill-house-2',
+  title: {
+    sr: 'Hill House 2 | Vila sa svečanom salom i bazenom u Šepšinu',
+    en: 'Hill House 2 | Villa with event hall and pool in Sepsin',
+  },
+  description: {
+    sr: 'Hill House 2 je privatna vila za venčanja i proslave sa svečanom salom, infinity bazenom, letnjikovcem i kapacitetom do 250 gostiju, 30 minuta od Beograda.',
+    en: 'Hill House 2 is a private villa for weddings and events with event hall, infinity pool, summerhouse and capacity for up to 250 guests, 30 minutes from Belgrade.',
+  },
+  keywords: {
+    sr: 'hill house 2, vila sa salom za proslave, vila za vencanje beograd, infinity bazen vila, privatna vila sepsin',
+    en: 'hill house 2, villa with event hall serbia, wedding villa near belgrade, infinity pool villa, private event venue sepsin',
+  },
+  image: {
+    url: '/hillhouse2/media/images/gallery/exterior/prestige-hill-2-12-1920x2560.jpg',
+    width: 1920,
+    height: 2560,
+    alt: 'Hill House 2 villa exterior with pool',
+  },
+  schemas: (localeCode) => {
+    const title =
+      localeCode === 'en'
+        ? 'Hill House 2 | Villa with event hall and pool in Sepsin'
+        : 'Hill House 2 | Vila sa svečanom salom i bazenom u Šepšinu'
+    const description =
+      localeCode === 'en'
+        ? 'Luxury event villa with indoor hall, infinity pool and accommodation near Belgrade.'
+        : 'Luksuzna event vila sa unutrašnjom salom, infinity bazenom i smeštajem nadomak Beograda.'
+    const breadcrumbItems = [
+      { name: localeCode === 'en' ? 'Home' : 'Početna', path: '/' },
+      { name: 'Hill House 2', path: '/hill-house-2' },
+    ]
+
+    return [
+      createBreadcrumbSchema(breadcrumbItems, localeCode),
+      createWebPageSchema({
+        path: '/hill-house-2',
+        localeCode,
+        title,
+        description,
+        image: '/hillhouse2/media/images/gallery/exterior/prestige-hill-2-12-1920x2560.jpg',
+        breadcrumbItems,
+      }),
+      createVillaBusinessSchema({
+        name: 'Hill House 2',
+        path: '/hill-house-2',
+        localeCode,
+        description,
+        image: '/hillhouse2/media/images/gallery/exterior/prestige-hill-2-12-1920x2560.jpg',
+        geo: { latitude: 44.559061, longitude: 20.648417 },
+        mapsLink: 'https://maps.app.goo.gl/9qGCkjKQEFQtQqts7',
+        amenities: ['Infinity Pool', 'Event Hall', 'Open Jacuzzi', 'Free Parking', 'Free WiFi'],
+        eventCapacity: 250,
+        sleepingCapacity: 7,
+      }),
+    ]
+  },
+})
 </script>

@@ -15,7 +15,24 @@
 </template>
 
 <script setup>
+import { useSeoPage } from '@/composables/useSeo'
+
 const localePath = useLocalePath()
+
+useSeoPage({
+  path: '/404',
+  title: {
+    sr: '404 | Stranica nije pronađena',
+    en: '404 | Page not found',
+  },
+  description: {
+    sr: 'Tražena stranica ne postoji ili je premeštena.',
+    en: 'The requested page does not exist or has been moved.',
+  },
+  noindex: true,
+  canonical: false,
+  alternates: false,
+})
 </script>
 
 <style scope>

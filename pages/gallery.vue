@@ -74,57 +74,68 @@
 <script setup>
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
+import {
+  SEO_DEFAULT_IMAGE,
+  buildAbsoluteUrl,
+  createBreadcrumbSchema,
+  createWebPageSchema,
+  useSeoPage,
+} from '@/composables/useSeo'
 
 const { locale } = useI18n({ useScope: 'global' })
 const localePath = useLocalePath()
 const isEn = computed(() => locale.value === 'en')
 
-useHead(computed(() => ({
-  title: isEn.value
-    ? 'Gallery — Hill House Luxury Villas'
-    : 'Galerija — Hill House Privatne Vile',
-  link: [
-    {
-      rel: 'canonical',
-      href: isEn.value
-        ? 'https://www.hillhouse.rs/en/gallery'
-        : 'https://www.hillhouse.rs/gallery',
-    },
-  ],
-  meta: [
-    { name: 'robots', content: 'index, follow' },
-    {
-      name: 'description',
-      content: isEn.value
-        ? 'Browse photo galleries of Hill House 1 and Hill House 2 — two luxury villas for events, weddings and celebrations near Belgrade.'
-        : 'Pregledajte galerije fotografija Hill House 1 i Hill House 2 — dve luksuzne vile za proslave, venčanja i posebne događaje kod Beograda.',
-    },
-    {
-      property: 'og:title',
-      content: isEn.value
-        ? 'Gallery — Hill House Luxury Villas'
-        : 'Galerija — Hill House Privatne Vile',
-    },
-    {
-      property: 'og:description',
-      content: isEn.value
-        ? 'Galleries of Hill House 1 and Hill House 2 villas — pool, interiors, events and more.'
-        : 'Galerije Hill House 1 i Hill House 2 — bazen, enterijer, proslave i još mnogo toga.',
-    },
-    {
-      property: 'og:image',
-      content: 'https://www.hillhouse.rs/hillhouse/media/images/gallery/professional/vila-prestige-hill-15-1920x1438.jpeg',
-    },
-    {
-      property: 'og:url',
-      content: isEn.value
-        ? 'https://www.hillhouse.rs/en/gallery'
-        : 'https://www.hillhouse.rs/gallery',
-    },
-    { property: 'og:type', content: 'website' },
-    { property: 'og:locale', content: isEn.value ? 'en_US' : 'sr_RS' },
-  ],
-})))
+useSeoPage({
+  path: '/gallery',
+  title: {
+    sr: 'Galerija | Hill House privatne vile',
+    en: 'Gallery | Hill House private villas',
+  },
+  description: {
+    sr: 'Pregledajte galerije Hill House i Hill House 2 vila: bazeni, enterijeri, svečane sale, događaji i detalji prostora nadomak Beograda.',
+    en: 'Browse Hill House and Hill House 2 galleries: pools, interiors, event halls, celebrations and details of the properties near Belgrade.',
+  },
+  keywords: {
+    sr: 'galerija vila za proslave, fotografije luksuzne vile beograd, hill house galerija, vila bazen slike',
+    en: 'villa gallery belgrade, luxury villa photos serbia, hill house gallery, event villa images',
+  },
+  image: SEO_DEFAULT_IMAGE,
+  schemas: (localeCode) => {
+    const breadcrumbItems = [
+      { name: localeCode === 'en' ? 'Home' : 'Početna', path: '/' },
+      { name: localeCode === 'en' ? 'Gallery' : 'Galerija', path: '/gallery' },
+    ]
+    const title = localeCode === 'en' ? 'Gallery | Hill House private villas' : 'Galerija | Hill House privatne vile'
+    const description =
+      localeCode === 'en'
+        ? 'Selection page for Hill House and Hill House 2 photo galleries.'
+        : 'Izborna stranica za galerije fotografija vila Hill House i Hill House 2.'
+
+    return [
+      createBreadcrumbSchema(breadcrumbItems, localeCode),
+      createWebPageSchema({
+        path: '/gallery',
+        localeCode,
+        title,
+        description,
+        type: 'CollectionPage',
+        image: SEO_DEFAULT_IMAGE,
+        breadcrumbItems,
+      }),
+      {
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        name: title,
+        url: buildAbsoluteUrl('/gallery', localeCode),
+        hasPart: [
+          buildAbsoluteUrl('/hill-house-1/gallery', localeCode),
+          buildAbsoluteUrl('/hill-house-2/gallery', localeCode),
+        ],
+      },
+    ]
+  },
+})
 </script>
 
 <style scoped>

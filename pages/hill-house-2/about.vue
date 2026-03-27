@@ -41,40 +41,56 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
 import { computed } from 'vue'
+import {
+  createBreadcrumbSchema,
+  createWebPageSchema,
+  useSeoPage,
+} from '@/composables/useSeo'
 
 const { locale } = useI18n({ useScope: 'global' })
 const isEn = computed(() => locale.value === 'en')
 
-useHead(computed(() => ({
-  title: isEn.value ? 'About — Hill House Luxury Villa' : 'O nama — Hill House Privatna Vila',
-  link: [{ rel: 'canonical', href: isEn.value ? 'https://www.hillhouse.rs/en/about' : 'https://www.hillhouse.rs/about' }],
-  meta: [
-    { name: 'robots', content: 'index, follow' },
-    {
-      name: 'description',
-      content: isEn.value
-        ? 'Discover Hill House villa — a private space for celebrations and special moments with a pool, spa and panoramic views, 30 minutes from Belgrade.'
-        : 'Saznajte više o Hill House vili — privatnom prostoru za proslave i posebne trenutke sa bazenom, spa zonom i panoramskim pogledom, 30 minuta od Beograda.',
-    },
-    {
-      property: 'og:title',
-      content: isEn.value ? 'About — Hill House Luxury Villa' : 'O nama — Hill House Privatna Vila',
-    },
-    {
-      property: 'og:description',
-      content: isEn.value
-        ? 'A private luxury villa with pool, spa and an atmosphere that leaves a lasting impression. Learn more about Hill House.'
-        : 'Privatna luksuzna vila sa bazenom, spa zonom i atmosferom koja ostavlja utisak. Saznajte više o Hill House.',
-    },
-    {
-      property: 'og:image',
-      content: 'https://www.hillhouse.rs/hillhouse/media/images/gallery/professional/vila-prestige-hill-15-1920x1438.jpeg',
-    },
-    { property: 'og:url', content: isEn.value ? 'https://www.hillhouse.rs/en/about' : 'https://www.hillhouse.rs/about' },
-    { property: 'og:type', content: 'website' },
-    { property: 'og:locale', content: isEn.value ? 'en_US' : 'sr_RS' },
-  ],
-})))
+useSeoPage({
+  path: '/hill-house-2/about',
+  title: {
+    sr: 'O Hill House 2 vili | Vila sa salom za proslave',
+    en: 'About Hill House 2 | Villa with event hall',
+  },
+  description: {
+    sr: 'Saznajte više o Hill House 2 vili: svečana sala, enterijer, smeštaj, bazen i detalji prostora za venčanja i veće proslave.',
+    en: 'Learn more about Hill House 2: event hall, interior, accommodation, pool and details of the property for weddings and larger celebrations.',
+  },
+  keywords: {
+    sr: 'o hill house 2, vila sa salom sepsin, prostor za vencanje o nama, luksuzna vila sa bazenom',
+    en: 'about hill house 2, villa with event hall sepsin, wedding venue about page, luxury pool villa',
+  },
+  image: '/hillhouse2/media/images/gallery/exterior/prestige-hill-2-12-1920x2560.jpg',
+  schemas: (localeCode) => {
+    const breadcrumbItems = [
+      { name: localeCode === 'en' ? 'Home' : 'Početna', path: '/' },
+      { name: 'Hill House 2', path: '/hill-house-2' },
+      { name: localeCode === 'en' ? 'About' : 'O nama', path: '/hill-house-2/about' },
+    ]
+    const title = localeCode === 'en' ? 'About Hill House 2 | Villa with event hall' : 'O Hill House 2 vili | Vila sa salom za proslave'
+    const description =
+      localeCode === 'en'
+        ? 'Background and details of Hill House 2 near Belgrade.'
+        : 'Pozadina i detalji Hill House 2 vile nadomak Beograda.'
+
+    return [
+      createBreadcrumbSchema(breadcrumbItems, localeCode),
+      createWebPageSchema({
+        path: '/hill-house-2/about',
+        localeCode,
+        title,
+        description,
+        type: 'AboutPage',
+        image: '/hillhouse2/media/images/gallery/exterior/prestige-hill-2-12-1920x2560.jpg',
+        breadcrumbItems,
+      }),
+    ]
+  },
+})
 </script>
 
 <style scoped>

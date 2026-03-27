@@ -4,10 +4,18 @@ import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 export default defineNuxtConfig({
     app: {
         head: {
+            htmlAttrs: {
+                lang: 'sr-RS',
+            },
             meta: [
                 { charset: 'utf-8' },
                 { name: 'viewport', content: 'width=device-width, initial-scale=1' },
                 { name: 'theme-color', content: '#151515' },
+                { name: 'description', content: 'Hill House privatne vile u Šepšinu, 30 minuta od Beograda. Proslave, venčanja, bazen, spa i premium ambijent za posebne događaje.' },
+                { name: 'robots', content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' },
+                { name: 'author', content: 'Hill House' },
+                { name: 'publisher', content: 'Hill House' },
+                { name: 'referrer', content: 'strict-origin-when-cross-origin' },
                 { property: 'og:site_name', content: 'Hill House' },
             ],
             link: [

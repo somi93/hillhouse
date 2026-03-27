@@ -25,6 +25,11 @@
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import Gallery from '@/components/gallery/gallery'
+import {
+  createBreadcrumbSchema,
+  createWebPageSchema,
+  useSeoPage,
+} from '@/composables/useSeo'
 
 const { locale } = useI18n({ useScope: 'global' })
 const isEn = computed(() => locale.value === 'en')
@@ -54,46 +59,53 @@ const photos = computed(() =>
     }))
 )
 
-useHead(computed(() => ({
-  title: isEn.value
-    ? 'Gallery — Hill House 1 Luxury Villa'
-    : 'Galerija — Hill House 1 Privatna Vila',
-  link: [
-    {
-      rel: 'canonical',
-      href: isEn.value
-        ? 'https://www.hillhouse.rs/en/hill-house-1/gallery'
-        : 'https://www.hillhouse.rs/hill-house-1/gallery',
-    },
-  ],
-  meta: [
-    { name: 'robots', content: 'index, follow' },
-    {
-      name: 'description',
-      content: isEn.value
-        ? 'Browse photos of Hill House 1 — pool, spa, bedrooms, events and more. A private luxury villa 30 minutes from Belgrade.'
-        : 'Pregledajte fotografije Hill House 1 — bazen, spa zona, spavaće sobe, proslave i još mnogo toga. Privatna luksuzna vila 30 minuta od Beograda.',
-    },
-    {
-      property: 'og:title',
-      content: isEn.value
-        ? 'Gallery — Hill House 1 Luxury Villa'
-        : 'Galerija — Hill House 1 Privatna Vila',
-    },
-    {
-      property: 'og:image',
-      content: 'https://www.hillhouse.rs/hillhouse/media/images/gallery/professional/vila-prestige-hill-15-1920x1438.jpeg',
-    },
-    {
-      property: 'og:url',
-      content: isEn.value
-        ? 'https://www.hillhouse.rs/en/hill-house-1/gallery'
-        : 'https://www.hillhouse.rs/hill-house-1/gallery',
-    },
-    { property: 'og:type', content: 'website' },
-    { property: 'og:locale', content: isEn.value ? 'en_US' : 'sr_RS' },
-  ],
-})))
+
+useSeoPage({
+  path: '/hill-house-1/gallery',
+  title: {
+    sr: 'Galerija Hill House | Fotografije vile i sadržaja',
+    en: 'Hill House gallery | Villa and amenity photos',
+  },
+  description: {
+    sr: 'Pregledajte galeriju Hill House vile: bazen, spa zona, enterijer, spavaće sobe, terasa i kadrovi sa događaja.',
+    en: 'Browse the Hill House gallery: pool, spa zone, interior, bedrooms, terrace and scenes from hosted events.',
+  },
+  keywords: {
+    sr: 'hill house galerija, slike vile sa bazenom, fotografije spa vile, vila za proslave galerija',
+    en: 'hill house gallery, villa with pool photos, spa villa images, event villa gallery',
+  },
+  image: {
+    url: '/hillhouse/media/images/gallery/professional/vila-prestige-hill-15-1920x1438.jpeg',
+    width: 1920,
+    height: 1438,
+    alt: 'Hill House gallery cover image',
+  },
+  schemas: (localeCode) => {
+    const breadcrumbItems = [
+      { name: localeCode === 'en' ? 'Home' : 'Početna', path: '/' },
+      { name: 'Hill House', path: '/hill-house-1' },
+      { name: localeCode === 'en' ? 'Gallery' : 'Galerija', path: '/hill-house-1/gallery' },
+    ]
+    const title = localeCode === 'en' ? 'Hill House gallery | Villa and amenity photos' : 'Galerija Hill House | Fotografije vile i sadržaja'
+    const description =
+      localeCode === 'en'
+        ? 'Photo gallery of Hill House villa and event atmosphere.'
+        : 'Foto galerija Hill House vile i atmosfere događaja.'
+
+    return [
+      createBreadcrumbSchema(breadcrumbItems, localeCode),
+      createWebPageSchema({
+        path: '/hill-house-1/gallery',
+        localeCode,
+        title,
+        description,
+        type: 'ImageGallery',
+        image: '/hillhouse/media/images/gallery/professional/vila-prestige-hill-15-1920x1438.jpeg',
+        breadcrumbItems,
+      }),
+    ]
+  },
+})
 </script>
 
 <style scoped>

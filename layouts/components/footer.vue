@@ -31,6 +31,20 @@
           </div>
 
           <div class="site-footer__column">
+            <p class="site-footer__section-title">{{ $t("layout.footer.villas") }}</p>
+            <nav class="site-footer__nav" aria-label="Vile">
+              <NuxtLink
+                v-for="v in villaLinks"
+                :key="v.to"
+                :to="v.to"
+                class="site-footer__nav-link"
+              >
+                {{ v.name }}
+              </NuxtLink>
+            </nav>
+          </div>
+
+          <div class="site-footer__column">
             <p class="site-footer__section-title">{{ $t("layout.footer.reachOut") }}</p>
 
             <div class="site-footer__stack">
@@ -113,10 +127,15 @@ import { computed } from "vue";
 import { useI18n } from "vue-i18n";
 
 const { t } = useI18n({ useScope: "global" });
+const localePath = useLocalePath();
 const { menuItems, navigateToSection } = useSectionNavigation();
 const menuLeft = computed(() => menuItems.value);
 
 const scrollTo = (target) => navigateToSection(target);
+
+const villaLinks = computed(() =>
+  useVillas().map((v) => ({ name: v.name, to: localePath(v.slug) }))
+);
 </script>
 
 <style scoped>
@@ -142,7 +161,7 @@ const scrollTo = (target) => navigateToSection(target);
 
 .site-footer__top {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) repeat(3, minmax(0, 0.78fr));
+  grid-template-columns: minmax(0, 1.15fr) repeat(4, minmax(0, 0.72fr));
   gap: 28px;
   padding-bottom: 46px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);

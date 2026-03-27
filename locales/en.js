@@ -29,6 +29,7 @@ export default {
             "socialNote": "Follow current scenes, available dates, and updates from Hill House.",
             "reachOut": "Contact",
             "quickLinks": "Navigation",
+            "villas": "Villas",
             "emailLabel": "Email",
             "phoneLabel": "Phone",
             "addressLabel": "Location",
@@ -38,6 +39,11 @@ export default {
             "navigationLabel": "Footer navigation",
             "creditLabel": "Site by Enigma IT",
             "copyright": "© 2022 Hill House. All rights reserved."
+        },
+        "cookieBanner": {
+            "text": "This site uses cookies to give you the best experience.",
+            "accept": "Accept",
+            "decline": "Decline"
         }
     },
     "home": {

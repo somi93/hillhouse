@@ -33,6 +33,7 @@ export default {
             "socialNote": "Zapratite aktuelne kadrove, termine i novosti Hill House prostora.",
             "reachOut": "Kontakt",
             "quickLinks": "Navigacija",
+            "villas": "Vile",
             "emailLabel": "Email",
             "phoneLabel": "Telefon",
             "addressLabel": "Lokacija",
@@ -42,6 +43,11 @@ export default {
             "navigationLabel": "Footer navigacija",
             "creditLabel": "Izrada sajta Enigma IT",
             "copyright": "© 2022 Hill House. Sva prava zadržana."
+        },
+        "cookieBanner": {
+            "text": "Ovaj sajt koristi kolačiće kako bi vam pružio najbolje iskustvo.",
+            "accept": "Prihvati",
+            "decline": "Odbij"
         }
     },
     "home": {

@@ -17,8 +17,10 @@ const VILLAS = [
 
     images: {
       hero: '/hillhouse/media/images/gallery/professional/vila-prestige-hill-15-1920x1438.jpeg',
-      card: '/hillhouse/media/images/gallery/professional/vila-prestige-hill-20-1920x1280.jpeg',
+      card: '/hillhouse/media/images/landing_hill_1.jpg',
       why: '/hillhouse/media/images/gallery/professional/vila-prestige-hill-29-1920x1440.jpeg',
+      // Full panoramic shot — each panel shows its half via background-position
+      selectorCard: '/hillhouse/media/images/panorama-selector.jpg',
     },
 
     heroVideo: {
@@ -120,8 +122,8 @@ const VILLAS = [
     },
 
     location: {
-      mapSrc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11376.723479775781!2d20.70986718088739!3d44.531929042754896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4750bd1c824fd29b%3A0x8b1d2647713d9c1d!2sHILL%20LUXURY%20HOUSE%201!5e0!3m2!1ssr!2srs!4v1774090941905!5m2!1ssr!2srs',
-      mapsLink: 'https://maps.app.goo.gl/PfMhd9qvQKDM3NVc7',
+      coords: [44.531929, 20.709867],
+      mapsLink: 'https://maps.app.goo.gl/JTjSLyJM5MhdmGri7',
     },
   },
 
@@ -136,8 +138,10 @@ const VILLAS = [
 
     images: {
       hero: '/hillhouse2/media/images/gallery/exterior/prestige-hill-2-4-1920x2560.jpg',
-      card: '/hillhouse2/media/images/gallery/exterior/prestige-hill-2-12-1920x2560.jpg',
+      card: '/hillhouse2/media/images/landing_hill_2.jpg',
       why: '/hillhouse2/media/images/gallery/exterior/B14E38D4-2B36-4D99-9AE6-A3F18BFFC3EC.jpeg',
+      // Same full panoramic shot as hh1 — right panel shows right half
+      selectorCard: '/hillhouse/media/images/panorama-selector.jpg',
     },
 
     heroVideo: {
@@ -251,8 +255,8 @@ const VILLAS = [
     },
 
     location: {
-      mapSrc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d45485.688442740626!2d20.648417449999997!3d44.55906125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4750a3002053e195%3A0x47f340e7d0dc92a!2sHILL%20LUXURY%20HOUSE%202!5e0!3m2!1ssr!2srs!4v1774201230068!5m2!1ssr!2srs',
-      mapsLink: 'https://www.google.com/maps/place/HILL+LUXURY+HOUSE+2/@44.55906125,20.648417449999997,11z',
+      coords: [44.559061, 20.648417],
+      mapsLink: 'https://maps.app.goo.gl/9qGCkjKQEFQtQqts7',
     },
   },
 ]

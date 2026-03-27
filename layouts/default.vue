@@ -28,14 +28,14 @@
         no-gutters
         align="center"
       >
-        Ovaj sajt koristi kolačiće kako bi vam pružio najbolje iskustvo.
+        {{ $t("layout.cookieBanner.text") }}
         <v-btn
           variant="flat"
           @click="setCookies"
           :class="$vuetify.display.smAndDown ? 'mt-4 mr-2' : 'ml-4'"
           color="success"
         >
-          Prihvati
+          {{ $t("layout.cookieBanner.accept") }}
         </v-btn>
         <v-btn
           variant="flat"
@@ -43,7 +43,7 @@
           :class="$vuetify.display.smAndDown ? 'mt-4 ml-2' : 'ml-4'"
           color="error"
         >
-          Odbij
+          {{ $t("layout.cookieBanner.decline") }}
         </v-btn>
       </v-row>
     </v-bottom-sheet>

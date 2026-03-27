@@ -20,7 +20,7 @@ export const useSectionNavigation = () => {
   const menuItems = computed(() => {
     if (isVillaRoute.value) {
       return [
-        { title: t("layout.menu.home"), to: localePath("/") },
+        { title: "Hill House", to: localePath("/"), back: true },
         { title: t("layout.menu.villaOverview"), href: "#about" },
         { title: t("layout.menu.amenities"), href: "#amenities" },
         { title: t("layout.menu.testimonials"), href: "#testimonials" },
@@ -31,7 +31,6 @@ export const useSectionNavigation = () => {
     }
 
     return [
-      { title: t("layout.menu.home"), to: localePath("/") },
       { title: t("layout.menu.about"), href: "#about" },
       { title: t("layout.menu.villas"), href: "#villas" },
       { title: t("layout.menu.occasions"), href: "#occasions" },

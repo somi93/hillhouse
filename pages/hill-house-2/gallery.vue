@@ -25,6 +25,11 @@
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import Gallery from '@/components/gallery/gallery'
+import {
+  createBreadcrumbSchema,
+  createWebPageSchema,
+  useSeoPage,
+} from '@/composables/useSeo'
 
 const { locale } = useI18n({ useScope: 'global' })
 const isEn = computed(() => locale.value === 'en')
@@ -51,46 +56,53 @@ const photos = computed(() =>
     }))
 )
 
-useHead(computed(() => ({
-  title: isEn.value
-    ? 'Gallery — Hill House 2 Luxury Villa'
-    : 'Galerija — Hill House 2 Privatna Vila',
-  link: [
-    {
-      rel: 'canonical',
-      href: isEn.value
-        ? 'https://www.hillhouse.rs/en/hill-house-2/gallery'
-        : 'https://www.hillhouse.rs/hill-house-2/gallery',
-    },
-  ],
-  meta: [
-    { name: 'robots', content: 'index, follow' },
-    {
-      name: 'description',
-      content: isEn.value
-        ? 'Browse photos of Hill House 2 — event hall, pool, interiors and celebrations. A luxury villa with indoor event space 30 minutes from Belgrade.'
-        : 'Pregledajte fotografije Hill House 2 — svečana sala, bazen, enterijer i proslave. Luksuzna vila sa salom 30 minuta od Beograda.',
-    },
-    {
-      property: 'og:title',
-      content: isEn.value
-        ? 'Gallery — Hill House 2 Luxury Villa'
-        : 'Galerija — Hill House 2 Privatna Vila',
-    },
-    {
-      property: 'og:image',
-      content: 'https://www.hillhouse.rs/hillhouse2/media/images/gallery/exterior/prestige-hill-2-4-1920x2560.jpg',
-    },
-    {
-      property: 'og:url',
-      content: isEn.value
-        ? 'https://www.hillhouse.rs/en/hill-house-2/gallery'
-        : 'https://www.hillhouse.rs/hill-house-2/gallery',
-    },
-    { property: 'og:type', content: 'website' },
-    { property: 'og:locale', content: isEn.value ? 'en_US' : 'sr_RS' },
-  ],
-})))
+
+useSeoPage({
+  path: '/hill-house-2/gallery',
+  title: {
+    sr: 'Galerija Hill House 2 | Vila, sala i bazen',
+    en: 'Hill House 2 gallery | Villa, event hall and pool',
+  },
+  description: {
+    sr: 'Pregledajte galeriju Hill House 2 vile: svečana sala, infinity bazen, enterijer, eksterijer i kadrovi sa proslava i venčanja.',
+    en: 'Browse the Hill House 2 gallery: event hall, infinity pool, interior, exterior and scenes from celebrations and weddings.',
+  },
+  keywords: {
+    sr: 'hill house 2 galerija, vila sa salom slike, infinity bazen vila fotografije, galerija prostora za vencanja',
+    en: 'hill house 2 gallery, villa with hall photos, infinity pool villa images, wedding venue gallery',
+  },
+  image: {
+    url: '/hillhouse2/media/images/gallery/exterior/prestige-hill-2-4-1920x2560.jpg',
+    width: 1920,
+    height: 2560,
+    alt: 'Hill House 2 gallery cover image',
+  },
+  schemas: (localeCode) => {
+    const breadcrumbItems = [
+      { name: localeCode === 'en' ? 'Home' : 'Početna', path: '/' },
+      { name: 'Hill House 2', path: '/hill-house-2' },
+      { name: localeCode === 'en' ? 'Gallery' : 'Galerija', path: '/hill-house-2/gallery' },
+    ]
+    const title = localeCode === 'en' ? 'Hill House 2 gallery | Villa, event hall and pool' : 'Galerija Hill House 2 | Vila, sala i bazen'
+    const description =
+      localeCode === 'en'
+        ? 'Photo gallery of Hill House 2 villa, event hall and atmosphere.'
+        : 'Foto galerija Hill House 2 vile, svečane sale i atmosfere događaja.'
+
+    return [
+      createBreadcrumbSchema(breadcrumbItems, localeCode),
+      createWebPageSchema({
+        path: '/hill-house-2/gallery',
+        localeCode,
+        title,
+        description,
+        type: 'ImageGallery',
+        image: '/hillhouse2/media/images/gallery/exterior/prestige-hill-2-4-1920x2560.jpg',
+        breadcrumbItems,
+      }),
+    ]
+  },
+})
 </script>
 
 <style scoped>
