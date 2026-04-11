@@ -36,7 +36,6 @@
           </NuxtLink>
         </div>
       </article>
-      <div v-if="i < villas.length - 1" class="vs-divider" aria-hidden="true"></div>
     </template>
   </section>
 </template>
@@ -203,19 +202,6 @@ const villas = useVillas()
   transform: translateX(5px);
 }
 
-/* ─── Gold divider ───────────────────────────────────────────── */
-.vs-divider {
-  flex: 0 0 2px;
-  align-self: stretch;
-  /* Neutral dark seam — blends into the vignette */
-  background: rgba(8, 6, 5, 0.85);
-  /* Strong dark glow spreading outward — merges with corner vignette shadow */
-  box-shadow: 0 0 38px 22px rgba(8, 6, 5, 0.72);
-  position: relative;
-  z-index: 5;
-  pointer-events: none;
-}
-
 /* ─── Touch / no-hover devices ───────────────────────────────── */
 @media (hover: none) {
   .vs-panel { flex: 1 !important; }
@@ -249,14 +235,6 @@ const villas = useVillas()
   }
 
   .vs-name { font-size: 2.1rem; }
-
-  /* Horizontal divider when stacked */
-  .vs-divider {
-    flex: none;
-    height: 2px;
-    background: rgba(8, 6, 5, 0.55);
-    box-shadow: 0 0 28px 16px rgba(8, 6, 5, 0.72);
-  }
 
   .vs-panel__edge--right,
   .vs-panel__edge--left { display: none; }
