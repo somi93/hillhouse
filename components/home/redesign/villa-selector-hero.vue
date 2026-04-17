@@ -54,6 +54,8 @@ const villas = useVillas()
 /* ─── Layout ─────────────────────────────────────────────────── */
 .villa-selector {
   display: flex;
+  gap: 50px;
+  background: #fff;
   /* Fill entire viewport including behind the transparent header */
   height: 100svh;
   min-height: 560px;
@@ -77,7 +79,7 @@ const villas = useVillas()
   cursor: pointer;
 }
 
-.vs-panel--active { flex: 1.3; }
+.vs-panel--active { flex: 1; }
 
 /* Background */
 .vs-panel__bg {
@@ -88,7 +90,8 @@ const villas = useVillas()
   transition: transform 0.85s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.vs-panel--active .vs-panel__bg { transform: none; }
+.vs-panel__bg { transform: scale(1.04); }
+.vs-panel--active .vs-panel__bg { transform: scale(1); }
 
 /* image paths driven via :style in template — update in composables/useVillas.js */
 
@@ -98,14 +101,14 @@ const villas = useVillas()
   inset: 0;
   background:
     /* Base: uniform tint across entire image */
-    linear-gradient(rgba(8, 6, 5, 0.28), rgba(8, 6, 5, 0.28)),
-    /* Vignette: transparent centre, heavy corners */
+    linear-gradient(rgba(8, 6, 5, 0.22), rgba(8, 6, 5, 0.22)),
+    /* Vignette: wider transparent centre, lighter edges */
     radial-gradient(
-      ellipse 70% 68% at 50% 46%,
+      ellipse 82% 74% at 50% 50%,
       transparent          0%,
-      rgba(8, 6, 5, 0.10)  42%,
-      rgba(8, 6, 5, 0.55)  72%,
-      rgba(8, 6, 5, 0.90) 100%
+      rgba(8, 6, 5, 0.07)  48%,
+      rgba(8, 6, 5, 0.45)  74%,
+      rgba(8, 6, 5, 0.82) 100%
     );
   transition: opacity 0.5s ease;
 }
@@ -213,6 +216,7 @@ const villas = useVillas()
 @media (max-width: 767px) {
   .villa-selector {
     flex-direction: column;
+    gap: 0;
     height: auto;
     max-height: none;
   }
